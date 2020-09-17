@@ -2,7 +2,7 @@
 
 |                 | **Names/Ids**  |
 |----------------:|:---------------|
-| *Student Name:  | Jasper van Amerongen |
+| *Student Name*:  | Jasper van Amerongen |
 | *Team ID:*      | 22             |
 | *Email:*        | j.vanamerongen-1@student.utwente.nl |                      
 

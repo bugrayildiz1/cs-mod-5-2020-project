@@ -10,13 +10,13 @@
 **Note: This assignment is to judge your scrum skills and how well you contribute to a team. You have to complete this form every team member individually.** 
 
 ## *Q1:* What role do you prefer for yourself as a team player and why?
-*I prefer to be a plant, the person who brings new ideas in a team and manages problems in a creative way, because I am a really creative person and it is my style to manage things in creative ways. Also I would love to be coordinator because I like to check deadlines and know about what we have to do and when. *
+*I prefer to be a plant, the person who brings new ideas in a team and manages problems in a creative way, because I am a really creative person and it is my style to manage things in creative ways. Also I would love to be coordinator because I like to check deadlines and know about what we have to do and when.*
 
 ## *Q2:* How productive are you? Can you give an estimation of your productivity? How do you manage in case your estimation goes wrong?
 *Usually I can be really productive, working for the whole day in a library and doing a lot of stuff. I enjoy the process of studying and working on something in general. If my estimation goes wrong it can be because I am too tired or sick, then usually I take time for myself and start working the next day with fresh mind* 
 
 ## *Q3:* How do you prioritize your task? Do you have any specific criteria which you follow every time?
-*I usually use a prioritization square for managing my tasks by identifying which ones are urgent and important, not urgent and not important. *
+*I usually use a prioritization square for managing my tasks by identifying which ones are urgent and important, not urgent and not important.*
 
 ## *Q4:* How do you follow the progress of your project?
 *During module 4 we practiced with Jira a lot and I think it is the best source to check progress of a team, know what was done and what has to be done. Also what you did so far and what other people did to understand your own progress in a team.*

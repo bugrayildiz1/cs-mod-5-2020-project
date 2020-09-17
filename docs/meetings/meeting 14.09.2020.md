@@ -43,8 +43,8 @@
 
 ## Short overview:
 
- ### This was our first proper team meeting after the formation of the team. 
- ### Since today we are getting started with the project and therefore have to be 
+ # This was our first proper team meeting after the formation of the team. 
+ # Since today we are getting started with the project and therefore have to be 
  ### familiar with the project manual, all upcoming deadlines and things we have to
  ### finish for successful passing, which are mentioned there.
  ### Also, we have to think about the type of application for the project to start 

@@ -2,12 +2,12 @@
 |-------------------------:|:--------------------|
 | *Project Name:*          |*LED embient smart lighting system for displays*          |
 | *Meeting Date:*          |*14.09.2020*           |
-| *Present Team members:*  |*•Jasper van Amerongen*|
-|                          |*•Illya Averchenko*     |
-|                          |*•Alexandru Matcov*    |
-|                          |*•Albina Shynkar*      |
-|                          |*•Lola Solovyeva*      |
-|                          |*•Bugra Veysel Yıldız* |
+| *Present Team members:*  |*• Jasper van Amerongen*|
+|                          |*• Illya Averchenko*     |
+|                          |*• Alexandru Matcov*    |
+|                          |*• Albina Shynkar*      |
+|                          |*• Lola Solovyeva*      |
+|                          |*• Bugra Veysel Yıldız* |
 | *Team ID:*               |*22*                   |
 | *Scrum  Master:*         |*Jasper van Amerongen* |
 | *Scrum  Mentor:*         |*Andrew Heath*         |

@@ -29,7 +29,7 @@ can easily keep up with the updates, new tasks, new deadlines and tasks which ar
 Since meetings are for exchanging ideas and information about the project, I always try to intract with a new, unique and intelligent
 ideas to be ahead from other project groups. I always prefer to end the meeting with all the members in the group so, I do not leave the meeting before the group members.
 The time that I spend during meetings depends on the topic of the meeting but approximately it takes 30 minutes to 45 mintues to conclude the meeting.
-At the end of the meetings, I would like to give feedback about how the meetings can be more efficient.
+At the end of the meetings, I would like to give feedback about how the meetings can be more efficient If I can realise a point about it.
 
 ## Q6: How do you decide the requirements of your application? What are your criteria to decide if the product is genuinely completed?
 

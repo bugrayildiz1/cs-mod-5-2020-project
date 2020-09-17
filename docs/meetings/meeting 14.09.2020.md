@@ -43,16 +43,16 @@
 
 ## Short overview:
 
- ###This was our first proper team meeting after the formation of the team. 
- ###Since today we are getting started with the project and therefore have to be 
+ ### This was our first proper team meeting after the formation of the team. 
+ ### Since today we are getting started with the project and therefore have to be 
  ### familiar with the project manual, all upcoming deadlines and things we have to
  ### finish for successful passing, which are mentioned there.
- ###Also, we have to think about the type of application for the project to start 
+ ### Also, we have to think about the type of application for the project to start 
  ### implementing it as soon as possible and be ready with that till September 18, 
  ### 17:00 (deadline)
- ###Therefore, a group meeting was planned on Wednesday at 20:00 to discuss ideas 
+ ### Therefore, a group meeting was planned on Wednesday at 20:00 to discuss ideas 
  ### for the project and pick the best one. 
- ###GitLab repository and jira were discussed and should set up for the project 
+ ### GitLab repository and jira were discussed and should set up for the project 
  ### matters as soon as possible.
- ###Stand-up meeting reports were also discussed, namely whether they should be 
+ ### Stand-up meeting reports were also discussed, namely whether they should be 
  ### done after every meeting or not and where they should be uploaded.

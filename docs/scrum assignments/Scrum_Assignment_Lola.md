@@ -25,4 +25,4 @@ I think it is extremely important to bring positivity, joy, and a bit of laughte
 Since we are still in university, it all depends on minimal requirements to get a passing grade. If we successfully accomplished that, then usually we have a plan with extra features, that we might start implementing. 
 
 ## Q7: Do you think the evaluation is important for productivity? 
-Receiving feedback is always a good thing and welcome by me. It can push me to work harder or eliminate the flaws I have and never knew about. However, I am being careful with giving feedback to other people, since in my opinion, some people might not be open to it. If I know I have to, then I try to make a situation as comfortable and positive I can.
+Receiving feedback is always a good thing and welcome by me. It can push me to work harder or eliminate the flaws I have and never knew about. However, I am being careful with giving feedback to other people, since in my opinion, some people might not be open to it. If I know I have to, then I try to make a situation as comfortable and positive as I can.

@@ -1,6 +1,6 @@
 |                          | **Names/Ids**       |
 |-------------------------:|:--------------------|
-| *Project Name:*          |*Raspbery Pi*          |
+| *Project Name:*          |*LED embient smart lighting system for displays*          |
 | *Meeting Date:*          |*14.09.2020*           |
 | *Present Team members:*  |*•Jasper van Amerongen*|
 |                          |*•Ilya Averchenko*     |

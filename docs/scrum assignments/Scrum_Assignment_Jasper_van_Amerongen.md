@@ -10,9 +10,7 @@
 **Note: This assignment is to judge your scrum skills and how well you contribute to a team. You have to complete this form every team member individually.** 
 
 ## Q1: What role do you prefer for yourself as a team player and why?
-In module 4 mostly, but also prior modules, I have noticed that I am a good leader. My strenght here is that I am able to keep an overview and delegate tasks 
-quite effectively. Next to that, I see myself as a specialist whenever the topic is something within my knowledge base. If not, then I tend to delegate the 
-specialism, rather than diving into the subject at hand and losing overview this way.
+In module 4 mostly, but also prior modules, I have noticed that I am a good leader. My strenght here is that I am able to keep an overview and delegate tasks quite effectively. Next to that, I see myself as a specialist whenever the topic is something within my knowledge base. If not, then I tend to delegate the specialism, rather than diving into the subject at hand and losing overview this way.
 
 ## Q2: How much productive you are? Can you give an estimation of your productivity? How do you manage in case your estimation goes wrong?
 This is highly dependent on the intrinsic motivation I have for the problem at hand. For example, I was highly motivated for the project in module 4, because

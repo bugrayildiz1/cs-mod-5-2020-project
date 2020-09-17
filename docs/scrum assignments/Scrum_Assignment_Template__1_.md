@@ -2,7 +2,7 @@
 
 |                 | **Names/Ids**  |
 |----------------:|:---------------|
-| *Student Name:  |                |
+| *Student Name:  |   Bugra Veysel Yildiz             |
 | *Team ID:*      |                |
 | *Email:*        |                |                      
 

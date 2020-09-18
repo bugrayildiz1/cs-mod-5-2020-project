@@ -32,5 +32,13 @@ The time that I spend during meetings depends on the topic of the meeting but ap
 At the end of the meetings, I would like to give feedback about how the meetings can be more efficient If I can realise a point about it.
 
 ## Q6: How do you decide the requirements of your application? What are your criteria to decide if the product is genuinely completed?
+We decide for the requirements according to the requriements in the guide of the project.
+This is the most important factor while deciding our requirements for our application. After that, additional requirements are also can be a decide upon the time and the budget. 
 
 ## Q7: Do you think the evaluation is important for productivity? How do you assess yourself and your Colleagues? 
+I think evaluation is very important factor for productivity. Getting feedback and giving feedback has crucial factor within the project meetings to improve ourselves. I assess myself and my colleagues according to the quality of the project at the end. I think it is the best way to do that.
+
+
+
+
+

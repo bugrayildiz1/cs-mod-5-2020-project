@@ -23,7 +23,7 @@
 |                                       |*Any obstacles?*                |*No, but might be later regarding raspberry pi*                                             |
 | *Alexandru Matcov*                    |*What did you finish yesterday?*|*Updated git repository, read project manual, discussed ideas for project*              |
 |                                       |*What will you do today?*       |*Requirement analysis, make sure TAs got access to git*                      |
-|                                       |*Any obstacles?*                |**                                             |
+|                                       |*Any obstacles?*                |*No*                                             |
 | *Albina Shynkar*                      |*What did you finish yesterday?*|*Did meeting report, read project manual, did scrum assignment, set up jira, discussed ideas for project* |
 |                                       |*What will you do today?*       |*Requirement analysis file*   |
 |                                       |*Any obstacles?*                |*No*                                 |

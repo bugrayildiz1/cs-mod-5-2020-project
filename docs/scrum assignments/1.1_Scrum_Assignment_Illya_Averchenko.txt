@@ -1,0 +1,35 @@
+
+
+# Assignment - Scrum
+
+|                 | **Names/Ids**  |
+|----------------:|:---------------|
+| *Student Name*:  | Illya Averchenko |
+| *Team ID:*      | 22             |
+| *Email:*        | i.averchenko@student.utwente.nl |                      
+
+
+**Note: This assignment is to judge your scrum skills and how well you contribute to a team. You have to complete this form every team member individually.** 
+
+## Q1: What role do you prefer for yourself as a team player and why?
+I see myself as Plant or Co-ordinator, because I consider myself a good problem solver and can generate new ideas/solutions quite fast and good at delegation of the work.
+I am also creative and have good imagination/
+
+## Q2: How much productive you are? Can you give an estimation of your productivity? How do you manage in case your estimation goes wrong?
+I consider myself quite productive. I tend to plan everything and follow the schedule so I do my tasks on time. If I stuck with a problem I might need more time to figure out how to solve it, but I always try to take more time for the task than it is needed in case something goes wrong.
+
+## Q3: How do you prioritize your task? Do you have any specific criteria which you follow every time?
+When I have to prioritize my assignments I consider two things: time it takes to finish the task and the significance of the task. I always relate to Pareto principle.
+
+## Q4: How do you follow the progress of your project?
+In order to see the progress, I use Jira dashboard, or I check the updates in the files on Git repository.
+
+## Q5: How do you interact in a meeting? What time generally you spend during meetings? Would you like to give any feedback to have better meetings?
+I prefer to participate in the meetings as much as it is needed. I am trying to take active part in the discussions related to the project and seek for opportunities where I can collaborate.
+
+## Q6: How do you decide the requirements of your application? What are your criteria to decide if the product is genuinely completed?
+When we complete particular tasks, I come back to the backlog/list of tasks that have not been completed. In addition, I refer to the requirement list and analyze each point, whether the team has fulfilled it or not.
+
+## Q7: Do you think the evaluation is important for productivity? How do you assess yourself and your colleagues? 
+I believe that feedback is always useful, there is always something that can be improved. I try to ask my teammates whether the work I was delegated is appropriate or whether I have to fix something. If I have to assess somebody, I would try to give an objective summary of the work that the person have done and would not try to criticize the person in any way.
+

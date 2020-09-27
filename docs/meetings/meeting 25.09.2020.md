@@ -22,7 +22,7 @@
 |                                       |*What will you do today?*       |*Sprint retrospective report, set plan of work*                      |
 |                                       |*Any obstacles?*                |*No*                                             |
 | *Alexandru Matcov*                    |*What did you finish yesterday?*|*Exam preperation, made sure TAs have access to git*              |
-|                                       |*What will you do today?*       |*Sprint retrospective report, set plan of work *              |
+|                                       |*What will you do today?*       |*Sprint retrospective report, set plan of work*              |
 |                                       |*Any obstacles?*                |*No*                                             |
 | *Albina Shynkar*                      |*What did you finish yesterday?*|*Did meeting report, prepared for exam* |
 |                                       |*What will you do today?*       |*Sprint retrospective report, set plan of work*   |

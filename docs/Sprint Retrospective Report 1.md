@@ -53,7 +53,7 @@ We discussed and pitched our ideas on how we should control the Pi with the help
 ### ***b)***   Intra-personal level?
 * **Come to compromise** 
 During two weeks of the sprint, we have mastered effectively listening to each other, with highlighting the main ideas to combine them into a one major conclusion, leaving every team member satisfied with a final decision. 
-* ** Resolution of misunderstandings**
+* **Resolution of misunderstandings**
 We have no problems with clarifying the situations between our team mates, since we all realize that communication is the key for effective team work. 
 
 

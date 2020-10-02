@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="SmartHomeLightingSystem:war exploded">
+    <output-path>$PROJECT_DIR$/SmartHomeLightingSystem/out/artifacts/SmartHomeLightingSystem_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="SmartHomeLightingSystem/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SmartHomeLightingSystem" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

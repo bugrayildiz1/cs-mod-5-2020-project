@@ -1,4 +1,4 @@
-# Software Design Document
+# Group Contract
 
 || **Names/Ids**  |
 |--:|:--|

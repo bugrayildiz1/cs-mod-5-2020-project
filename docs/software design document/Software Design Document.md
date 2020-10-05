@@ -81,24 +81,34 @@ I, undersigned, hereby declare that I have read, agreed, and accepted all the ru
 
 Bugra Veysel Yildiz
 05-10-2020
-![&nbsp;](signature_bugrayildiz.jpeg)
+![&nbsp;](signature_bugrayildiz.jpeg =250x)
+
+
 
 Jasper van Amerongen
 05-10-2020
-![&nbsp;](signature_jaspervanamerongen.jpg)
+![&nbsp;](signature_jaspervanamerongen.jpg =250x)
+
+
 
 Lola Solovyeva
 05-10-2020
-![&nbsp;](signature_lolasolovyeva.jpeg)
+![&nbsp;](signature_lolasolovyeva.jpeg =250x)
+
+
 
 Albina Shynkar
 05-10-2020
-![&nbsp;](signature_albinashynkar.jpeg)
+![&nbsp;](signature_albinashynkar.jpeg =250x)
+
+
 
 Illya Averchenko
 05-10-2020
-![&nbsp;](signature_illyaaverchenko.jpeg)
+![&nbsp;](signature_illyaaverchenko.jpeg =250x)
+
+
 
 Alex Matcov
 05-10-2020
-![&nbsp;](signature_alexmatcov.jpeg)
+![&nbsp;](signature_alexmatcov.jpeg =250x)

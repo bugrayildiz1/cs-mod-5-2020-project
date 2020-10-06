@@ -29,7 +29,7 @@ In Module 4, our teacher Wallace Ugulino and Léon “The Fries” de Vries reco
 <br/>
 <img src="mockup_palatte_animations.png" alt="drawing" width="400"/>
 <br/>
-<img src="mockup_palatte_presets.jpeg" alt="drawing" width="400"/>
+<img src="mockup_palatte_presets.png" alt="drawing" width="400"/>
 <br/>
 <img src="mockup_extend.png" alt="drawing" width="400"/>
 <br/>

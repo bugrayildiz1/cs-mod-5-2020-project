@@ -1,4 +1,7 @@
 package com.smarthomelightingsystem.dao;
+
+import com.smarthomelightingsystem.model.Palette;
+
 /**
  * The class works with palette page
  * 
@@ -13,5 +16,15 @@ package com.smarthomelightingsystem.dao;
  *
  */
 public class PaletteDAO {
+	public Palette setUserBrightness() {
+		
+	//TO-DO 
+		return null;
+	}
+	
+	public Palette setUserColor() {
+		//TO-DO 
+		return null;
+	}
 
 }

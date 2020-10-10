@@ -3,7 +3,7 @@ package com.smarthomelightingsystem.dao;
 import com.smarthomelightingsystem.model.Palette;
 
 /**
- * The class works with animations of LED strip 
+ * The class works with presets of LED strip 
  * shown on the Palette page of web interface
  * 
  * @author Jasper van Amerongen
@@ -17,42 +17,29 @@ import com.smarthomelightingsystem.model.Palette;
  * @version 1
  *
  */
-public class AnimationDAO {
-	/*
-	 * Led strip brightness goes up and down
-	 */
-	public Palette fade() {
-		//TO-DO 
-		return null;
-		
-	}
+public class PresetsDAO {
 
-	public Palette loopAround() {
+	public Palette rainbowCycle() {
 		//TO-DO 
 		return null;
 		
 	}
 	
-	public Palette cyclon() {
+	public Palette rainbowFade() {
 		//TO-DO 
 		return null;
 		
 	}
 	
-	public Palette twinkle() {
+	public Palette fireplace() {
 		//TO-DO 
 		return null;
 		
 	}
 	
-	public Palette running() {
+	public Palette randomSpots() {
+		//TO-DO 
 		return null;
 		
 	}
-	
-	public Palette wipe() {
-		return null;
-		
-	}
-
 }

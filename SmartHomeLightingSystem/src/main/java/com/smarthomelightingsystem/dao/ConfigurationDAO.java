@@ -1,4 +1,7 @@
 package com.smarthomelightingsystem.dao;
+
+import com.smarthomelightingsystem.model.Configuration;
+
 /**
  * The class works with animations of LED strip
  * 
@@ -14,5 +17,13 @@ package com.smarthomelightingsystem.dao;
  *
  */
 public class ConfigurationDAO {
+	public Configuration getUserNumOfLed() {
+		//TO-DO 
+		return null;
+	}
+	public Configuration setUserNomOfLeds() {
+		//TO-DO 
+		return null;
+	}
 
 }

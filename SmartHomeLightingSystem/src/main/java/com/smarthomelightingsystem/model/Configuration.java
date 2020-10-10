@@ -1,5 +1,17 @@
 package com.smarthomelightingsystem.model;
-
+/**
+ * The Configuration class stores information about the width and
+ * length of the screen the user is using
+ * 
+ * @author Jasper van Amerongen
+ * @author Albina Shynkar
+ * @author Lola Solovyeva
+ * @author Ilya Averchenko
+ * @author Bugra Yildiz
+ * @author Alexandru Matcov
+ * 
+ * @version 1
+ */
 public class Configuration {
     /**
      * length of the display

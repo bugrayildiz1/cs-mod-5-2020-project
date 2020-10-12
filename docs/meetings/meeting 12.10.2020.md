@@ -26,10 +26,10 @@
 |                                       |*Any obstacles?*                |*poblems with connecting pi to internet*                                             |
 | *Albina Shynkar*                      |*What did you finish yesterday?*|*tuesday meeting with Lola, start coding* |
 |                                       |*What will you do today?*       |*have meeting with physical layer, understand how data flows fron UI to pi*   |
-|                                       |*Any obstacles?*                |*No*                                 |
+|                                       |*Any obstacles?*                |*Understanding of data flow from UI to pi*                                 |
 | *Lola Solovyeva*                      |*What did you finish yesterday?*|*tuesday meeting with Albina, start coding*      |
 |                                       |*What will you do today?*       |*have meeting with physical layer, understand how data flows fron UI to pi*                      |
-|                                       |*Any obstacles?*                |*No*                                 |
+|                                       |*Any obstacles?*                |*Understanding of data flow from UI to pi*                                 |
 | *Bugra Veysel Yıldız*                 |*What did you finish yesterday?*|*Start coding*  |
 |                                       |*What will you do today?*       |*check material framework to implement that*                      |
 |                                       |*Any obstacles?*                |*No*                                             |

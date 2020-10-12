@@ -1,7 +1,7 @@
 |                          | **Names/Ids**       |
 |-------------------------:|:--------------------|
 | *Project Name:*          |*LED embient smart lighting system for displays*          |
-| *Meeting Date:*          |*05.10.2020*           |
+| *Meeting Date:*          |*12.10.2020*           |
 | *Present Team members:*  |*•Jasper van Amerongen*|
 |                          |*•Ilya Averchenko*     |
 |                          |*•Alexandru Matcov*    |

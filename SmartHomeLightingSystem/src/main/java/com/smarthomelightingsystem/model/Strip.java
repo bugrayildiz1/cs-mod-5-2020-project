@@ -3,7 +3,7 @@ package com.smarthomelightingsystem.model;
 import java.util.ArrayList;
 
 /**
- * The class works with animations of LED strip 
+ * The class works with animations of LED strip   
  * shown on the Palette page of web interface
  * 
  * @author Jasper van Amerongen

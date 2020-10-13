@@ -1,6 +1,6 @@
 package com.smarthomelightingsystem.model;
 /*
- * This is the enum class with three values- RED, GREEN, BLUE
+ * This is the enum class with three values- RED, GREEN, BLUE  
  */
 
 /**

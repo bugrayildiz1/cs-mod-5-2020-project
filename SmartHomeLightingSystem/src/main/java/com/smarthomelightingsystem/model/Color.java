@@ -1,7 +1,7 @@
 package com.smarthomelightingsystem.model;
 import java.util.HashMap;
 
-//This class is the prototype of the data(color and brightness) being sent to pi.
+//This class is the prototype of the data(color and brightness) being sent to pi.  
 
 /**
  * The class works with animations of LED strip 

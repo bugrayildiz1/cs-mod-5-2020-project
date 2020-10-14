@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/pallate.css">
     <link rel="stylesheet" href="css/shadows.css">
+    <link rel="stylesheet" href="css/settings.css">
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -292,10 +293,67 @@
         <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell">
             <div class="mdc-layout-grid__inner">
                 <div class="mdc-layout-grid__cell">
-                    <h1>This is the Settings page</h1>
+                    <div style="position:absolute; left: 135px; top: 7px" class="settings-title mdc-typography--overline settings"><h1>Settings</h1></div>
                 </div>
-                <div class="mdc-layout-grid__cell">
-                    <i>... here be settings!</i>
+
+                <div id="test1" class="mdc-layout-grid__cell">
+                    <div>
+                        <ul class="mdc-list">
+                            <div id="model">
+                                <li class="mdc-list-item" tabindex="0">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Model</span>
+                                    <span id="model-ws" class="mdc-list-item__text">WS2812BRGBLED</span>
+                                </li>
+                            </div>
+
+                            <div id="dark-mode">
+                            <li class="mdc-list-item">
+                                <span class="mdc-list-item__ripple"></span>
+                                <span class="mdc-list-item__text">Dark Mode</span>
+                            </li>
+                                <div id="dark-mode-switch" class="mdc-switch">
+                                    <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                    <div class="mdc-switch__track"></div>
+                                    <div class="mdc-switch__thumb-underlay">
+                                        <div class="mdc-switch__thumb"></div>
+                                        <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch" aria-checked="false">
+                                    </div>
+                                </div>
+                            </div>
+
+<!--                           <div id="time-to-light-up">-->
+<!--                            <li class="mdc-list-item">-->
+<!--                                <span class="mdc-list-item__ripple"></span>-->
+<!--                                <span class="mdc-list-item__text">Time to Light Up</span>-->
+<!--                            </li>-->
+<!--                           </div>-->
+
+                            <div id="info">
+                            <li class="mdc-list-item">
+                                <span class="mdc-list-item__ripple"></span>
+                                <span class="mdc-list-item__text">Information</span>
+                            </li>
+                                <i id="info-icon" class="material-icons">info</i>
+                                <div id="info-text"><div id="inner">
+                                    <label>Smart Home Lightning System is a product</label>
+                                    <label>that you can easily customize with brilliant features</label>
+                                    <label>such as customizable brightness,color, amazing effects</label>
+                                    <label>which you can choose from the menu that we set</label>
+                                </div></div>
+                            </div>
+
+                            <div id="my-acc">
+                            <li class="mdc-list-item">
+                                <span class="mdc-list-item__ripple"></span>
+                                <span class="mdc-list-item__text">My Account</span>
+                            </li>
+                                <span id="account-icon" class="material-icons">account_circle</span>
+                                    <span id="logout-icon" class="material-icons">login</span>
+                                    <label id="logout">Logout</label>
+                            </div>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

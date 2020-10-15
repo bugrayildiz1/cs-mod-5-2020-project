@@ -1,0 +1,59 @@
+#test1 {
+    padding-top: 50px;
+}
+
+#model {
+    padding-top: 25px;
+}
+
+#model-ws {
+    padding-left: 150px;
+    color: #bdbdbd;
+}
+
+#dark-mode {
+    padding-top: 30px;
+}
+
+#dark-mode-switch{
+    padding-left: 260px;
+    bottom: 35px;
+}
+
+#info {
+}
+
+
+#info-icon {
+    position: absolute;
+    padding-left: 102px;
+    top: 276px;
+}
+
+#info-text {
+    text-align: left;
+}
+
+#my-acc {
+    padding-top: 70px;
+}
+
+#account-icon {
+    position: absolute;
+    padding-left: 106px;
+    top: 490px;
+}
+
+#logout-icon {
+    position: absolute;
+    padding-left: 260px;
+    top: 490px;
+}
+
+
+
+#logout{
+    position: absolute;
+    padding-left: 294px;
+    top: 490px;
+}

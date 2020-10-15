@@ -1,0 +1,16 @@
+.shls-welcome {
+    padding: 0;
+}
+
+.shls-welcome-page-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(
+                        rgba(0,0,0,0.1),
+                        rgba(0,0,0,0.7)),
+                      url("../img/welcome_pages_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/welcome.css">
     <link rel="stylesheet" href="css/pallate.css">
-    <link rel="stylesheet" href="css/shadows.css">
     <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/shadows.css">
 
     <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -24,396 +25,425 @@
     <title>Testing first material buttons</title>
 </head>
 <body>
-<div class="shls-container mdc-layout-grid">
-    <div class="shls-top-buttons">
-        <div>
-            <span class="material-icons">arrow_back</span>
-        </div>
-        <div>
-            <span class="material-icons">power_settings_new</span>
+<div class="shls-container">
+
+    <!-- WELCOME SCREENS -->
+    <div class="shls-welcome mdc-layout-grid" style="display: none;">
+        <div class="shls-welcome-page-wrapper mdc-layout-grid__inner">
+
+            <!-- LOGIN PAGE -->
+            <div id="shls-page-login" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="mdc-layout-grid__inner"></div>
+            </div>
+
+            <!-- SETUP PAGE -->
+            <div id="shls-page-setup" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="mdc-layout-grid__inner"></div>
+            </div>
         </div>
     </div>
-    <div class="shls-page-wrapper mdc-layout-grid__inner">
 
-        <!-- PALLATE PAGE -->
-        <div id="shls-page-pallate" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-            <div class="mdc-layout-grid__inner">
+    <!-- APP -->
+    <div class="shls-backdrop shadow-2"></div>
+    <div class="shls-app mdc-layout-grid shadow-4">
+        <div class="shls-top-buttons">
+            <div>
+                <span class="material-icons">arrow_back</span>
+            </div>
+            <div>
+                <span class="material-icons">power_settings_new</span>
+            </div>
+        </div>
+        <div class="shls-page-wrapper mdc-layout-grid__inner">
 
-                <!-- PALLATE COLOUR WHEEL-->
-                <div class="shls-pallate-iro-colorwheel-wrapper mdc-layout-grid__cell">
-                    <span class="shls-gridcell-caption mdc-typography--overline">colour</span>
-                    <div class="shls-pallate-iro-colorwheel"></div>
-                    <svg style="display: none">
-                        <defs>
-                            <g id="shls-pallate-iro-colorwheel-handle">
-                                <circle r="16" fill="none" stroke-width="7" stroke="grey"></circle>
-                                <circle r="14" fill="none" stroke-width="10" stroke="#fff"></circle>
-                            </g>
-                        </defs>
-                    </svg>
-                </div>
+            <!-- PALLATE PAGE -->
+            <div id="shls-page-pallate" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="mdc-layout-grid__inner">
 
-                <!-- PALLATE BRIGHTNESS SLIDER -->
-                <div class="shls-pallate-brslider-wrapper mdc-layout-grid__cell">
-                    <span class="shls-gridcell-caption mdc-typography--overline">brightness</span>
-                    <div class="shls-pallate-brslider mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
-                         aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"
-                         aria-label="Select Value">
-                        <div class="mdc-slider__track-container">
-                            <div class="mdc-slider__track"></div>
-                        </div>
-                        <div class="mdc-slider__thumb-container">
-                            <div class="mdc-slider__pin">
-                                <span class="mdc-slider__pin-value-marker"></span>
+                    <!-- PALLATE COLOUR WHEEL-->
+                    <div class="shls-pallate-iro-colorwheel-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                        <span class="shls-gridcell-caption mdc-typography--overline">colour</span>
+                        <div class="shls-pallate-iro-colorwheel"></div>
+                        <svg style="display: none">
+                            <defs>
+                                <g id="shls-pallate-iro-colorwheel-handle">
+                                    <circle r="16" fill="none" stroke-width="7" stroke="grey"></circle>
+                                    <circle r="14" fill="none" stroke-width="10" stroke="#fff"></circle>
+                                </g>
+                            </defs>
+                        </svg>
+                    </div>
+
+                    <!-- PALLATE BRIGHTNESS SLIDER -->
+                    <div class="shls-pallate-brslider-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                        <span class="shls-gridcell-caption mdc-typography--overline">brightness</span>
+                        <div class="shls-pallate-brslider">
+                            <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
+                                 aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"
+                                 aria-label="Select Value">
+                                <div class="mdc-slider__track-container">
+                                    <div class="mdc-slider__track"></div>
+                                </div>
+                                <div class="mdc-slider__thumb-container">
+                                    <div class="mdc-slider__pin">
+                                        <span class="mdc-slider__pin-value-marker"></span>
+                                    </div>
+                                    <svg class="mdc-slider__thumb" width="21" height="21">
+                                        <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                                    </svg>
+                                    <div class="mdc-slider__focus-ring"></div>
+                                </div>
                             </div>
-                            <svg class="mdc-slider__thumb" width="21" height="21">
-                                <circle cx="10.5" cy="10.5" r="7.875"></circle>
-                            </svg>
-                            <div class="mdc-slider__focus-ring"></div>
                         </div>
                     </div>
-                </div>
 
-                <!-- PALLATE FUNCTIONS MENU -->
-                <div class="shls-pallate-functions-wrapper mdc-layout-grid__cell">
-                    <div class="mdc-layout-grid__inner">
+                    <!-- PALLATE FUNCTIONS MENU -->
+                    <div class="shls-pallate-functions-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__inner">
 
-                        <!-- PALLATE FUNCTIONS TABBAR -->
-                        <div class="shls-pallate-functions-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-8-tablet shadow-1">
-                            <div class="shls-pallate-functions-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
-                                <div class="mdc-tab-scroller">
-                                    <div class="mdc-tab-scroller__scroll-area">
-                                        <div class="mdc-tab-scroller__scroll-content">
-                                            <button class="mdc-tab" role="tab"
-                                                    aria-selected="false" tabindex="-1"
-                                                    onclick="openPallateAnimations()">
-                                                <span class="mdc-tab__content">
-                                                    <span class="mdc-tab__text-label">animations</span>
-                                                </span>
-                                                <span class="mdc-tab-indicator">
-                                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                                </span>
-                                                <span class="mdc-tab__ripple"></span>
-                                            </button>
-                                            <button class="mdc-tab" role="tab"
-                                                    aria-selected="false" tabindex="-1"
-                                                    onclick="openPallatePresets()">
-                                                <span class="mdc-tab__content">
-                                                    <span class="mdc-tab__text-label">presets</span>
-                                                </span>
-                                                <span class="mdc-tab-indicator">
-                                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                                </span>
-                                                <span class="mdc-tab__ripple"></span>
-                                            </button>
+                            <!-- PALLATE FUNCTIONS TABBAR -->
+                            <div class="shls-pallate-functions-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12 shadow-1">
+                                <div class="shls-pallate-functions-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
+                                    <div class="mdc-tab-scroller">
+                                        <div class="mdc-tab-scroller__scroll-area">
+                                            <div class="mdc-tab-scroller__scroll-content">
+                                                <button class="mdc-tab" role="tab"
+                                                        aria-selected="false" tabindex="-1"
+                                                        onclick="openPallateAnimations()">
+                                                    <span class="mdc-tab__content">
+                                                        <span class="mdc-tab__text-label">animations</span>
+                                                    </span>
+                                                    <span class="mdc-tab-indicator">
+                                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                                    </span>
+                                                    <span class="mdc-tab__ripple"></span>
+                                                </button>
+                                                <button class="mdc-tab" role="tab"
+                                                        aria-selected="false" tabindex="-1"
+                                                        onclick="openPallatePresets()">
+                                                    <span class="mdc-tab__content">
+                                                        <span class="mdc-tab__text-label">presets</span>
+                                                    </span>
+                                                    <span class="mdc-tab-indicator">
+                                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                                    </span>
+                                                    <span class="mdc-tab__ripple"></span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- PALLATE ANIMATIONS SECTION -->
-                        <div class="shls-pallate-animations-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-8-tablet">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div id="shls-pallate-animation-fade" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">blur_on</span>
-                                            <span class="shls-pallate-animation-desc">Fade</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-looparound" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">repeat</span>
-                                            <span class="shls-pallate-animation-desc">Loop Around</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-strobe" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">flare</span>
-                                            <span class="shls-pallate-animation-desc">Strobe</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-cyclon" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">sync_alt</span>
-                                            <span class="shls-pallate-animation-desc">Cyclon</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-twinkle" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">ac_unit</span>
-                                            <span class="shls-pallate-animation-desc">Twinkle</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-running" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">directions_run</span>
-                                            <span class="shls-pallate-animation-desc">Running</span>
-                                        </div>
-                                    </div>
-                                    <div id="shls-pallate-animation-wipe" class="swiper-slide">
-                                        <div class="mdc-card shadow-2">
-                                            <span class="shls-pallate-animation-icon material-icons">trending_flat</span>
-                                            <span class="shls-pallate-animation-desc">Wipe</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-
-                        <!-- PALLATE PRESETS SECTION -->
-                        <div class="shls-pallate-presets-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-8-tablet">
-                            <div class="mdc-list-group">
-                                <h3 class="mdc-list-group__subheader">Rainbow</h3>
-                                <ul class="mdc-list mdc-list--two-line" role="radiogroup" data-mdc-auto-init="MDCList">
-                                    <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__graphic">
-                                            <div class="mdc-radio">
-                                                <input class="mdc-radio__native-control"
-                                                       type="radio"
-                                                       id="shls-pallate-presets-rainbowcycle"
-                                                       name="shls-pallate-presets-radios"
-                                                       value="1"/>
-                                                <div class="mdc-radio__background">
-                                                    <div class="mdc-radio__outer-circle"></div>
-                                                    <div class="mdc-radio__inner-circle"></div>
-                                                </div>
+                            <!-- PALLATE ANIMATIONS SECTION -->
+                            <div class="shls-pallate-animations-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                                <div class="swiper-container">
+                                    <div class="swiper-wrapper">
+                                        <div id="shls-pallate-animation-fade" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">blur_on</span>
+                                                <span class="shls-pallate-animation-desc">Fade</span>
                                             </div>
-                                        </span>
-                                        <label class="mdc-list-item__text" for="shls-pallate-presets-rainbowcycle">
-                                            <span class="mdc-list-item__primary-text">Rainbow Cycle</span>
-                                            <span class="mdc-list-item__secondary-text">Secondary text</span>
-                                        </label>
-                                    </li>
-                                    <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
-                                    <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__graphic">
-                                            <div class="mdc-radio">
-                                                <input class="mdc-radio__native-control"
-                                                       type="radio"
-                                                       id="shls-pallate-presets-rainbowfade"
-                                                       name="shls-pallate-presets-radios"
-                                                       value="2"/>
-                                                <div class="mdc-radio__background">
-                                                    <div class="mdc-radio__outer-circle"></div>
-                                                    <div class="mdc-radio__inner-circle"></div>
-                                                </div>
+                                        </div>
+                                        <div id="shls-pallate-animation-looparound" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">repeat</span>
+                                                <span class="shls-pallate-animation-desc">Loop Around</span>
                                             </div>
-                                        </span>
-                                        <label class="mdc-list-item__text" for="shls-pallate-presets-rainbowfade">
-                                            <span class="mdc-list-item__primary-text">Rainbow Cycle</span>
-                                            <span class="mdc-list-item__secondary-text">Secondary text</span>
-                                        </label>
-                                    </li>
-                                    <li class="mdc-list-divider" role="separator"></li>
-                                </ul>
-                            </div>
-                            <div class="mdc-list-group">
-                                <h3 class="mdc-list-group__subheader">Other</h3>
-                                <ul class="mdc-list mdc-list--two-line" role="radiogroup" data-mdc-auto-init="MDCList">
-                                    <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__graphic">
-                                            <div class="mdc-radio">
-                                                <input class="mdc-radio__native-control"
-                                                       type="radio"
-                                                       id="shls-pallate-presets-fireplace"
-                                                       name="shls-pallate-presets-radios"
-                                                        value="3"/>
-                                                <div class="mdc-radio__background">
-                                                    <div class="mdc-radio__outer-circle"></div>
-                                                    <div class="mdc-radio__inner-circle"></div>
-                                                </div>
+                                        </div>
+                                        <div id="shls-pallate-animation-strobe" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">flare</span>
+                                                <span class="shls-pallate-animation-desc">Strobe</span>
                                             </div>
-                                        </span>
-                                        <label class="mdc-list-item__text" for="shls-pallate-presets-fireplace">
-                                            <span class="mdc-list-item__primary-text">Fireplace</span>
-                                            <span class="mdc-list-item__secondary-text">Secondary text</span>
-                                        </label>
-                                    </li>
-                                    <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
-                                    <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__graphic">
-                                            <div class="mdc-radio">
-                                                <input class="mdc-radio__native-control"
-                                                       type="radio"
-                                                       id="shls-pallate-presets-rndsport"
-                                                       name="shls-pallate-presets-radios"
-                                                       value="4"/>
-                                                <div class="mdc-radio__background">
-                                                    <div class="mdc-radio__outer-circle"></div>
-                                                    <div class="mdc-radio__inner-circle"></div>
-                                                </div>
+                                        </div>
+                                        <div id="shls-pallate-animation-cyclon" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">sync_alt</span>
+                                                <span class="shls-pallate-animation-desc">Cyclon</span>
                                             </div>
-                                        </span>
-                                        <label class="mdc-list-item__text" for="shls-pallate-presets-rndsport">
-                                            <span class="mdc-list-item__primary-text">Random Spots</span>
-                                            <span class="mdc-list-item__secondary-text">Secondary text</span>
-                                        </label>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- EXTEND PAGE -->
-        <div id="shls-page-extend" class="shls-page mdc-layout-grid__cell">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell">
-                    <h1>This is the Extend page</h1>
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <i>... here be cool stuffs!</i>
-                </div>
-            </div>
-        </div>
-
-        <!-- LDR DATA PAGE -->
-        <div id="shls-page-ldr" class="shls-page mdc-layout-grid__cell">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell">
-                    <h1>This is the LDR Data page</h1>
-                </div>
-                <div class="mdc-layout-grid__cell">
-                    <i>... here be graphs!</i>
-                </div>
-            </div>
-        </div>
-
-        <!-- SETTINGS PAGE -->
-        <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell">
-            <div class="mdc-layout-grid__inner">
-                <div class="mdc-layout-grid__cell">
-                    <div style="position:absolute; left: 135px; top: 7px" class="settings-title mdc-typography--overline settings"><h1>Settings</h1></div>
-                </div>
-
-                <div id="test1" class="mdc-layout-grid__cell">
-                    <div>
-                        <ul class="mdc-list">
-                            <div id="model">
-                                <li class="mdc-list-item" tabindex="0">
-                                    <span class="mdc-list-item__ripple"></span>
-                                    <span class="mdc-list-item__text">Model</span>
-                                    <span id="model-ws" class="mdc-list-item__text">WS2812BRGBLED</span>
-                                </li>
-                            </div>
-
-                            <div id="dark-mode">
-                            <li class="mdc-list-item">
-                                <span class="mdc-list-item__ripple"></span>
-                                <span class="mdc-list-item__text">Dark Mode</span>
-                            </li>
-                                <div id="dark-mode-switch" class="mdc-switch">
-                                    <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
-                                    <div class="mdc-switch__track"></div>
-                                    <div class="mdc-switch__thumb-underlay">
-                                        <div class="mdc-switch__thumb"></div>
-                                        <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch" aria-checked="false">
+                                        </div>
+                                        <div id="shls-pallate-animation-twinkle" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">ac_unit</span>
+                                                <span class="shls-pallate-animation-desc">Twinkle</span>
+                                            </div>
+                                        </div>
+                                        <div id="shls-pallate-animation-running" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">directions_run</span>
+                                                <span class="shls-pallate-animation-desc">Running</span>
+                                            </div>
+                                        </div>
+                                        <div id="shls-pallate-animation-wipe" class="swiper-slide">
+                                            <div class="mdc-card shadow-2">
+                                                <span class="shls-pallate-animation-icon material-icons">trending_flat</span>
+                                                <span class="shls-pallate-animation-desc">Wipe</span>
+                                            </div>
+                                        </div>
                                     </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
                             </div>
 
-<!--                           <div id="time-to-light-up">-->
-<!--                            <li class="mdc-list-item">-->
-<!--                                <span class="mdc-list-item__ripple"></span>-->
-<!--                                <span class="mdc-list-item__text">Time to Light Up</span>-->
-<!--                            </li>-->
-<!--                           </div>-->
-
-                            <div id="info">
-                            <li class="mdc-list-item">
-                                <span class="mdc-list-item__ripple"></span>
-                                <span class="mdc-list-item__text">Information</span>
-                            </li>
-                                <i id="info-icon" class="material-icons">info</i>
-                                <div id="info-text"><div id="inner">
-                                    <label>Smart Home Lightning System is a product</label>
-                                    <label>that you can easily customize with brilliant features</label>
-                                    <label>such as customizable brightness,color, amazing effects</label>
-                                    <label>which you can choose from the menu that we set</label>
-                                </div></div>
+                            <!-- PALLATE PRESETS SECTION -->
+                            <div class="shls-pallate-presets-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                                <div class="mdc-list-group">
+                                    <h3 class="mdc-list-group__subheader">Rainbow</h3>
+                                    <ul class="mdc-list mdc-list--two-line" role="radiogroup" data-mdc-auto-init="MDCList">
+                                        <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__graphic">
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control"
+                                                           type="radio"
+                                                           id="shls-pallate-presets-rainbowcycle"
+                                                           name="shls-pallate-presets-radios"
+                                                           value="1"/>
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <label class="mdc-list-item__text" for="shls-pallate-presets-rainbowcycle">
+                                                <span class="mdc-list-item__primary-text">Rainbow Cycle</span>
+                                                <span class="mdc-list-item__secondary-text">Secondary text</span>
+                                            </label>
+                                        </li>
+                                        <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
+                                        <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__graphic">
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control"
+                                                           type="radio"
+                                                           id="shls-pallate-presets-rainbowfade"
+                                                           name="shls-pallate-presets-radios"
+                                                           value="2"/>
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <label class="mdc-list-item__text" for="shls-pallate-presets-rainbowfade">
+                                                <span class="mdc-list-item__primary-text">Rainbow Cycle</span>
+                                                <span class="mdc-list-item__secondary-text">Secondary text</span>
+                                            </label>
+                                        </li>
+                                        <li class="mdc-list-divider" role="separator"></li>
+                                    </ul>
+                                </div>
+                                <div class="mdc-list-group">
+                                    <h3 class="mdc-list-group__subheader">Other</h3>
+                                    <ul class="mdc-list mdc-list--two-line" role="radiogroup" data-mdc-auto-init="MDCList">
+                                        <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__graphic">
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control"
+                                                           type="radio"
+                                                           id="shls-pallate-presets-fireplace"
+                                                           name="shls-pallate-presets-radios"
+                                                            value="3"/>
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <label class="mdc-list-item__text" for="shls-pallate-presets-fireplace">
+                                                <span class="mdc-list-item__primary-text">Fireplace</span>
+                                                <span class="mdc-list-item__secondary-text">Secondary text</span>
+                                            </label>
+                                        </li>
+                                        <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
+                                        <li class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__graphic">
+                                                <div class="mdc-radio">
+                                                    <input class="mdc-radio__native-control"
+                                                           type="radio"
+                                                           id="shls-pallate-presets-rndsport"
+                                                           name="shls-pallate-presets-radios"
+                                                           value="4"/>
+                                                    <div class="mdc-radio__background">
+                                                        <div class="mdc-radio__outer-circle"></div>
+                                                        <div class="mdc-radio__inner-circle"></div>
+                                                    </div>
+                                                </div>
+                                            </span>
+                                            <label class="mdc-list-item__text" for="shls-pallate-presets-rndsport">
+                                                <span class="mdc-list-item__primary-text">Random Spots</span>
+                                                <span class="mdc-list-item__secondary-text">Secondary text</span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <div id="my-acc">
-                            <li class="mdc-list-item">
-                                <span class="mdc-list-item__ripple"></span>
-                                <span class="mdc-list-item__text">My Account</span>
-                            </li>
-                                <span id="account-icon" class="material-icons">account_circle</span>
-                                    <span id="logout-icon" class="material-icons">login</span>
-                                    <label id="logout">Logout</label>
-                            </div>
-                        </ul>
+                </div>
+            </div>
+
+            <!-- EXTEND PAGE -->
+            <div id="shls-page-extend" class="shls-page mdc-layout-grid__cell">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell">
+                        <h1>This is the Extend page</h1>
+                    </div>
+                    <div class="mdc-layout-grid__cell">
+                        <i>... here be cool stuffs!</i>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- NAV -->
-        <div class="shls-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12 shadow-5">
-            <div class="shls-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
-                <div class="mdc-tab-scroller">
-                    <div class="mdc-tab-scroller__scroll-area">
-                        <div class="mdc-tab-scroller__scroll-content">
-                            <button class="mdc-tab" role="tab"
-                                    aria-selected="false" tabindex="-1"
-                                    onclick="openPallate()">
-                                <span class="mdc-tab__content">
-                                    <span class="mdc-tab__icon material-icons" aria-hidden="true">color_lens</span>
-                                </span>
-                                <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                </span>
-                                <span class="mdc-tab__ripple"></span>
-                            </button>
-                            <button class="mdc-tab" role="tab"
-                                    aria-selected="false" tabindex="-1"
-                                    onclick="openExtend()">
-                                <span class="mdc-tab__content">
-                                    <span class="mdc-tab__icon material-icons" aria-hidden="true">open_in_full</span>
-                                </span>
-                                <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                </span>
-                                <span class="mdc-tab__ripple"></span>
-                            </button>
-                            <button class="mdc-tab" role="tab"
-                                    aria-selected="false" tabindex="-1"
-                                    onclick="openLdr()">
-                                <span class="mdc-tab__content">
-                                    <span class="mdc-tab__icon material-icons" aria-hidden="true">bar_chart</span>
-                                </span>
-                                <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                </span>
-                                <span class="mdc-tab__ripple"></span>
-                            </button>
-                            <button class="mdc-tab" role="tab"
-                                    aria-selected="false" tabindex="-1"
-                                    onclick="openSettings()">
-                                <span class="mdc-tab__content">
-                                    <span class="mdc-tab__icon material-icons" aria-hidden="true">settings</span>
-                                </span>
-                                <span class="mdc-tab-indicator">
-                                    <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
-                                </span>
-                                <span class="mdc-tab__ripple"></span>
-                            </button>
+            <!-- LDR DATA PAGE -->
+            <div id="shls-page-ldr" class="shls-page mdc-layout-grid__cell">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell">
+                        <h1>This is the LDR Data page</h1>
+                    </div>
+                    <div class="mdc-layout-grid__cell">
+                        <i>... here be graphs!</i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SETTINGS PAGE -->
+            <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell">
+                        <div style="position:absolute; left: 135px; top: 7px"
+                             class="settings-title mdc-typography--overline settings"><h1>Settings</h1></div>
+                    </div>
+
+                    <div id="test1" class="mdc-layout-grid__cell">
+                        <div>
+                            <ul class="mdc-list">
+                                <div id="model">
+                                    <li class="mdc-list-item" tabindex="0">
+                                        <span class="mdc-list-item__ripple"></span>
+                                        <span class="mdc-list-item__text">Model</span>
+                                        <span id="model-ws" class="mdc-list-item__text">WS2812BRGBLED</span>
+                                    </li>
+                                </div>
+
+                                <div id="dark-mode">
+                                    <li class="mdc-list-item">
+                                        <span class="mdc-list-item__ripple"></span>
+                                        <span class="mdc-list-item__text">Dark Mode</span>
+                                    </li>
+                                    <div id="dark-mode-switch" class="mdc-switch">
+                                        <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                            <div class="mdc-switch__track"></div>
+                                            <div class="mdc-switch__thumb-underlay">
+                                                <div class="mdc-switch__thumb"></div>
+                                                <input type="checkbox" id="basic-switch"
+                                                       class="mdc-switch__native-control" role="switch"
+                                                       aria-checked="false">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--                           <div id="time-to-light-up">-->
+                                    <!--                            <li class="mdc-list-item">-->
+                                    <!--                                <span class="mdc-list-item__ripple"></span>-->
+                                    <!--                                <span class="mdc-list-item__text">Time to Light Up</span>-->
+                                    <!--                            </li>-->
+                                    <!--                           </div>-->
+
+                                    <div id="info">
+                                        <li class="mdc-list-item">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__text">Information</span>
+                                        </li>
+                                        <i id="info-icon" class="material-icons">info</i>
+                                        <div id="info-text">
+                                            <div id="inner">
+                                                <label>Smart Home Lightning System is a product</label>
+                                                <label>that you can easily customize with brilliant features</label>
+                                                <label>such as customizable brightness,color, amazing effects</label>
+                                                <label>which you can choose from the menu that we set</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="my-acc">
+                                        <li class="mdc-list-item">
+                                            <span class="mdc-list-item__ripple"></span>
+                                            <span class="mdc-list-item__text">My Account</span>
+                                        </li>
+                                        <span id="account-icon" class="material-icons">account_circle</span>
+                                        <span id="logout-icon" class="material-icons">login</span>
+                                        <label id="logout">Logout</label>
+                                    </div>
+                                </div>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
+            <!-- NAV -->
+            <div class="shls-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="shls-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
+                    <div class="mdc-tab-scroller">
+                        <div class="mdc-tab-scroller__scroll-area">
+                            <div class="mdc-tab-scroller__scroll-content">
+                                <button class="mdc-tab" role="tab"
+                                        aria-selected="false" tabindex="-1"
+                                        onclick="openPallate()">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__icon material-icons" aria-hidden="true">color_lens</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                                <button class="mdc-tab" role="tab"
+                                        aria-selected="false" tabindex="-1"
+                                        onclick="openExtend()">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__icon material-icons" aria-hidden="true">open_in_full</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                                <button class="mdc-tab" role="tab"
+                                        aria-selected="false" tabindex="-1"
+                                        onclick="openLdr()">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__icon material-icons" aria-hidden="true">bar_chart</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                                <button class="mdc-tab" role="tab"
+                                        aria-selected="false" tabindex="-1"
+                                        onclick="openSettings()">
+                                    <span class="mdc-tab__content">
+                                        <span class="mdc-tab__icon material-icons" aria-hidden="true">settings</span>
+                                    </span>
+                                    <span class="mdc-tab-indicator">
+                                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                                    </span>
+                                    <span class="mdc-tab__ripple"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 </div>
 </body>

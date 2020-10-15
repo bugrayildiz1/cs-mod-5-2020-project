@@ -1,6 +1,6 @@
 :root {
     --mdc-theme-primary: #018786;
-    --mdc-theme-secondary: #018786;
+    --mdc-theme-secondary: var(--mdc-theme-primary);
     --shls-mdc-gutter: 16px;
     --swiper-theme-color: var(--mdc-theme-secondary);
 }
@@ -13,6 +13,22 @@ html, body,
 .shls-container,
 .shls-page-wrapper {
     height: 100%;
+}
+
+.shls-backdrop {
+    height: 300px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: var(--mdc-theme-secondary);
+}
+
+.shls-app {
+    max-width: 1000px;
+    height: 100%;
+    position: relative;
+    background: white;
 }
 
 .shls-page-wrapper {
@@ -40,7 +56,7 @@ html, body,
 
 .shls-tabbar-wrapper {
     margin: 0
-            calc(var(--shls-mdc-gutter) * -1)
+                calc(var(--shls-mdc-gutter) * -1)
             calc(var(--shls-mdc-gutter) * -1);
     position: relative;
     z-index: 1;
@@ -56,4 +72,15 @@ html, body,
     z-index: -1;
     box-shadow: var(--shadows-shadow-1);
     transform: rotate(180deg);
+}
+
+
+
+@media (min-width: 1000px) and (min-height: 920px) {
+
+    .shls-app {
+        height: calc(100% - 150px);
+        margin-top: 150px;
+    }
+
 }

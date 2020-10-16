@@ -77,7 +77,7 @@
 
 #shls-page-pallate .swiper-container .swiper-slide-active .mdc-card {
     background-color: var(--mdc-theme-primary);
-    box-shadow: var(--shadows-shadow-3);
+    box-shadow: var(--prfy-shadow-3);
     transform: initial;
 }
 

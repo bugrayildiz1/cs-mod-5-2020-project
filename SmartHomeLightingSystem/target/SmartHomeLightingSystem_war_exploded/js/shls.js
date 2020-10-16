@@ -1,4 +1,5 @@
-let selColor = "#FFFFFF";
+const $ROOT = $(":root");
+let COLOR = "#FFFFFF";
 
 $(document).ready(function() {
 
@@ -7,7 +8,12 @@ $(document).ready(function() {
     document.querySelector(".shls-tabbar").MDCTabBar.activateTab(0);
     document.querySelector(".shls-pallate-functions-tabbar").MDCTabBar.activateTab(0);
 
+});
+
+function startApp() {
+
     // Render screen and open first page
+    openApp();
     openPallate();
     openPallateAnimations();
 
@@ -15,63 +21,106 @@ $(document).ready(function() {
     renderSwiper();
     onResize();
     $(window).resize(onResize);
-    const slider = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider')); //must be after openPallate
+    new mdc.slider.MDCSlider(document.querySelector('.mdc-slider')); //must be after openPallate
 
-});
+}
+
+function openWelcome() {
+
+    const target = $(".shls-welcome");
+    target.siblings().hide();
+    target.show();
+
+}
+
+function openApp() {
+
+    const target = $(".shls-app, .shls-backdrop");
+    target.siblings().hide();
+    target.show();
+
+}
+
+function openSignIn() {
+
+    renderTitle("Sign In");
+    const target = $("#shls-page-signin");
+    target.siblings().not(".shls-welcome-header").hide();
+    target.show();
+
+}
+
+function openSetUp() {
+
+    renderTitle("Set Up");
+    const target = $("#shls-page-setup");
+    target.siblings().not(".shls-welcome-header").hide();
+    target.show();
+
+}
 
 function openPallate() {
 
-    $("#shls-page-pallate").siblings().not(".shls-tabbar-wrapper").hide();
-    $("#shls-page-pallate").show();
+    renderTitle("Pallate");
+    const $target = $("#shls-page-pallate");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function openExtend() {
 
-    $("#shls-page-extend").siblings().not(".shls-tabbar-wrapper").hide();
-    $("#shls-page-extend").show();
+    renderTitle("Extend");
+    const $target = $("#shls-page-extend");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function openLdr() {
 
-    $("#shls-page-ldr").siblings().not(".shls-tabbar-wrapper").hide();
-    $("#shls-page-ldr").show();
+    renderTitle("LDR Data");
+    const $target = $("#shls-page-ldr");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function openSettings() {
 
-    $("#shls-page-settings").siblings().not(".shls-tabbar-wrapper").hide();
-    $("#shls-page-settings").show();
+    renderTitle("Settings");
+    const $target = $("#shls-page-settings");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function openPallateAnimations() {
 
-    $(".shls-pallate-animations-wrapper").siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
-    $(".shls-pallate-animations-wrapper").show();
+    const $target = $(".shls-pallate-animations-wrapper") ;
+    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function openPallatePresets() {
 
-    $(".shls-pallate-presets-wrapper").siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
-    $(".shls-pallate-presets-wrapper").show();
+    const $target = $(".shls-pallate-presets-wrapper");
+    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    $target.show();
 
 }
 
 function renderColorWheel(size) {
 
-    const rootEl = ".shls-pallate-iro-colorwheel";
-    const shadowId = "shls-pallate-iro-colorwheel-shadow";
+    const $target = $(".shls-pallate-iro-colorwheel");
 
-    $(rootEl).empty().width(size + "px");
+    $target.empty().width(size + "px");
 
     // Initiate iro.js color wheel
-    const wheel = new iro.ColorPicker(rootEl, {
+    const wheel = new iro.ColorPicker(".shls-pallate-iro-colorwheel", {
         width: size,
-        color: selColor,
+        color: COLOR,
         layout: [ { component: iro.ui.Wheel } ],
         handleSvg: "#shls-pallate-iro-colorwheel-handle",
         borderColor: "#fff",
@@ -79,7 +128,8 @@ function renderColorWheel(size) {
     });
 
     // Add shadow to wheel
-    const defs = $(rootEl).find("defs");
+    const defs = $target.find("defs");
+    const shadowId = "shls-pallate-iro-colorwheel-shadow";
 
     defs.html(
         `<filter id="${shadowId}">
@@ -88,40 +138,24 @@ function renderColorWheel(size) {
         + defs.html()
     );
 
-    $(rootEl).find(".IroWheelBorder").attr("filter", `url(#${shadowId})`);
+    $target.find(".IroWheelBorder").attr("filter", `url(#${shadowId})`);
 
     // Add listener and change theme accordingly
     wheel.on('color:change', (color) => {
 
-        selColor = color.hexString;
-        const rgb = parseInt(selColor.substring(1), 16);   // convert rrggbb to decimal
+        COLOR = color.hexString;
+        const rgb = parseInt(COLOR.substring(1), 16);   // convert rrggbb to decimal
         const r = (rgb >> 16) & 0xff;  // extract red
         const g = (rgb >>  8) & 0xff;  // extract green
         const b = (rgb >>  0) & 0xff;  // extract blue
         const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-        if (luma < 200) $(":root").css("--mdc-theme-secondary", selColor);
-        else $(":root").css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+        if (luma < 200) $ROOT.css("--mdc-theme-secondary", COLOR);
+        else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
 
         // SEND TO BE
 
     });
-
-}
-
-function onResize() {
-
-    let w = $(window).width();
-    let colorWheelWidth;
-
-    if (w < 600) colorWheelWidth = 250;
-    else if (w >= 600 && w < 900) colorWheelWidth = 280;
-    else if (w > 900) colorWheelWidth = 300;
-
-    if ($(".shls-pallate-iro-colorwheel").width() != colorWheelWidth) renderColorWheel(colorWheelWidth);
-
-    if (w < 840) $(":root").css("--shls-mdc-gutter", "16px");
-    else $(":root").css("--shls-mdc-gutter", "24px");
 
 }
 
@@ -143,5 +177,44 @@ function renderSwiper() {
             600: { slidesPerView: 4 }
         }
     });
+
+}
+
+function renderTitle(prefix) {
+    document.title = "SLHS | " + prefix;
+}
+
+function onResize() {
+
+    let w = $(window).width();
+    let colorWheelWidth;
+
+    if (w < 600) colorWheelWidth = 250;
+    else if (w >= 600 && w < 900) colorWheelWidth = 280;
+    else if (w > 900) colorWheelWidth = 300;
+
+    if ($(".shls-pallate-iro-colorwheel").width() != colorWheelWidth) renderColorWheel(colorWheelWidth);
+
+    if (w < 840) $ROOT.css("--shls-mdc-gutter", "16px");
+    else $ROOT.css("--shls-mdc-gutter", "24px");
+
+}
+
+function setPQ() {
+
+    const p = $("input#shls-setup-display-p-input").val();
+    const q = $("input#shls-setup-display-q-input").val();
+
+    if (!isNaN(parseInt(p)) && !isNaN(parseInt(q))) {
+
+        localStorage.setItem("p", p);
+        localStorage.setItem("q", q);
+
+        console.log(`p = ${p} and q = ${q}`);
+
+        startApp();
+
+    } else console.log("Enter a number, you cunt!")
+
 
 }

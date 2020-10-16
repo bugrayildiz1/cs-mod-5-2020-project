@@ -11,7 +11,8 @@ html, body {
 
 html, body,
 .shls-container,
-.shls-page-wrapper {
+.shls-app, .shls-app-page-wrapper,
+.shls-welcome, .shls-welcome-page-wrapper {
     height: 100%;
 }
 
@@ -26,12 +27,11 @@ html, body,
 
 .shls-app {
     max-width: 1000px;
-    height: 100%;
     position: relative;
     background: white;
 }
 
-.shls-page-wrapper {
+.shls-app-page-wrapper {
     grid-template-rows: minmax(0, 1fr) min-content;
 }
 
@@ -42,7 +42,6 @@ html, body,
     top: 20px;
     left: var(--shls-mdc-gutter);
     right: var(--shls-mdc-gutter);
-
 }
 
 .shls-top-buttons span {
@@ -56,7 +55,7 @@ html, body,
 
 .shls-tabbar-wrapper {
     margin: 0
-                calc(var(--shls-mdc-gutter) * -1)
+            calc(var(--shls-mdc-gutter) * -1)
             calc(var(--shls-mdc-gutter) * -1);
     position: relative;
     z-index: 1;
@@ -70,7 +69,7 @@ html, body,
     right: 0;
     bottom: 0;
     z-index: -1;
-    box-shadow: var(--shadows-shadow-1);
+    box-shadow: var(--prfy-shadow-1);
     transform: rotate(180deg);
 }
 

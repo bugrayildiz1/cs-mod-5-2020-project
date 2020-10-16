@@ -65,7 +65,7 @@ For the last sprints due to the exams, resits or some external factors we are no
 | Sad  (2) |  |
 | Very  Sad (1) |  |
 ## Q6: Which team member was most appreciated during the last sprint (only list 1) and why?
-* **Bugra Veysel Yildiz**: We appreciate his work as a scrum master during sprint 2.
+**Bugra Veysel Yildiz**: We appreciate his work as a scrum master during sprint 2.
 
 ## Q7: Would you like to specify any other priority detail(s)/points which could be useful for the development of your product (if any)
 We have some points in our project which have higher priority than others. We want to connect the tools that we have collected for our project to the Raspberry Pi. We need to figure out how to connect cables from the LED strip to the and pins on the pi and the power supply . After that, we want to finish our minimal viable product which is connecting the LDR with the LEDs to work on the Raspberry Pi. In that way, we can examine the data that the sensor reads and then have a solid idea on how to use that data for the other features that we are going to implement.

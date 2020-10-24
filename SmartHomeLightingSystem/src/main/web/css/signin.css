@@ -12,6 +12,7 @@
 
 #shls-page-signin .shls-signin-button-wrapper {
     width: 60%;
+    min-width: 260px;
     margin: 0 auto;
 }
 

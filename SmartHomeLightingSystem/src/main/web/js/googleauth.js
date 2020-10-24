@@ -8,7 +8,10 @@ function authInit() {
             client_id: "127840733535-1pnq9jfs5v0f2b1tbbpjbk0dt864cso3.apps.googleusercontent.com",
             ux_mode: "redirect"
         }).then(() => {
-            if (!gapi.auth2.getAuthInstance().isSignedIn.get()) displayLoginPage();
+            if (!gapi.auth2.getAuthInstance().isSignedIn.get()) {
+                openWelcome();
+                openSignIn();
+            }
         });
 
         AUTH = gapi.auth2.getAuthInstance();
@@ -29,27 +32,20 @@ async function onSignIn() {
     GUSER = AUTH.currentUser.get();
     GPROFILE = GUSER.getBasicProfile();
 
-    // $.ajaxSetup({
-    //     beforeSend: (xhr) => {
-    //         xhr.setRequestHeader("Authorization", "Bearer " + GUSER.getAuthResponse().id_token);
-    //     }
-    // });
+    $.ajaxSetup({
+        beforeSend: (xhr) => {
+            xhr.setRequestHeader("Authorization", "Bearer " + GUSER.getAuthResponse().id_token);
+        }
+    });
 
 
     // SIMULATING HTTP GET FROM SERVER
     if (localStorage.getItem("p") === null
      && localStorage.getItem("q") === null) {
 
-        $(".shls-setup-title > h2").text("Welcome " + GPROFILE.getGivenName());
+        openWelcome();
         openSetUp();
 
     } else startApp();
-
-}
-
-function displayLoginPage() {
-
-    openWelcome();
-    openSignIn();
 
 }

@@ -62,7 +62,7 @@
 }
 
 
-@media (min-height: 820px) {
+@media (min-height: 820px) and (min-width: 600px) {
 
     #shls-page-setup .shls-setup-display-wrapper .shls-setup-display-screen {
         --shls-display-scale-factor: 20px;

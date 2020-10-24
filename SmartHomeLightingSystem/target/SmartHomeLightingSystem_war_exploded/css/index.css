@@ -11,12 +11,12 @@ html, body {
 
 html, body,
 .shls-container,
-.shls-app, .shls-app-page-wrapper,
-.shls-welcome, .shls-welcome-page-wrapper {
+#shls-app, .shls-app-page-wrapper,
+#shls-welcome, .shls-welcome-page-wrapper {
     height: 100%;
 }
 
-.shls-backdrop {
+#shls-backdrop {
     height: 300px;
     position: absolute;
     left: 0;
@@ -25,7 +25,12 @@ html, body,
     background-color: var(--mdc-theme-secondary);
 }
 
-.shls-app {
+#shls-welcome {
+    position: relative;
+    z-index: 1;
+}
+
+#shls-app {
     max-width: 1000px;
     position: relative;
     background: white;
@@ -45,12 +50,23 @@ html, body,
 }
 
 .shls-top-buttons span {
+    position: relative;
+    z-index: 1;
     font-size: 36px;
     user-select: none;
+    cursor: pointer;
 }
 
-.shls-page {
-    display: none;
+.shls-top-buttons > div:last-of-type > span::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--mdc-theme-secondary);
 }
 
 .shls-tabbar-wrapper {
@@ -77,7 +93,7 @@ html, body,
 
 @media (min-width: 1000px) and (min-height: 920px) {
 
-    .shls-app {
+    #shls-app {
         height: calc(100% - 150px);
         margin-top: 150px;
     }

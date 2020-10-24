@@ -4,25 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500&family=Sansita+Swashed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500&family=Sansita+Swashed&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css"
+          integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css"
+          integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w=="
+          crossorigin="anonymous"/>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/welcome.css">
     <link rel="stylesheet" href="css/signin.css">
     <link rel="stylesheet" href="css/setup.css">
     <link rel="stylesheet" href="css/pallate.css">
+    <link rel="stylesheet" href="css/ldr.css">
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/prettyfy.css">
 
-    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
-    <script src="https://apis.google.com/js/platform.js?onload=authInit" async defer></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/7.0.0/material-components-web.min.js"
+            integrity="sha512-GYvkycU+qodQqIjA1hgH0730R1CDRpUkZguOGokHBdQIKtGgoRhcT+kpAm4SGLo4pptvvVuhrq1aZOIgXRANaA=="
             crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=authInit" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5" async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"
+            integrity="sha512-VHsNaV1C4XbgKSc2O0rZDmkUOhMKPg/rIi8abX9qTaVDzVJnrDGHFnLnCnuPmZ3cNi1nQJm+fzJtBbZU9yRCww=="
+            crossorigin="anonymous"
+            async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"
+            integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg=="
+            crossorigin="anonymous"
+            async defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            crossorigin="anonymous"
+            async defer></script>
+
     <script src="js/googleauth.js"></script>
     <script src="js/shls.js"></script>
 
@@ -32,16 +52,35 @@
 <div class="shls-container">
 
     <!-- WELCOME SCREENS -->
-    <div class="shls-welcome mdc-layout-grid">
+    <div id="shls-welcome" class="mdc-layout-grid">
         <div class="shls-welcome-page-wrapper mdc-layout-grid__inner">
 
-            <!-- WELCOME HEADER -->
-            <div class="shls-welcome-header mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+            <!-- LOADING HEADER -->
+            <div class="shls-welcome-header-loading mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="mdc-linear-progress" role="progressbar"
+                     aria-label="App Loading Bar" aria-valuemin="0"
+                     aria-valuemax="1" aria-valuenow="0"
+                     data-mdc-auto-init="MDCLinearProgress">
+                    <div class="mdc-linear-progress__buffer">
+                        <div class="mdc-linear-progress__buffer-bar"></div>
+                        <div class="mdc-linear-progress__buffer-dots"></div>
+                    </div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+                        <span class="mdc-linear-progress__bar-inner"></span>
+                    </div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                        <span class="mdc-linear-progress__bar-inner"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DEVICE HEADER -->
+            <div class="shls-welcome-header-device mdc-layout-grid__cell mdc-layout-grid__cell--span-6" style="display: none;">
                 <p class="mdc-typography--overline">Currently connected to: RaspPi-TV</p>
             </div>
 
             <!-- SIGNIN PAGE -->
-            <div id="shls-page-signin" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6">
+            <div id="shls-page-signin" class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6" style="display: none;">
                 <div class="mdc-layout-grid__inner">
                     <div class="shls-signin-title mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <h2 class="mdc-typography--headline2">Welcome to your Smart Home Ligthing System</h2>
@@ -120,10 +159,10 @@
     </div>
 
     <!-- APP -->
-    <div class="shls-backdrop shadow-2" style="display: none;"></div>
-    <div class="shls-app mdc-layout-grid shadow-4" style="display: none;">
+    <div id="shls-backdrop" class="shadow-2" style="display: none;"></div>
+    <div id="shls-app" class="mdc-layout-grid shadow-4" style="display: none;">
         <div class="shls-top-buttons">
-            <div>
+            <div onclick="{openWelcome(); openSetUp();}">
                 <span class="material-icons">arrow_back</span>
             </div>
             <div>
@@ -148,6 +187,14 @@
                                 </g>
                             </defs>
                         </svg>
+                    </div>
+
+                    <!-- PALLATE SELECTION -->
+                    <div class="shls-pallate-selection-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                        <span class="shls-gridcell-caption mdc-typography--overline">selection</span>
+                        <div class="shls-pallate-selection">
+                            <h4 class="shls-pallate-selection-text mdc-typography--headline4"></h4>
+                        </div>
                     </div>
 
                     <!-- PALLATE BRIGHTNESS SLIDER -->
@@ -365,7 +412,7 @@
             </div>
 
             <!-- EXTEND PAGE -->
-            <div id="shls-page-extend" class="shls-page mdc-layout-grid__cell" style="display: none;">
+            <div id="shls-page-extend" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
                 <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell">
                         <h1>This is the Extend page</h1>
@@ -377,89 +424,101 @@
             </div>
 
             <!-- LDR DATA PAGE -->
-            <div id="shls-page-ldr" class="shls-page mdc-layout-grid__cell" style="display: none;">
+            <div id="shls-page-ldr" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
                 <div class="mdc-layout-grid__inner">
-                    <div class="mdc-layout-grid__cell">
-                        <h1>This is the LDR Data page</h1>
+                    <div class="shls-ldr-chart-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <canvas id="shls-ldr-chart"></canvas>
                     </div>
-                    <div class="mdc-layout-grid__cell">
-                        <i>... here be graphs!</i>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <p>buttons here, eh?</p>
                     </div>
                 </div>
             </div>
 
             <!-- SETTINGS PAGE -->
-            <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell" style="display: none;">
+            <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
                 <div class="mdc-layout-grid__inner">
-                    <div class="mdc-layout-grid__cell">
-                        <div style="position:absolute; left: 135px; top: 7px"
-                             class="settings-title mdc-typography--overline settings"><h1>Settings</h1></div>
-                    </div>
-
-                    <div id="test1" class="mdc-layout-grid__cell">
-                        <div>
-                            <ul class="mdc-list">
-                                <div id="model">
-                                    <li class="mdc-list-item" tabindex="0">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__text">Model</span>
-                                        <span id="model-ws" class="mdc-list-item__text">WS2812BRGBLED</span>
-                                    </li>
-                                </div>
-
-                                <div id="dark-mode">
-                                    <li class="mdc-list-item">
-                                        <span class="mdc-list-item__ripple"></span>
-                                        <span class="mdc-list-item__text">Dark Mode</span>
-                                    </li>
-                                    <div id="dark-mode-switch" class="mdc-switch">
+                    <div class="shls-settings-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <div class="mdc-list-group">
+                            <h3 class="mdc-list-group__subheader">Apperence</h3>
+                            <ul class="mdc-list mdc-list--two-line" data-mdc-auto-init="MDCList">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <label class="mdc-list-item__text">
+                                        <span class="mdc-list-item__primary-text">Dark mode</span>
+                                        <span class="mdc-list-item__secondary-text">Change the theme mode of the system</span>
+                                    </label>
+                                    <span class="mdc-list-item__meta">
                                         <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
                                             <div class="mdc-switch__track"></div>
                                             <div class="mdc-switch__thumb-underlay">
                                                 <div class="mdc-switch__thumb"></div>
-                                                <input type="checkbox" id="basic-switch"
-                                                       class="mdc-switch__native-control" role="switch"
-                                                       aria-checked="false">
+                                                <input type="checkbox" id="basic-switch-1" class="mdc-switch__native-control" role="switch" aria-checked="false">
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <!--                           <div id="time-to-light-up">-->
-                                    <!--                            <li class="mdc-list-item">-->
-                                    <!--                                <span class="mdc-list-item__ripple"></span>-->
-                                    <!--                                <span class="mdc-list-item__text">Time to Light Up</span>-->
-                                    <!--                            </li>-->
-                                    <!--                           </div>-->
-
-                                    <div id="info">
-                                        <li class="mdc-list-item">
-                                            <span class="mdc-list-item__ripple"></span>
-                                            <span class="mdc-list-item__text">Information</span>
-                                        </li>
-                                        <i id="info-icon" class="material-icons">info</i>
-                                        <div id="info-text">
-                                            <div id="inner">
-                                                <label>Smart Home Lightning System is a product</label>
-                                                <label>that you can easily customize with brilliant features</label>
-                                                <label>such as customizable brightness,color, amazing effects</label>
-                                                <label>which you can choose from the menu that we set</label>
+                                    </span>
+                                </li>
+                                <li class="mdc-list-divider" role="separator"></li>
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <label class="mdc-list-item__text">
+                                        <span class="mdc-list-item__primary-text">Change theme on color</span>
+                                        <span class="mdc-list-item__secondary-text">Update the color theme of the system on a color change</span>
+                                    </label>
+                                    <span class="mdc-list-item__meta">
+                                        <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                            <div class="mdc-switch__track"></div>
+                                            <div class="mdc-switch__thumb-underlay">
+                                                <div class="mdc-switch__thumb"></div>
+                                                <input type="checkbox" id="basic-switch-2" class="mdc-switch__native-control" role="switch" aria-checked="false">
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div id="my-acc">
-                                        <li class="mdc-list-item">
-                                            <span class="mdc-list-item__ripple"></span>
-                                            <span class="mdc-list-item__text">My Account</span>
-                                        </li>
-                                        <span id="account-icon" class="material-icons">account_circle</span>
-                                        <span id="logout-icon" class="material-icons">login</span>
-                                        <label id="logout">Logout</label>
-                                    </div>
-                                </div>
+                                    </span>
+                                </li>
+                                <li class="mdc-list-divider" role="separator"></li>
+                            </ul>
+                            <h3 class="mdc-list-group__subheader">System</h3>
+                            <ul class="mdc-list mdc-list--two-line" data-mdc-auto-init="MDCList">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <label class="mdc-list-item__text">
+                                        <span class="mdc-list-item__primary-text">Dark mode</span>
+                                        <span class="mdc-list-item__secondary-text">Change the color theme of the system</span>
+                                    </label>
+                                    <span class="mdc-list-item__meta">
+                                        <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                            <div class="mdc-switch__track"></div>
+                                            <div class="mdc-switch__thumb-underlay">
+                                                <div class="mdc-switch__thumb"></div>
+                                                <input type="checkbox" id="basic-switch-3" class="mdc-switch__native-control" role="switch" aria-checked="false">
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li class="mdc-list-divider" role="separator"></li>
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <label class="mdc-list-item__text">
+                                        <span class="mdc-list-item__primary-text">Some other setting</span>
+                                        <span class="mdc-list-item__secondary-text">Change the color theme of the system</span>
+                                    </label>
+                                    <span class="mdc-list-item__meta">
+                                        <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                            <div class="mdc-switch__track"></div>
+                                            <div class="mdc-switch__thumb-underlay">
+                                                <div class="mdc-switch__thumb"></div>
+                                                <input type="checkbox" id="basic-switch-4" class="mdc-switch__native-control" role="switch" aria-checked="false">
+                                            </div>
+                                        </div>
+                                    </span>
+                                </li>
+                                <li class="mdc-list-divider" role="separator"></li>
                             </ul>
                         </div>
                     </div>
+                </div>
+
+
                 </div>
             </div>
 

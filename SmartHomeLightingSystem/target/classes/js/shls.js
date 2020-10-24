@@ -1,10 +1,15 @@
 const $ROOT = $(":root");
-let COLOR = "#FFFFFF";
+let COLOR;
 
 $(document).ready(function() {
 
     // Start MDC and set up components
     mdc.autoInit();
+
+    const linearProgress = document.querySelector(".shls-welcome-header-loading > .mdc-linear-progress").MDCLinearProgress;
+    linearProgress.determinate = false;
+    linearProgress.open();
+
     document.querySelector(".shls-tabbar").MDCTabBar.activateTab(0);
     document.querySelector(".shls-pallate-functions-tabbar").MDCTabBar.activateTab(0);
 
@@ -12,32 +17,40 @@ $(document).ready(function() {
 
 function startApp() {
 
-    // Render screen and open first page
-    openApp();
-    openPallate();
-    openPallateAnimations();
+    const color = localStorage.getItem("color"); // simulating BE
+    color === null ? COLOR = "#FFFFFF" : COLOR = color;
+    updatePageTheme(COLOR);
+    $("#shls-backdrop").show();
 
-    // Only when screen is ready
-    renderSwiper();
-    onResize();
-    $(window).resize(onResize);
-    new mdc.slider.MDCSlider(document.querySelector('.mdc-slider')); //must be after openPallate
+    $("#shls-welcome").fadeOut(1000, () => {
+
+        $("#shls-app").fadeIn();
+
+        openPallate();
+        openPallateAnimations();
+        onResize();
+        $(window).resize(onResize);
+        renderSwiper();
+        new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
+
+    });
 
 }
 
 function openWelcome() {
 
-    const target = $(".shls-welcome");
-    target.siblings().hide();
-    target.show();
+    const $target = $("#shls-welcome");
+    $target.siblings().hide();
+    $target.show();
+    $target.find(".shls-welcome-header-device").show();
 
 }
 
 function openApp() {
 
-    const target = $(".shls-app, .shls-backdrop");
-    target.siblings().hide();
-    target.show();
+    const $target = $("#shls-app, #shls-backdrop");
+    $target.siblings().hide();
+    $target.show();
 
 }
 
@@ -45,7 +58,7 @@ function openSignIn() {
 
     renderTitle("Sign In");
     const target = $("#shls-page-signin");
-    target.siblings().not(".shls-welcome-header").hide();
+    target.siblings().not(".shls-welcome-header-device").hide();
     target.show();
 
 }
@@ -53,9 +66,11 @@ function openSignIn() {
 function openSetUp() {
 
     renderTitle("Set Up");
-    const target = $("#shls-page-setup");
-    target.siblings().not(".shls-welcome-header").hide();
-    target.show();
+    $(".shls-setup-title > h2").text("Welcome " + GPROFILE.getGivenName());
+
+    const $target = $("#shls-page-setup");
+    $target.siblings().not(".shls-welcome-header-device").hide();
+    $target.show();
 
 }
 
@@ -114,7 +129,6 @@ function openPallatePresets() {
 function renderColorWheel(size) {
 
     const $target = $(".shls-pallate-iro-colorwheel");
-
     $target.empty().width(size + "px");
 
     // Initiate iro.js color wheel
@@ -141,21 +155,26 @@ function renderColorWheel(size) {
     $target.find(".IroWheelBorder").attr("filter", `url(#${shadowId})`);
 
     // Add listener and change theme accordingly
-    wheel.on('color:change', (color) => {
+    wheel.on('color:change', (color) => updatePageTheme(color.hexString));
 
-        COLOR = color.hexString;
-        const rgb = parseInt(COLOR.substring(1), 16);   // convert rrggbb to decimal
-        const r = (rgb >> 16) & 0xff;  // extract red
-        const g = (rgb >>  8) & 0xff;  // extract green
-        const b = (rgb >>  0) & 0xff;  // extract blue
-        const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+}
 
-        if (luma < 200) $ROOT.css("--mdc-theme-secondary", COLOR);
-        else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+function updatePageTheme(hexColor) {
 
-        // SEND TO BE
+    COLOR = hexColor;
+    const rgb = parseInt(COLOR.substring(1), 16);   // convert rrggbb to decimal
+    const r = (rgb >> 16) & 0xff;  // extract red
+    const g = (rgb >>  8) & 0xff;  // extract green
+    const b = (rgb >>  0) & 0xff;  // extract blue
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-    });
+    if (luma < 200) $ROOT.css("--mdc-theme-secondary", COLOR);
+    else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+
+    $(".shls-pallate-selection-text").text(hexColor.toUpperCase());
+
+    // SEND TO BE
+    localStorage.setItem("color", COLOR);
 
 }
 
@@ -172,16 +191,16 @@ function renderSwiper() {
         },
         breakpoints: {
             1000: { slidesPerView: 7 },
-            840: { slidesPerView: 6 },
-            700: { slidesPerView: 5 },
-            600: { slidesPerView: 4 }
+            840:  { slidesPerView: 6 },
+            700:  { slidesPerView: 5 },
+            600:  { slidesPerView: 4 }
         }
     });
 
 }
 
-function renderTitle(prefix) {
-    document.title = "SLHS | " + prefix;
+function renderTitle(suffix) {
+    document.title = "SLHS | " + suffix;
 }
 
 function onResize() {
@@ -209,9 +228,7 @@ function setPQ() {
 
         localStorage.setItem("p", p);
         localStorage.setItem("q", q);
-
         console.log(`p = ${p} and q = ${q}`);
-
         startApp();
 
     } else console.log("Enter a number, you cunt!")

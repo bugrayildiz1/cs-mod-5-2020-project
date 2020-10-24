@@ -1,0 +1,4 @@
+#shls-page-ldr > .mdc-layout-grid__inner {
+    height: 100%;
+    grid-template-rows: minmax(0, 30vh) min-content;
+}

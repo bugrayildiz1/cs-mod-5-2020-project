@@ -34,5 +34,34 @@ public class LED {
 	 * float value of brightness level of LED (0-100)
 	 */
 	float bright;
+	public LED(){}
+	public void setR(int r) {
+		R = r;
+	}
+	public void setG(int g){
+		G=g;
+	}
+	public void setB(int b) {
+		B = b;
+	}
 
+	public int getB() {
+		return B;
+	}
+
+	public int getG() {
+		return G;
+	}
+
+	public int getR() {
+		return R;
+	}
+
+	public void setBright(float bright) {
+		this.bright = bright;
+	}
+
+	public float getBright() {
+		return bright;
+	}
 }

@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="SmartHomeLightingSystem">
+  <artifact type="war" name="SmartHomeLightingSystem">
     <output-path>$PROJECT_DIR$/SmartHomeLightingSystem/target/SmartHomeLightingSystem_war_exploded</output-path>
-    <root id="root">
+    <root id="archive" name="SmartHomeLightingSystem.war">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="SmartHomeLightingSystem" />

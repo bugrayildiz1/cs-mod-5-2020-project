@@ -27,4 +27,8 @@ public class Color extends HashMap<RGB, Integer>{
 	public Integer put(RGB rgb, Integer integer) {
 		return super.put(rgb, integer);
 	}
+	public int get(RGB rgb){
+		return super.get(rgb);
+	}
+
 }

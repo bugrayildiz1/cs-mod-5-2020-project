@@ -1,4 +1,4 @@
-package com.smarthomelightingsystem.controller.filters;
+package com.smarthomelightingsystem.filters;
 
 import com.smarthomelightingsystem.dao.Database;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;

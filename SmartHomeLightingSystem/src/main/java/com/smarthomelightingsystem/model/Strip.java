@@ -18,5 +18,24 @@ import java.util.ArrayList;
  *
  */
 public class Strip extends ArrayList<LED>{
+    public Strip(){
+        super();
+    }
+    public int size(){
+        return super.size();
+    }
+    @Override
+    public LED remove(int index) {
+        return super.remove(index);
+    }
 
+    @Override
+    public boolean add(LED led) {
+        return super.add(led);
+    }
+
+    @Override
+    public LED get(int index) {
+        return super.get(index);
+    }
 }

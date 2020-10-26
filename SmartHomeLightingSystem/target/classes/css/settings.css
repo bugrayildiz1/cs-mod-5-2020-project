@@ -1,8 +1,0 @@
-#shls-page-settings > .mdc-layout-grid__inner {
-    height: 100%;
-}
-
-#shls-page-settings .shls-settings-wrapper {
-    margin: calc(var(--shls-mdc-gutter) * -1);
-    padding-top: 80px;
-}

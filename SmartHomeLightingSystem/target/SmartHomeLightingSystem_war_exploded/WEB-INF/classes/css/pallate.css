@@ -1,17 +1,23 @@
 #shls-page-pallate > .mdc-layout-grid__inner {
     height: 100%;
-    grid-template-rows: min-content min-content minmax(0, 1fr);
+    grid-template-rows: min-content min-content minmax(0, 400px);
 }
 
 
 
-#shls-page-pallate .shls-pallate-iro-colorwheel-wrapper {
+#shls-page-pallate .shls-pallate-iro-colorwheel-wrapper,
+#shls-page-pallate .shls-pallate-selection-wrapper,
+#shls-page-pallate .shls-pallate-brslider-wrapper {
     position: relative;
 }
 
+#shls-page-pallate .shls-pallate-selection-wrapper,
 #shls-page-pallate .shls-pallate-brslider-wrapper {
     padding: 10px 40px 0;
-    position: relative;
+}
+
+#shls-page-pallate .shls-pallate-selection-wrapper {
+    display: none;
 }
 
 #shls-page-pallate .shls-gridcell-caption {
@@ -27,6 +33,18 @@
 
 #shls-page-pallate .shls-pallate-iro-colorwheel {
     margin: 50px auto 0;
+}
+
+#shls-page-pallate .shls-pallate-selection {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#shls-page-pallate .shls-pallate-selection-text {
+    margin: 0;
+    color: var(--mdc-theme-secondary);
 }
 
 
@@ -73,11 +91,16 @@
     transform: scale(0.9);
     transition: all ease-out 100ms;
     user-select: none;
+    cursor: pointer;
+}
+
+#shls-page-pallate .swiper-container .mdc-card:hover {
+    transform: initial;
 }
 
 #shls-page-pallate .swiper-container .swiper-slide-active .mdc-card {
     background-color: var(--mdc-theme-primary);
-    box-shadow: var(--shadows-shadow-3);
+    box-shadow: var(--prfy-shadow-3);
     transform: initial;
 }
 
@@ -103,10 +126,14 @@
 
 
 
-@media (min-width: 600px) {
+@media (min-width: 600px) and (min-height: 700px) {
 
-    #shls-page-pallate > .mdc-layout-grid__inner {
-        grid-template-rows: min-content minmax(0, 400px);
+    #shls-page-pallate .shls-pallate-iro-colorwheel-wrapper {
+        grid-row-end: span 2;
+    }
+
+    #shls-page-pallate .shls-pallate-selection-wrapper {
+        display: initial;
     }
 
     #shls-page-pallate .shls-pallate-brslider {
@@ -115,6 +142,7 @@
         align-items: center;
     }
 
+    #shls-page-pallate .shls-pallate-selection-wrapper,
     #shls-page-pallate .shls-pallate-brslider-wrapper {
         padding-top: 0;
     }
@@ -134,7 +162,7 @@
 
     #shls-page-pallate .shls-pallate-functions-wrapper {
         margin: calc(var(--shls-mdc-gutter) * -1);
-        margin-left: 0px;
+        margin-left: 0;
         grid-row-start: span 2;
         grid-column-start: span 6;
     }

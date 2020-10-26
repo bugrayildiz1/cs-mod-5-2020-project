@@ -11,11 +11,12 @@ html, body {
 
 html, body,
 .shls-container,
-.shls-page-wrapper {
+#shls-app, .shls-app-page-wrapper,
+#shls-welcome, .shls-welcome-page-wrapper {
     height: 100%;
 }
 
-.shls-backdrop {
+#shls-backdrop {
     height: 300px;
     position: absolute;
     left: 0;
@@ -24,14 +25,18 @@ html, body,
     background-color: var(--mdc-theme-secondary);
 }
 
-.shls-app {
+#shls-welcome {
+    position: relative;
+    z-index: 1;
+}
+
+#shls-app {
     max-width: 1000px;
-    height: 100%;
     position: relative;
     background: white;
 }
 
-.shls-page-wrapper {
+.shls-app-page-wrapper {
     grid-template-rows: minmax(0, 1fr) min-content;
 }
 
@@ -42,21 +47,31 @@ html, body,
     top: 20px;
     left: var(--shls-mdc-gutter);
     right: var(--shls-mdc-gutter);
-
 }
 
 .shls-top-buttons span {
+    position: relative;
+    z-index: 1;
     font-size: 36px;
     user-select: none;
+    cursor: pointer;
 }
 
-.shls-page {
-    display: none;
+.shls-top-buttons > div:last-of-type > span::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--mdc-theme-secondary);
 }
 
 .shls-tabbar-wrapper {
     margin: 0
-                calc(var(--shls-mdc-gutter) * -1)
+            calc(var(--shls-mdc-gutter) * -1)
             calc(var(--shls-mdc-gutter) * -1);
     position: relative;
     z-index: 1;
@@ -70,7 +85,7 @@ html, body,
     right: 0;
     bottom: 0;
     z-index: -1;
-    box-shadow: var(--shadows-shadow-1);
+    box-shadow: var(--prfy-shadow-1);
     transform: rotate(180deg);
 }
 
@@ -78,7 +93,7 @@ html, body,
 
 @media (min-width: 1000px) and (min-height: 920px) {
 
-    .shls-app {
+    #shls-app {
         height: calc(100% - 150px);
         margin-top: 150px;
     }

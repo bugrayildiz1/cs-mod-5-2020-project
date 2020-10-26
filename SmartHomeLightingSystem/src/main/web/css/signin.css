@@ -1,0 +1,31 @@
+#shls-page-signin > .mdc-layout-grid__inner {
+    grid-template-rows: min-content
+                        min-content
+                        minmax(100px, 1fr);
+}
+
+#shls-page-signin .shls-signin-action {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+#shls-page-signin .shls-signin-button-wrapper {
+    width: 60%;
+    min-width: 260px;
+    margin: 0 auto;
+}
+
+#shls-page-signin .seperator {
+    color: white;
+    margin: var(--shls-mdc-gutter) 0;
+}
+
+#shls-page-signin #my-signin2 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#shls-page-signin #my-signin2 > div {
+    width: 100% !important;
+}

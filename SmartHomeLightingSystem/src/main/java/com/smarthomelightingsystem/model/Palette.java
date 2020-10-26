@@ -17,7 +17,7 @@ public class Palette {
     /**
      * color of LED strip
      */
-    private int color;
+    private Color color;
     /**
      * brightness of LED strip
      */
@@ -31,14 +31,14 @@ public class Palette {
     /**
      * @return color of LED strip
      */
-    public int getColor() {
+    public Color getColor() {
         return color;
     }
 
     /**
      * @param color the color of LED strip to set
      */
-    public void setColor(int color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 

@@ -1,4 +1,15 @@
 #shls-page-ldr > .mdc-layout-grid__inner {
-    height: 100%;
-    grid-template-rows: minmax(0, 30vh) min-content;
+    grid-template-rows: minmax(0, 50%) min-content 1fr;
+}
+
+#shls-page-ldr .shls-ldr-chart-wrapper {
+    width: calc(100% + 2 * var(--shls-mdc-gutter) + 6px);
+    margin: calc(var(--shls-mdc-gutter-inv))
+            calc(var(--shls-mdc-gutter-inv) - 3px)
+            0;
+}
+
+#shls-page-ldr .shls-ldr-scope-wselector {
+    display: flex;
+    justify-content: center;
 }

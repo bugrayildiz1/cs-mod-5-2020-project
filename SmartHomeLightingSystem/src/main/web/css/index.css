@@ -2,6 +2,7 @@
     --mdc-theme-primary: #018786;
     --mdc-theme-secondary: var(--mdc-theme-primary);
     --shls-mdc-gutter: 16px;
+    --shls-mdc-gutter-inv: calc(-1 * var(--shls-mdc-gutter));
     --swiper-theme-color: var(--mdc-theme-secondary);
 }
 
@@ -12,7 +13,8 @@ html, body {
 html, body,
 .shls-container,
 #shls-app, .shls-app-page-wrapper,
-#shls-welcome, .shls-welcome-page-wrapper {
+#shls-welcome, .shls-welcome-page-wrapper,
+.shls-page > .mdc-layout-grid__inner {
     height: 100%;
 }
 
@@ -33,6 +35,7 @@ html, body,
 #shls-app {
     max-width: 1000px;
     position: relative;
+    overflow-x: hidden;
     background: white;
 }
 
@@ -71,8 +74,8 @@ html, body,
 
 .shls-tabbar-wrapper {
     margin: 0
-            calc(var(--shls-mdc-gutter) * -1)
-            calc(var(--shls-mdc-gutter) * -1);
+            var(--shls-mdc-gutter-inv)
+            var(--shls-mdc-gutter-inv);
     position: relative;
     z-index: 1;
 }

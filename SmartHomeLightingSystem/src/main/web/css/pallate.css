@@ -1,5 +1,4 @@
 #shls-page-pallate > .mdc-layout-grid__inner {
-    height: 100%;
     grid-template-rows: min-content min-content minmax(0, 400px);
 }
 
@@ -56,8 +55,8 @@
 
 #shls-page-pallate .shls-pallate-functions-wrapper {
     margin: 0
-            calc(var(--shls-mdc-gutter) * -1)
-            calc(var(--shls-mdc-gutter) * -1);
+            var(--shls-mdc-gutter-inv)
+            var(--shls-mdc-gutter-inv);
     background-color: #FAFAFA;
 }
 
@@ -67,12 +66,12 @@
 }
 
 #shls-page-pallate .shls-pallate-animations-wrapper {
-    margin-top: calc(var(--shls-mdc-gutter) * -1);
+    margin-top: var(--shls-mdc-gutter-inv);
     padding: var(--shls-mdc-gutter);
 }
 
 #shls-page-pallate .shls-pallate-presets-wrapper {
-    margin-top: calc(var(--shls-mdc-gutter) * -1);
+    margin-top: var(--shls-mdc-gutter-inv);
     overflow-y: scroll;
 }
 
@@ -161,7 +160,7 @@
     }
 
     #shls-page-pallate .shls-pallate-functions-wrapper {
-        margin: calc(var(--shls-mdc-gutter) * -1);
+        margin: var(--shls-mdc-gutter-inv);
         margin-left: 0;
         grid-row-start: span 2;
         grid-column-start: span 6;

@@ -18,6 +18,7 @@ import com.smarthomelightingsystem.model.Palette;
  *
  */
 public class AnimationDAO {
+	int id;
 	/*
 	 * Led strip brightness goes up and down
 	 */

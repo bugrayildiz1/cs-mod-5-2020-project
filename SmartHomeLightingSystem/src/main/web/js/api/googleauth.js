@@ -38,7 +38,6 @@ async function onSignIn() {
         }
     });
 
-
     // SIMULATING HTTP GET FROM SERVER
     if (localStorage.getItem("p") === null
      && localStorage.getItem("q") === null) {

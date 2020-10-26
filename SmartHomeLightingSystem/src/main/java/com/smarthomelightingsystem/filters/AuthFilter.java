@@ -1,6 +1,5 @@
 package com.smarthomelightingsystem.filters;
 
-import com.smarthomelightingsystem.dao.Database;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.http.javanet.NetHttpTransport;
@@ -27,45 +26,44 @@ import java.util.Collections;
 @PreMatching
 public class AuthFilter implements ContainerRequestFilter {
 
-    private static final String CLIENT_ID = "";
+    private static final String CLIENT_ID = "127840733535-1pnq9jfs5v0f2b1tbbpjbk0dt864cso3.apps.googleusercontent.com";
     private static final String AUTHENTICATION_SCHEME = "Bearer";
 
     @Override
     public void filter(ContainerRequestContext ctx) {
-    	if (!Database.TESTING) {
-	        String authorizationHeader = ctx.getHeaderString(HttpHeaders.AUTHORIZATION);
-	        String idTokenString;
-	
-	        if (authorizationHeader == null) {
-	
-	            idTokenString = ctx.getUriInfo().getQueryParameters().getFirst("id_token");
-	
-	            if (idTokenString == null) {
-	
-	                ctx.abortWith(Response
-	                        .status(Response.Status.UNAUTHORIZED)
-	                        .entity("No token was provided!")
-	                        .build());
-	                return;
-	
-	            }
-	
-	        } else idTokenString = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
-	
-	        if (!valid(idTokenString)) {
-	
-	            ctx.abortWith(Response
-	                    .status(Response.Status.UNAUTHORIZED)
-	                    .entity("Invalid token provided!")
-	                    .build());
-	            return;
-	
-	        }
-    	}
+
+		String authorizationHeader = ctx.getHeaderString(HttpHeaders.AUTHORIZATION);
+		String idTokenString;
+
+		if (authorizationHeader == null) {
+
+			idTokenString = ctx.getUriInfo().getQueryParameters().getFirst("id_token");
+
+			if (idTokenString == null) {
+
+				ctx.abortWith(Response
+						.status(Response.Status.UNAUTHORIZED)
+						.entity("No token was provided!")
+						.build());
+				return;
+
+			}
+
+		} else idTokenString = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
+
+		if (!valid(idTokenString)) {
+
+			ctx.abortWith(Response
+					.status(Response.Status.UNAUTHORIZED)
+					.entity("Invalid token provided!")
+					.build());
+			return;
+
+		}
+
     }
 
     private boolean valid(String idTokenString) {
-
 
         if (idTokenString.equals("")) return false;
 

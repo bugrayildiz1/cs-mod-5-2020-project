@@ -3,7 +3,6 @@
 }
 
 .shls-welcome-page-wrapper {
-    height: 100%;
     grid-template-rows: min-content minmax(0, 1fr);
     background-image: linear-gradient(
                         rgba(0,0,0,0.0),

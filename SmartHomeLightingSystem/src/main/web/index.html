@@ -43,7 +43,11 @@
             crossorigin="anonymous"
             async defer></script>
 
-    <script src="js/googleauth.js"></script>
+    <script src="js/api/googleauth.js"></script>
+    <script src="js/api/rest.js"></script>
+    <script src="js/classes/ColorWheel.js"></script>
+    <script src="js/classes/AnimationSelector.js"></script>
+    <script src="js/classes/LDRGraph.js"></script>
     <script src="js/shls.js"></script>
 
     <title>Smart Home Lighting System</title>
@@ -146,7 +150,7 @@
                     </div>
                     <div class="shls-setup-action mdc-layout-grid__cell  mdc-layout-grid__cell--span-12">
                         <div class="mdc-touch-target-wrapper">
-                            <button class="shls-setup-button mdc-button mdc-button--touch mdc-button--raised" onclick="setPQ()">
+                            <button class="shls-setup-button mdc-button mdc-button--touch mdc-button--raised" onclick="handleSizeChange()">
                                 <div class="mdc-button__ripple" data-mdc-auto-init="MDCRipple"></div>
                                 <span class="mdc-button__label">Continue</span>
                                 <div class="mdc-button__touch"></div>
@@ -430,8 +434,47 @@
                         <canvas id="shls-ldr-chart"></canvas>
                     </div>
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                        <p>buttons here, eh?</p>
+                        <div class="shls-ldr-scope-wselector mdc-chip-set mdc-chip-set--choice"
+                             role="grid" data-mdc-auto-init="MDCChipSet">
+                            <div class="mdc-chip mdc-chip--selected" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
+                                <span role="gridcell">
+                                    <span role="button" tabindex="0" class="mdc-chip__primary-action" aria-checked="false">
+                                        <span class="mdc-chip__text">Default</span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
+                                <span role="gridcell">
+                                    <span role="button" tabindex="0" class="mdc-chip__primary-action" aria-checked="false">
+                                        <span class="mdc-chip__text">Day</span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
+                                <span role="gridcell">
+                                    <span role="button" tabindex="0" class="mdc-chip__primary-action" aria-checked="false">
+                                        <span class="mdc-chip__text">Week</span>
+                                    </span>
+                                </span>
+                            </div>
+                            <div class="mdc-chip" role="row">
+                                <div class="mdc-chip__ripple"></div>
+                                <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
+                                <span role="gridcell">
+                                    <span role="button" tabindex="0" class="mdc-chip__primary-action" aria-checked="false">
+                                        <span class="mdc-chip__text">Month</span>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
                     </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"></div>
                 </div>
             </div>
 
@@ -516,9 +559,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-
-
                 </div>
             </div>
 

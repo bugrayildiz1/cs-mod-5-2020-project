@@ -1,4 +1,4 @@
-package com.smarthomelightingsystem.model;
+package com.smarthomelightingsystem.model.led;
 
 //This class contains 
 
@@ -18,50 +18,57 @@ package com.smarthomelightingsystem.model;
  *
  */
 public class LED {
+
 	/*
 	 * integer value of red color of LED
 	 */
 	int R;
+
 	/*
 	 * integer value of green color of LED
 	 */
 	int G;
+
 	/*
 	 * integer value of blue color of LED
 	 */
 	int B;
+
 	/*
 	 * float value of brightness level of LED (0-100)
 	 */
-	float bright;
-	public LED(){}
-	public void setR(int r) {
-		R = r;
-	}
-	public void setG(int g){
-		G=g;
-	}
-	public void setB(int b) {
-		B = b;
+	float A;
+
+	public int getR() {
+		return R;
 	}
 
-	public int getB() {
-		return B;
+	public void setR(int r) {
+		R = r;
 	}
 
 	public int getG() {
 		return G;
 	}
 
-	public int getR() {
-		return R;
+	public void setG(int g) {
+		G = g;
 	}
 
-	public void setBright(float bright) {
-		this.bright = bright;
+	public int getB() {
+		return B;
 	}
 
-	public float getBright() {
-		return bright;
+	public void setB(int b) {
+		B = b;
 	}
+
+	public float getA() {
+		return A;
+	}
+
+	public void setA(float a) {
+		A = a;
+	}
+
 }

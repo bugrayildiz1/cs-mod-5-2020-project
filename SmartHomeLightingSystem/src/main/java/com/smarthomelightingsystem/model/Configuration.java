@@ -13,6 +13,7 @@ package com.smarthomelightingsystem.model;
  * @version 1
  */
 public class Configuration {
+
     /**
      * length of the display
      */

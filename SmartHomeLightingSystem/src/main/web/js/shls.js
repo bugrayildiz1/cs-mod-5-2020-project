@@ -3,8 +3,7 @@ let WHEEL, ANIMSEL, LDRGRAPH, BRSLIDER;
 
 $(document).ready(function() {
 
-    // Start MDC and set up components
-    mdc.autoInit();
+    mdc.autoInit(); // Start MDC and set up components
 
     const linearProgress = document.querySelector(".shls-welcome-header-loading > .mdc-linear-progress").MDCLinearProgress;
     linearProgress.determinate = false;
@@ -12,7 +11,6 @@ $(document).ready(function() {
 
     document.querySelector(".shls-tabbar").MDCTabBar.activateTab(0);
     document.querySelector(".shls-pallate-functions-tabbar").MDCTabBar.activateTab(0);
-
     document.querySelector(".mdc-chip--selected").MDCChip
 
 });

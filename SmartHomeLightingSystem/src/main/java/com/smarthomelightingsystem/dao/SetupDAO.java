@@ -16,7 +16,7 @@ import com.smarthomelightingsystem.model.Configuration;
  * @version 1
  *
  */
-public class ConfigurationDAO {
+public class SetupDAO {
 	public Configuration getUserNumOfLed() {
 		//TO-DO 
 		return null;

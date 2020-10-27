@@ -10,7 +10,8 @@ class LDRGraph {
                 borderColor: $(":root").css("--mdc-theme-primary"),
                 backgroundColor: $(":root").css("--mdc-theme-primary") + "33", // "33" is 20% opacity in hex
                 borderWidth: 2,
-                pointRadius: 0
+                pointRadius: 0,
+                pointHitRadius: 5
             }]
         };
         const options = {

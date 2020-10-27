@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LDRData {
+
     List<Integer> data = new ArrayList<>();
     List<Integer> labels = new ArrayList<>();
-     public LDRData(){ }
+
+    public LDRData(){ }
 
     public List<Integer> getData() {
         return data;
@@ -23,4 +25,5 @@ public class LDRData {
     public void setLabels(List<Integer> labels) {
         this.labels = labels;
     }
+
 }

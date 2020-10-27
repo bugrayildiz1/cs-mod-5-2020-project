@@ -1,10 +1,9 @@
-package com.smarthomelightingsystem.model;
-/*
- * This is the enum class with three values- RED, GREEN, BLUE  
- */
+package com.smarthomelightingsystem.model.led;
+
+import java.util.ArrayList;
 
 /**
- * The class works with animations of LED strip 
+ * The class works with animations of LED strip   
  * shown on the Palette page of web interface
  * 
  * @author Jasper van Amerongen
@@ -18,4 +17,10 @@ package com.smarthomelightingsystem.model;
  * @version 1
  *
  */
-public enum RGB { R,G,B }
+public class Strip extends ArrayList<LED> {
+
+    public Strip(){
+        super();
+    }
+
+}

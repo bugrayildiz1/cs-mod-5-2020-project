@@ -21,6 +21,7 @@ public class PaletteController {
         pp.setAnimations(new AnimationDAO().getAll());
         pp.setPresets(new PresetDAO().getAll());
         return pp;
+        // test
 
     }
 

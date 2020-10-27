@@ -1,6 +1,7 @@
 package com.smarthomelightingsystem.controller;
 
 import com.smarthomelightingsystem.dao.LDRDataDAO;
+import com.smarthomelightingsystem.exceptions.IllegalLDRDataScopeException;
 import com.smarthomelightingsystem.model.LDRData;
 
 import javax.ws.rs.GET;
@@ -17,15 +18,21 @@ public class LDRDataController {
     @Produces(MediaType.APPLICATION_JSON)
     public LDRData getLDRData(@QueryParam("scope") String scope, @QueryParam("mobile") boolean mobile) {
 
-        switch (scope) {
-            case "def": return new LDRDataDAO().getDefault(mobile);
-            case "day": return new LDRDataDAO().getDay(mobile);
-            case "week": return new LDRDataDAO().getWeek(mobile);
-            case "month": return new LDRDataDAO().getMonth(mobile);
-            default: throw new IllegalLDRDataScope();
+        try {
+
+            switch (scope) {
+                case "def": return new LDRDataDAO().getDefault(mobile);
+                case "day": return new LDRDataDAO().getDay(mobile);
+                case "week": return new LDRDataDAO().getWeek(mobile);
+                case "month": return new LDRDataDAO().getMonth(mobile);
+                default: throw new IllegalLDRDataScopeException();
+            }
+
+        } catch (IllegalLDRDataScopeException e) {
+            e.printStackTrace();
+            return null;
         }
 
     }
-
 
 }

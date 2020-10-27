@@ -1,13 +1,14 @@
 package com.smarthomelightingsystem.controller;
 
-import com.smarthomelightingsystem.dao.PaletteDAO;
 import com.smarthomelightingsystem.dao.AnimationDAO;
 import com.smarthomelightingsystem.dao.PresetDAO;
 import com.smarthomelightingsystem.model.pallate.PallatePage;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.awt.*;
+
 
 @Path("page/palette")
 public class PaletteController {
@@ -16,7 +17,10 @@ public class PaletteController {
     @Produces(MediaType.APPLICATION_JSON)
     public PallatePage getFunctions() {
 
-        return new
+        PallatePage pp = new PallatePage();
+        pp.setAnimations(new AnimationDAO().getAll());
+        pp.setPresets(new PresetDAO().getAll());
+        return pp;
 
     }
 

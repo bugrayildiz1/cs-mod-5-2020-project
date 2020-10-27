@@ -81,6 +81,13 @@
 <!--            <version>42.2.12</version>-->
 <!--        </dependency>-->
 
+        <!-- Pi4J Library for GPIO control -->
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-core</artifactId>
+            <version>1.1</version>
+        </dependency>
+
 
     </dependencies>
 

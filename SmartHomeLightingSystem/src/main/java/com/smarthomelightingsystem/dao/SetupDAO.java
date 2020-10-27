@@ -88,15 +88,13 @@ public class SetupDAO {
             DB.close();
         }
     }
-	public void setAnimationPreset(SetUp setUp) {
+	public void setAnimation(SetUp setUp) {
 		Database DB = new Database();
 		try {
 			String q1 = "UPDATE " + TABLENAME + " "
-					+ "SET a_id = ? "
-					+ "AND SET p_id = ?;";
+					+ "SET a_id = ?; ";
 			PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
 			prepStatement.setInt(1, setUp.getAnimation());
-			prepStatement.setInt(2, setUp.getPreset());
 			DB.executePreparedStatement(prepStatement);
 		} catch (SQLException throwables) {
 			throwables.printStackTrace();
@@ -104,6 +102,20 @@ public class SetupDAO {
 			DB.close();
 		}
 	}
+    public void setPreset(SetUp setUp) {
+        Database DB = new Database();
+        try {
+            String q1 = "UPDATE " + TABLENAME + " "
+                    + "SET p_id = ?; ";
+            PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
+            prepStatement.setInt(1, setUp.getPreset());
+            DB.executePreparedStatement(prepStatement);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } finally {
+            DB.close();
+        }
+    }
 	public void setMode(SetUp setUp) {
 		Database DB = new Database();
 		try {

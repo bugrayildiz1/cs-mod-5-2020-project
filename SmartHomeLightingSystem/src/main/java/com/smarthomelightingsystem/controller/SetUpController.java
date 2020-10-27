@@ -31,10 +31,15 @@ public class SetUpController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public  void setAnimationPreset(SetUp setUp){
-        new SetupDAO().setAnimationPreset(setUp);
+    public  void setAnimation(SetUp setUp){
+        new SetupDAO().setAnimation(setUp);
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public  void setPreset(SetUp setUp){
+        new SetupDAO().setPreset(setUp);
+    }
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void setMode(SetUp setUp){

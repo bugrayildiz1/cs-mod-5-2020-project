@@ -41,7 +41,7 @@ public class LDRDataController {
     @Path("setvalue")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-    public LDRData setValue(@QueryParam("value") float value) {
+    public void setValue(@QueryParam("value") float value) {
     	try {
     		if(0.0<= value && value <= 1.0) {
     			new LDRDataDAO().setValue(value);
@@ -50,7 +50,6 @@ public class LDRDataController {
     	}catch (Exception e) {
     		e.printStackTrace();
     	}
-		return null;
     	
     }
 

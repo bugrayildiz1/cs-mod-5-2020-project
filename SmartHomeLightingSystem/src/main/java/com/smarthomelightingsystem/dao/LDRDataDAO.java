@@ -3,6 +3,7 @@ package com.smarthomelightingsystem.dao;
 
 
 import java.sql.PreparedStatement;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import com.smarthomelightingsystem.data.Database;
@@ -50,9 +51,8 @@ public class LDRDataDAO {
     		PreparedStatement prepStatement = DB.connection.prepareStatement(q);
 			prepStatement.setFloat(1, value);
 			//LocalDateTime localDateTime = m.getTime().toInstant().atZone(ZoneId.of("GMT+0")).toLocalDateTime();
-			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");  
-			LocalDateTime now = LocalDateTime.now(); 
-			prepStatement.setObject(2, dtf.format(now));
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			prepStatement.setTimestamp(2, timestamp);
 			
 			DB.executePreparedStatement(prepStatement);
     	}catch (Exception e) {

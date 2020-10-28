@@ -35,11 +35,17 @@ public class SetUpController {
 
     @Path("anim")
     @POST
-    public void setAnim(@QueryParam("id") int id) { new SetupDAO().setAnimation(id); }
+    public void setAnim(@QueryParam("id") int id) {
+        new SetupDAO().setAnimation(id);
+        new SetupDAO().setPreset(0);
+    }
 
     @Path("preset")
     @POST
-    public void setPreset(@QueryParam("id") int id) { new SetupDAO().setPreset(id); }
+    public void setPreset(@QueryParam("id") int id) {
+        new SetupDAO().setPreset(id);
+        new SetupDAO().setAnimation(0);
+    }
 
     @Path("power")
     @POST

@@ -14,6 +14,9 @@ public class SetUp {
     int r;
     int g;
     int b;
+    /**
+     * Brightness
+     */
     float a;
 
     /**

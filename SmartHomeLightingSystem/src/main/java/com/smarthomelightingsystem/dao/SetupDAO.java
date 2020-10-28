@@ -121,7 +121,9 @@ public class SetupDAO {
 			DB.executePreparedStatement(ps);
 
 		} catch (SQLException e) { e.printStackTrace(); }
-		finally { DB.close(); }
+		finally {
+		    DB.close();
+		}
 
 	}
 

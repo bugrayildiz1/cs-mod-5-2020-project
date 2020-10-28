@@ -1,6 +1,9 @@
 package com.smarthomelightingsystem.model.led;
 
+import com.smarthomelightingsystem.model.SetUp;
+
 import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * The class works with animations of LED strip   
@@ -22,5 +25,6 @@ public class Strip extends ArrayList<LED> {
     public Strip(){
         super();
     }
+
 
 }

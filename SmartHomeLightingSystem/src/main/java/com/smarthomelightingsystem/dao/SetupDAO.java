@@ -1,7 +1,6 @@
 package com.smarthomelightingsystem.dao;
 
 import com.smarthomelightingsystem.data.Database;
-import com.smarthomelightingsystem.model.Configuration;
 import com.smarthomelightingsystem.model.SetUp;
 
 import java.sql.PreparedStatement;
@@ -26,119 +25,136 @@ public class SetupDAO {
     private SetUp fill(ResultSet r) throws SQLException {
 
         SetUp setUp = new SetUp();
-        setUp.setConfiguration(r.getInt("p"), r.getInt("q"));
-        setUp.setRGB(r.getInt("r"), r.getInt("g"), r.getInt("b"));
-        setUp.setBrightness(r.getFloat("a"));
-        setUp.setAnimation(r.getInt("a_id"));
-        setUp.setPreset(r.getInt("r_id"));
-        setUp.setMode(r.getBoolean("power"));
+        setUp.setPQ(r.getInt("p"),
+                    r.getInt("q"));
+        setUp.setRGBA(r.getInt("r"),
+                      r.getInt("g"),
+                      r.getInt("b"),
+                      r.getFloat("a"));
+        setUp.setAnimId(r.getInt("anim_id"));
+        setUp.setPresetId(r.getInt("preset_id"));
+        setUp.setPower(r.getBoolean("power"));
         return setUp;
+
     }
 
     public SetUp getSetUp() {
+
         Database DB = new Database();
-        SetUp setUp = null;
+        SetUp s = null;
+
         try {
-            String q = "SELECT * FROM" + TABLENAME;
+
+            String q = "SELECT * FROM " + TABLENAME;
             PreparedStatement prepStatement = DB.connection.prepareStatement(q);
             ResultSet r = DB.executePreparedStatement(prepStatement);
-            fill(r);
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        DB.close();
-        return setUp;
-    }
+            while (r.next()) { s = fill(r); }
 
-    public void setConfiguration(SetUp setUp) {
-        Database DB = new Database();
-        try {
-            String q1 = "UPDATE " + TABLENAME + " "
-                    + "SET p = ? "
-                    + "AND SET q = ?;";
-            PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
-            prepStatement.setInt(1, setUp.getP());
-            prepStatement.setInt(2, setUp.getQ());
-            DB.executePreparedStatement(prepStatement);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
+        } catch (SQLException e) { e.printStackTrace(); }
+        finally {
+
             DB.close();
+            return s;
+
         }
+
     }
 
-    public void setColor(SetUp setUp) {
-        Database DB = new Database();
-        try {
-            String q1 = "UPDATE " + TABLENAME + " "
-                    + "SET r = ? "
-                    + "AND SET g = ?"
-                    + "AND SET b = ?"
-                    + "AND SET a = ?;";
-            PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
-            prepStatement.setInt(1, setUp.getR());
-            prepStatement.setInt(2, setUp.getG());
-            prepStatement.setInt(3, setUp.getB());
-            prepStatement.setFloat(4, setUp.getA());
-            DB.executePreparedStatement(prepStatement);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            DB.close();
-        }
+    public void setSetUp(SetUp s) {
+
+        setPQ(s.getP(), s.getQ());
+        setRGBA(s.getR(), s.getG(), s.getB(), s.getA());
+        if (s.getAnimId() != 0 && s.getPresetId() == 0) setAnimation(s.getAnimId());
+        else if (s.getPresetId() != 0 && s.getAnimId() == 0) setPreset(s.getPresetId());
+        setPower(s.getPower());
+
     }
-	public void setAnimation(SetUp setUp) {
+
+    public void setPQ(int p, int q) {
+
+        System.out.println("p = " + p + " and q = " + q);
+
+        Database DB = new Database();
+
+        try {
+
+            String q1 = "UPDATE " + TABLENAME + " SET p = ?, q = ?;";
+            PreparedStatement ps = DB.connection.prepareStatement(q1);
+            ps.setInt(1, p);
+            ps.setInt(2, q);
+            DB.executePreparedStatement(ps);
+
+        } catch (SQLException e) { e.printStackTrace(); }
+        finally { DB.close(); }
+
+    }
+
+    public void setRGBA(int r, int g, int b, float a) {
+
+        Database DB = new Database();
+
+        try {
+
+            String q = "UPDATE " + TABLENAME + " SET r = ?, g = ?, b = ?, a = ?;";
+            PreparedStatement ps = DB.connection.prepareStatement(q);
+            ps.setInt(1, r);
+            ps.setInt(2, g);
+            ps.setInt(3, b);
+            ps.setFloat(4, a);
+            DB.executePreparedStatement(ps);
+
+        } catch (SQLException e) { e.printStackTrace(); }
+        finally { DB.close(); }
+
+    }
+
+    public void setAnimation(int id) {
+
 		Database DB = new Database();
+
 		try {
-			String q1 = "UPDATE " + TABLENAME + " "
-					+ "SET a_id = ?; ";
-			PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
-			prepStatement.setInt(1, setUp.getAnimation());
-			DB.executePreparedStatement(prepStatement);
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		} finally {
-			DB.close();
-		}
-	}
-    public void setPreset(SetUp setUp) {
-        Database DB = new Database();
-        try {
-            String q1 = "UPDATE " + TABLENAME + " "
-                    + "SET p_id = ?; ";
-            PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
-            prepStatement.setInt(1, setUp.getPreset());
-            DB.executePreparedStatement(prepStatement);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } finally {
-            DB.close();
-        }
-    }
-	public void setMode(SetUp setUp) {
-		Database DB = new Database();
-		try {
-			String q1 = "UPDATE " + TABLENAME + " "
-					+ "SET power = ? ";
-			PreparedStatement prepStatement = DB.connection.prepareStatement(q1);
-			prepStatement.setBoolean(1,setUp.isPower());
-			DB.executePreparedStatement(prepStatement);
-		} catch (SQLException throwables) {
-			throwables.printStackTrace();
-		} finally {
-			DB.close();
-		}
+		    
+			String q = "UPDATE " + TABLENAME + " SET anim_id = ?; ";
+			PreparedStatement ps = DB.connection.prepareStatement(q);
+			ps.setInt(1, id);
+			DB.executePreparedStatement(ps);
+
+		} catch (SQLException e) { e.printStackTrace(); }
+		finally { DB.close(); }
+
 	}
 
-    public Configuration getUserNumOfLed() {
-        //TO-DO
-        return null;
-    }
+    public void setPreset(int id) {
 
-    public Configuration setUserNomOfLeds() {
-        //TO-DO
-        return null;
-    }
+		Database DB = new Database();
+
+		try {
+
+			String q = "UPDATE " + TABLENAME + " SET preset_id = ?; ";
+			PreparedStatement ps = DB.connection.prepareStatement(q);
+			ps.setInt(1, id);
+			DB.executePreparedStatement(ps);
+
+		} catch (SQLException e) { e.printStackTrace(); }
+		finally { DB.close(); }
+
+	}
+
+    public void setPower(boolean p) {
+
+		Database DB = new Database();
+
+		try {
+
+			String q = "UPDATE " + TABLENAME + " SET power = ?; ";
+			PreparedStatement ps = DB.connection.prepareStatement(q);
+			ps.setBoolean(1, p);
+			DB.executePreparedStatement(ps);
+
+		} catch (SQLException e) { e.printStackTrace(); }
+		finally { DB.close(); }
+
+	}
 
 }

@@ -1,27 +1,26 @@
 package com.smarthomelightingsystem.model;
 
 public class SetUp {
+
     /**
      * Length and width
      */
     int p;
     int q;
+
     /**
-     * RGB values
+     * RGBA values
      */
     int r;
     int g;
     int b;
-    /**
-     * Brightness
-     */
     float a;
 
     /**
      * animation id
      */
-    int a_id;
-    int p_id;
+    int animId;
+    int presetId;
     boolean power;
 
     /**
@@ -29,78 +28,100 @@ public class SetUp {
      * @param p length
      * @param q width
      */
-    public void setConfiguration(int p, int q){
-        this.p=p;
-        this.q=q;
+    public void setPQ(int p, int q) {
+
+        this.p = p;
+        this.q = q;
+
     }
 
     /**
-     * sets an RGB value
+     * sets an RGBA value
      * @param r
      * @param g
      * @param b
+     * @param a
      */
-    public  void setRGB(int r, int g, int b){
-        this.r=r;
-        this.g=g;
-        this.b=b;
-    }
+    public  void setRGBA(int r, int g, int b, float a) {
 
-    /**
-     * Sets the brightness
-     * @param a brightness
-     */
-    public void setBrightness(float a){
+        this.r = r;
+        this.g = g;
+        this.b = b;
         this.a = a;
-    }
 
-    public void setAnimation (int a_id){
-        this.a_id=a_id;
-
-    }
-
-    public void setMode(boolean power){
-        this.power=power;
-    }
-
-    public void setPreset(int p_id){
-        this.p_id=p_id;
-    }
-
-    public int getAnimation(){
-        return this.a_id;
-    }
-
-    public int getPreset(){
-        return this.p_id;
     }
 
     public int getP() {
         return p;
     }
 
+    public void setP(int p) {
+        this.p = p;
+    }
+
     public int getQ() {
         return q;
+    }
+
+    public void setQ(int q) {
+        this.q = q;
     }
 
     public int getR() {
         return r;
     }
 
+    public void setR(int r) {
+        this.r = r;
+    }
+
     public int getG() {
         return g;
+    }
+
+    public void setG(int g) {
+        this.g = g;
     }
 
     public int getB() {
         return b;
     }
 
+    public void setB(int b) {
+        this.b = b;
+    }
+
     public float getA() {
         return a;
     }
 
-    public boolean isPower() {
+    public void setA(float a) {
+        this.a = a;
+    }
+
+    public int getAnimId() {
+        return animId;
+    }
+
+    public void setAnimId(int animId) {
+        this.animId = animId;
+    }
+
+    public int getPresetId() {
+        return presetId;
+    }
+
+    public void setPresetId(int presetId) {
+        this.presetId = presetId;
+    }
+
+    public boolean getPower() {
         return power;
     }
+
+    public void setPower(boolean power) {
+        this.power = power;
+    }
+
 }
 

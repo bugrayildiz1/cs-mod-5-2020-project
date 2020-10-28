@@ -50,7 +50,7 @@ public class PresetDAO {
             ps.setInt(1, id);
             ResultSet r = DB.executePreparedStatement(ps);
 
-            while (r.next()) { fill(r); }
+            while (r.next()) { p = fill(r); }
 
         } catch (SQLException ex) { ex.printStackTrace(); }
         finally {

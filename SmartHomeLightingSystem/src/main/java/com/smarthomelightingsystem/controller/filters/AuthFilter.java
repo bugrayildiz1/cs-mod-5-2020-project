@@ -64,7 +64,7 @@ public class AuthFilter implements ContainerRequestFilter {
                 .build();
 
         try { idToken = verifier.verify(idTokenString); }
-        catch (GeneralSecurityException | IOException | IllegalArgumentException e) { e.printStackTrace(); }
+        catch (Exception e) { e.printStackTrace(); }
 
         return idToken != null;
 

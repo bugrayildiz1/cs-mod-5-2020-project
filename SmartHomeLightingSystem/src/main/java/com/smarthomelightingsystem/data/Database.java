@@ -11,7 +11,7 @@ public class Database {
     private static final String HOST = "bronto.ewi.utwente.nl";
     private static final String PORT = "5432";
     private static final String DB = "dab_di19202b_237";
-    private static final String SCHEMA = "cofano";
+    private static final String SCHEMA = "lightingsystem";
     private static final String URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/"+ DB + "?currentSchema=" + SCHEMA;
     private static final String USER = "dab_di19202b_237";
     private static final String PASS = "AKo06Bs9uQ5rG7xg";

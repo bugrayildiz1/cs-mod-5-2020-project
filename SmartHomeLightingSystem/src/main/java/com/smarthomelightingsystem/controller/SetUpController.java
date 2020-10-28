@@ -19,30 +19,30 @@ public class SetUpController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void setConfiguration(SetUp setUp){
-        new SetupDAO().setConfiguration(setUp);
-    }
+    public void setSetUp(SetUp setUp) { new SetupDAO().setSetUp(setUp); }
 
+    @Path("pq")
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void setColor(SetUp setUp){
-       new SetupDAO().setColor(setUp);
-    }
+    public void setPQ(@QueryParam("p") int p,
+                      @QueryParam("q") int q) { new SetupDAO().setPQ(p, q); }
 
+    @Path("rgba")
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public  void setAnimation(SetUp setUp){
-        new SetupDAO().setAnimation(setUp);
-    }
+    public void setRGBA(@QueryParam("r") int r,
+                        @QueryParam("g") int g,
+                        @QueryParam("b") int b,
+                        @QueryParam("a") float a) { new SetupDAO().setRGBA(r, g, b, a); }
 
+    @Path("anim")
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public  void setPreset(SetUp setUp){
-        new SetupDAO().setPreset(setUp);
-    }
+    public void setAnim(@QueryParam("id") int id) { new SetupDAO().setAnimation(id); }
+
+    @Path("preset")
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void setMode(SetUp setUp){
-        new SetupDAO().setMode(setUp);
-    }
+    public void setPreset(@QueryParam("id") int id) { new SetupDAO().setPreset(id); }
+
+    @Path("power")
+    @POST
+    public void setPower(@QueryParam("p") boolean p) { new SetupDAO().setPower(p); }
+
 }

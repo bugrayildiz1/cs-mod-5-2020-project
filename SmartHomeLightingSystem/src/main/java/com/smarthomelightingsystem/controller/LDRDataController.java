@@ -23,7 +23,7 @@ public class LDRDataController {
             switch (scope) {
                 case "def": return new LDRDataDAO().getDefault(mobile);
                 case "day": return new LDRDataDAO().getDay(mobile);
-                case "week": return new LDRDataDAO().getWeek(mobile);
+                case "week": return new LDRDataDAO().getWeek();
                 case "month": return new LDRDataDAO().getMonth(mobile);
                 default: throw new IllegalLDRDataScopeException();
             }

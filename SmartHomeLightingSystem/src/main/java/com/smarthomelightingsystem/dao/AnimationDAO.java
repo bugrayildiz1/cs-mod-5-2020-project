@@ -52,7 +52,7 @@ public class AnimationDAO {
 			ps.setInt(1, id);
 			ResultSet r = DB.executePreparedStatement(ps);
 
-			while (r.next()) { fill(r); }
+			while (r.next()) { a = fill(r); }
 
 		} catch (SQLException ex) { ex.printStackTrace(); }
 		finally {

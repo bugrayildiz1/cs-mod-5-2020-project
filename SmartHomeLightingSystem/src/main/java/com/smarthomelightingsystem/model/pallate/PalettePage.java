@@ -20,12 +20,12 @@ import java.util.List;
  * 
  * @version 1
  */
-public class PallatePage {
+public class PalettePage {
 
     List<Animation> animations = new ArrayList<>();
     List<Preset> presets = new ArrayList<>();
 
-    public PallatePage() {
+    public PalettePage() {
     }
 
     public List<Animation> getAnimations() {

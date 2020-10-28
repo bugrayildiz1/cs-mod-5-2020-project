@@ -17,7 +17,13 @@ public class LDRDataDAO {
     }
 
     public LDRData getMonth(boolean mobile) {
+
         return null;
+
+    }
+
+    public void setValue(float value) {
+
     }
 
 }

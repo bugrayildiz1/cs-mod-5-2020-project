@@ -17,7 +17,10 @@ import java.util.Collections;
 
 /**
  * This class filters all requests, and makes sure that the client is logged in.
- * 
+ *
+ * Requests should contain their token in their header under the "Bearer" authentication scheme. If altering the header
+ * in this way is not possible, the token can be passed as a query parameter instead.
+ *
  * @author Jasper van Amerongen
  * @author Adamo Mariani
  *
@@ -33,29 +36,16 @@ public class AuthFilter implements ContainerRequestFilter {
     public void filter(ContainerRequestContext ctx) {
 
 		String authorizationHeader = ctx.getHeaderString(HttpHeaders.AUTHORIZATION);
-		String idTokenString;
+		String idTokenString = "";
 
-		if (authorizationHeader == null) {
-
-			idTokenString = ctx.getUriInfo().getQueryParameters().getFirst("id_token");
-
-			if (idTokenString == null) {
-
-				ctx.abortWith(Response
-						.status(Response.Status.UNAUTHORIZED)
-						.entity("No token was provided!")
-						.build());
-				return;
-
-			}
-
-		} else idTokenString = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
+		if (authorizationHeader == null) idTokenString = ctx.getUriInfo().getQueryParameters().getFirst("id_token");
+		else idTokenString = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
 
 		if (!valid(idTokenString)) {
 
 			ctx.abortWith(Response
 					.status(Response.Status.UNAUTHORIZED)
-					.entity("Invalid token provided!")
+					.entity("No valid token was provided!")
 					.build());
 			return;
 
@@ -65,7 +55,7 @@ public class AuthFilter implements ContainerRequestFilter {
 
     private boolean valid(String idTokenString) {
 
-        if (idTokenString.equals("")) return false;
+        if (idTokenString == null || idTokenString.equals("")) return false;
 
         GoogleIdToken idToken = null;
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier
@@ -74,7 +64,7 @@ public class AuthFilter implements ContainerRequestFilter {
                 .build();
 
         try { idToken = verifier.verify(idTokenString); }
-        catch (GeneralSecurityException | IOException e) { e.printStackTrace(); }
+        catch (GeneralSecurityException | IOException | IllegalArgumentException e) { e.printStackTrace(); }
 
         return idToken != null;
 

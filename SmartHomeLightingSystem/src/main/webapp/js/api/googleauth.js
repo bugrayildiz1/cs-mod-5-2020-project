@@ -27,7 +27,7 @@ function authInit() {
 
 }
 
-async function onSignIn() {
+function onSignIn() {
 
     GUSER = AUTH.currentUser.get();
     GPROFILE = GUSER.getBasicProfile();
@@ -38,13 +38,11 @@ async function onSignIn() {
         }
     });
 
-    // SIMULATING HTTP GET FROM SERVER
-    if (localStorage.getItem("p") === null
-     && localStorage.getItem("q") === null) {
+    loadCurrentSetup();
 
+    if (SETUP.p === 0 || SETUP.q === 0) {
         openWelcome();
         openSetUp();
-
     } else startApp();
 
 }

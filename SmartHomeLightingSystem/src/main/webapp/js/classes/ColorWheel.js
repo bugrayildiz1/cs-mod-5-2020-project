@@ -16,15 +16,20 @@ class ColorWheel {
         // Initialize
         const options = {
             width: this.size,
-            color: COLOR,
+            color: {
+                r: SETUP.r,
+                g: SETUP.g,
+                b: SETUP.b
+            },
             layout: [ { component: iro.ui.Wheel } ],
             handleSvg: "#" + this.targetQuery.substring(1) + "-handle",
-            borderColor: "#fff",
+            borderColor: "#FFFFFF",
             borderWidth: 2
         };
 
         this.obj = iro.ColorPicker(this.targetQuery, options);
-        this.obj.on('color:change', (color) => handleColorChange(color.hexString));
+        this.obj.on('color:change', (color) => onColorChange(color.red, color.green, color.blue));
+        this.obj.on('input:end', () => sendRGBA());
 
         // Add shadow
         const $defs = this.$target.find("defs");

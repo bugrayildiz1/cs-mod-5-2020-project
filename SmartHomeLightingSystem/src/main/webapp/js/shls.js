@@ -11,25 +11,31 @@ $(document).ready(function() {
 
     document.querySelector(".shls-tabbar").MDCTabBar.activateTab(0);
     document.querySelector(".shls-pallate-functions-tabbar").MDCTabBar.activateTab(0);
-    document.querySelector(".mdc-chip--selected").MDCChip
 
 });
 
 function startApp() {
 
-    loadCurrentSetup();
     $("#shls-backdrop").show();
-
     $("#shls-welcome").fadeOut(1000, () => {
 
         $("#shls-app").fadeIn();
 
         openPallate();
         openPallateAnimations();
+
         WHEEL = new ColorWheel(".shls-pallate-iro-colorwheel", 250);
-        BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
         ANIMSEL = new AnimationSelector(".swiper-container");
         LDRGRAPH = new LDRGraph("#shls-ldr-chart");
+
+        BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
+        BRSLIDER.value = SETUP.a * 100;
+        BRSLIDER.root.addEventListener("MDCSlider:change", (event) => {
+
+            SETUP.a = event.detail.value / 100;
+            sendRGBA();
+
+        });
 
         onResize();
         $(window).resize(onResize);
@@ -139,13 +145,16 @@ function onResize() {
 
     // Color Wheel
     let colorWheelWidth;
+    const $wheelWrapper = $(".shls-pallate-iro-colorwheel");
 
     if (w < 600) colorWheelWidth = 250;
     else if (w >= 600 && w < 840) colorWheelWidth = 280;
     else if (w > 840) colorWheelWidth = 300;
 
-    if ($(".shls-pallate-iro-colorwheel").width() != colorWheelWidth)
-        WHEEL = new ColorWheel(".shls-pallate-iro-colorwheel", colorWheelWidth);
+    if ($wheelWrapper.width() != colorWheelWidth) {
+        $wheelWrapper.width(colorWheelWidth)
+        WHEEL.obj.resize(colorWheelWidth);
+    }
 
     // Chart
     if (w < 840 && !LDRGRAPH.mobile) {
@@ -155,6 +164,24 @@ function onResize() {
         LDRGRAPH.mobile = false;
         LDRGRAPH.update();
     }
+
+}
+
+function onColorChange(r, g, b) {
+
+    SETUP.r = r;
+    SETUP.g = g;
+    SETUP.b = b;
+
+    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+
+    if (luma < 200) $ROOT.css("--mdc-theme-secondary", `rgb(${r}, ${g}, ${b})`);
+    else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+
+    r = Number(r).toString(16); if (r.length < 2) r = "0" + r;
+    g = Number(g).toString(16); if (g.length < 2) g = "0" + g;
+    b = Number(b).toString(16); if (b.length < 2) b = "0" + b;
+    $(".shls-pallate-selection-text").text(("#" + r + g + b).toUpperCase());
 
 }
 

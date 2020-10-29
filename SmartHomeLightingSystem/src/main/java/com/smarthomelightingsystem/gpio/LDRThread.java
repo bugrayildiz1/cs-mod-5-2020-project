@@ -1,6 +1,5 @@
 package com.smarthomelightingsystem.gpio;
 
-import com.smarthomelightingsystem.controller.LDRDataController;
 import com.smarthomelightingsystem.dao.LDRDataDAO;
 
 public class LDRThread extends Thread {

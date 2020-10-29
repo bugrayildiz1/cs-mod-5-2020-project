@@ -24,112 +24,25 @@ function startApp() {
         openPallate();
         openPallateAnimations();
 
-        WHEEL = new ColorWheel(".shls-pallate-iro-colorwheel", 250);
-        ANIMSEL = new AnimationSelector(".swiper-container");
-        LDRGRAPH = new LDRGraph("#shls-ldr-chart");
-
-        BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
-        BRSLIDER.value = SETUP.a * 100;
-        BRSLIDER.root.addEventListener("MDCSlider:change", (event) => {
-
-            SETUP.a = event.detail.value / 100;
-            sendRGBA();
-
-        });
+        if (WHEEL === undefined) WHEEL = new ColorWheel(".shls-pallate-iro-colorwheel", 250);
+        if (BRSLIDER === undefined) {
+            BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
+            BRSLIDER.value = SETUP.a * 100;
+            BRSLIDER.root.addEventListener("MDCSlider:change", (event) => {
+                SETUP.a = event.detail.value / 100;
+                sendRGBA();
+            });
+        }
+        if (ANIMSEL === undefined) {
+            ANIMSEL = new AnimationSelector(".swiper-container");
+            loadPallate();
+        }
+        if (LDRGRAPH === undefined) LDRGRAPH = new LDRGraph("#shls-ldr-chart");
 
         onResize();
         $(window).resize(onResize);
 
     });
-
-}
-
-function openWelcome() {
-
-    const $target = $("#shls-welcome");
-    $target.siblings().hide();
-    $target.show();
-    $target.find(".shls-welcome-header-device").show();
-
-}
-
-function openApp() {
-
-    const $target = $("#shls-app, #shls-backdrop");
-    $target.siblings().hide();
-    $target.show();
-
-}
-
-function openSignIn() {
-
-    renderTitle("Sign In");
-    const target = $("#shls-page-signin");
-    target.siblings().not(".shls-welcome-header-device").hide();
-    target.show();
-
-}
-
-function openSetUp() {
-
-    renderTitle("Set Up");
-    $(".shls-setup-title > h2").text("Welcome " + GPROFILE.getGivenName());
-
-    const $target = $("#shls-page-setup");
-    $target.siblings().not(".shls-welcome-header-device").hide();
-    $target.show();
-
-}
-
-function openPallate() {
-
-    renderTitle("Pallate");
-    const $target = $("#shls-page-pallate");
-    $target.siblings().not(".shls-tabbar-wrapper").hide();
-    $target.show();
-
-}
-
-function openExtend() {
-
-    renderTitle("Extend");
-    const $target = $("#shls-page-extend");
-    $target.siblings().not(".shls-tabbar-wrapper").hide();
-    $target.show();
-
-}
-
-function openLdr() {
-
-    renderTitle("LDR Data");
-    const $target = $("#shls-page-ldr");
-    $target.siblings().not(".shls-tabbar-wrapper").hide();
-    $target.show();
-
-}
-
-function openSettings() {
-
-    renderTitle("Settings");
-    const $target = $("#shls-page-settings");
-    $target.siblings().not(".shls-tabbar-wrapper").hide();
-    $target.show();
-
-}
-
-function openPallateAnimations() {
-
-    const $target = $(".shls-pallate-animations-wrapper") ;
-    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
-    $target.show();
-
-}
-
-function openPallatePresets() {
-
-    const $target = $(".shls-pallate-presets-wrapper");
-    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
-    $target.show();
 
 }
 
@@ -188,5 +101,98 @@ function onColorChange(r, g, b) {
 function renderTitle(suffix) {
 
     document.title = "SLHS | " + suffix;
+
+}
+
+
+
+function openWelcome() {
+
+    const $target = $("#shls-welcome");
+    $target.siblings().hide();
+    $target.show();
+    $target.find(".shls-welcome-header-device").show();
+
+}
+
+function openApp() {
+
+    const $target = $("#shls-app, #shls-backdrop");
+    $target.siblings().hide();
+    $target.show();
+
+}
+
+function openSignIn() {
+
+    renderTitle("Sign In");
+    const target = $("#shls-page-signin");
+    target.siblings().not(".shls-welcome-header-device").hide();
+    target.show();
+
+}
+
+function openSetUp() {
+
+    renderTitle("Set Up");
+    $(".shls-setup-title > h2").text("Welcome " + GPROFILE.getGivenName());
+    SETUP.p = 0;
+    SETUP.q = 0;
+
+    const $target = $("#shls-page-setup");
+    $target.siblings().not(".shls-welcome-header-device").hide();
+    $target.show();
+
+}
+
+function openPallate() {
+
+    renderTitle("Pallate");
+    const $target = $("#shls-page-pallate");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
+
+}
+
+function openExtend() {
+
+    renderTitle("Extend");
+    const $target = $("#shls-page-extend");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
+
+}
+
+function openLdr() {
+
+    renderTitle("LDR Data");
+    const $target = $("#shls-page-ldr");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
+
+}
+
+function openSettings() {
+
+    renderTitle("Settings");
+    const $target = $("#shls-page-settings");
+    $target.siblings().not(".shls-tabbar-wrapper").hide();
+    $target.show();
+
+}
+
+function openPallateAnimations() {
+
+    const $target = $(".shls-pallate-animations-wrapper") ;
+    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    $target.show();
+
+}
+
+function openPallatePresets() {
+
+    const $target = $(".shls-pallate-presets-wrapper");
+    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    $target.show();
 
 }

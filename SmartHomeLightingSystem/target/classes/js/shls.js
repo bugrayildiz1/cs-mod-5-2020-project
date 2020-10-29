@@ -39,6 +39,19 @@ function startApp() {
         }
         if (LDRGRAPH === undefined) LDRGRAPH = new LDRGraph("#shls-ldr-chart");
 
+        const target = ".shls-settings-updateoncolor .mdc-switch";
+        if (localStorage.getItem("changeThemeOnColorUpdate") == 0) {
+
+            document.querySelector(target).MDCSwitch.value = false;
+            $(target).removeClass("mdc-switch--checked");
+
+        } else if (localStorage.getItem("changeThemeOnColorUpdate") == 1) {
+
+            document.querySelector(target).MDCSwitch.value = true;
+            $(target).addClass("mdc-switch--checked");
+
+        }
+
         onResize();
         $(window).resize(onResize);
 
@@ -86,15 +99,42 @@ function onColorChange(r, g, b) {
     SETUP.g = g;
     SETUP.b = b;
 
-    const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
+    if (localStorage.getItem("changeThemeOnColorUpdate") == 1) {
 
-    if (luma < 200) $ROOT.css("--mdc-theme-secondary", `rgb(${r}, ${g}, ${b})`);
-    else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+        const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-    r = Number(r).toString(16); if (r.length < 2) r = "0" + r;
-    g = Number(g).toString(16); if (g.length < 2) g = "0" + g;
-    b = Number(b).toString(16); if (b.length < 2) b = "0" + b;
-    $(".shls-pallate-selection-text").text(("#" + r + g + b).toUpperCase());
+        if (luma < 200) $ROOT.css("--mdc-theme-secondary", `rgb(${r}, ${g}, ${b})`);
+        else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+
+        r = Number(r).toString(16);
+        if (r.length < 2) r = "0" + r;
+        g = Number(g).toString(16);
+        if (g.length < 2) g = "0" + g;
+        b = Number(b).toString(16);
+        if (b.length < 2) b = "0" + b;
+        $(".shls-pallate-selection-text").text(("#" + r + g + b).toUpperCase());
+
+    } else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
+
+}
+
+function toggleChangeThemeOnColorUpdate() {
+
+    const k = "changeThemeOnColorUpdate";
+    const now = localStorage.getItem(k);
+
+    if (now !== null) {
+
+        localStorage.setItem(k, Math.pow(0, now));
+        onColorChange(SETUP.r, SETUP.g, SETUP.b);
+
+    } else {
+
+        localStorage.setItem(k, 1);
+        document.querySelector(".shls-settings-updateoncolor-switch").MDCSwitch.value = true;
+        $(".shls-settings-updateoncolor .mdc-switch").addClass("mdc-switch--checked");
+
+    }
 
 }
 

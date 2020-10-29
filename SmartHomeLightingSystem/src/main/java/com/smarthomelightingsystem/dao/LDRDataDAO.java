@@ -85,6 +85,9 @@ public class LDRDataDAO {
     		
     		PreparedStatement prepStatement = DB.connection.prepareStatement(q);
     		ResultSet r = DB.executePreparedStatement(prepStatement);
+    		
+    		while(r.next()) {fill(r, out);}
+        	
     	} catch (SQLException e) {e.printStackTrace(); } 
     	finally{ DB.close(); }
     	

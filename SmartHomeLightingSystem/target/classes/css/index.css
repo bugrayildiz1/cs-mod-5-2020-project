@@ -8,6 +8,7 @@
 
 html, body {
     margin: 0;
+    overflow-y: hidden;
 }
 
 html, body,
@@ -16,6 +17,10 @@ html, body,
 #shls-welcome, .shls-welcome-page-wrapper,
 .shls-page > .mdc-layout-grid__inner {
     height: 100%;
+}
+
+.mdc-list-group__subheader {
+    font-weight: 500;
 }
 
 #shls-backdrop {

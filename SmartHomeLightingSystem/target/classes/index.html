@@ -403,8 +403,42 @@
                                 </li>
                                 <li class="mdc-list-divider" role="separator"></li>
                             </ul>
-                            <h3 class="mdc-list-group__subheader">System Settings</h3>
-                            <ul class="mdc-list mdc-list--;single-line" data-mdc-auto-init="MDCList">
+                            <h3 class="mdc-list-group__subheader">Product</h3>
+                            <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
+                                <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                    <span class="mdc-list-item__ripple"></span>
+                                    <span class="mdc-list-item__text">Information</span>
+                                    <span class="mdc-list-item__meta">
+                                        <button class="mdc-icon-button"
+                                                onclick="document.querySelector('.shls-settings-info-dialog').MDCDialog.open();">
+                                            <div class="mdc-button__ripple"></div>
+                                            <span class="material-icons mdc-button__icon" aria-hidden="true">more_vert</span>
+                                        </button>
+                                    </span>
+                                    <div class="shls-settings-info-dialog mdc-dialog" data-mdc-auto-init="MDCDialog">
+                                        <div class="mdc-dialog__container">
+                                            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
+                                                <h2 class="mdc-dialog__title">Smart Home Lighting System</h2>
+                                                <div class="mdc-dialog__content">
+                                                    Smart Home Lightning System is a product that lets users able to
+                                                    customize their addressable LED strip with brilliant animation and
+                                                    preset options. It can controllable via this application and its
+                                                    super easy to use! If you have any obstacles, you can contact us!
+                                                    Enjoy your amazing ambient in your house.
+                                                </div>
+                                                <div class="mdc-dialog__actions">
+                                                    <button class="mdc-button mdc-dialog__button"
+                                                            data-mdc-dialog-action="Close" tabindex="-1">
+                                                        <div class="mdc-button__ripple"></div>
+                                                        <span class="mdc-button__label">Close</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mdc-dialog__scrim"></div>
+                                    </div>
+                                </li>
+                                <li class="mdc-list-divider" role="separator"></li>
                                 <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple"
                                     tabindex="0" data-mdc-auto-init-state="initialized">
                                     <span class="mdc-list-item__ripple"></span>
@@ -412,23 +446,26 @@
                                     <span class="mdc-list-item__meta">WS2812B RGB LED</span>
                                 </li>
                                 <li class="mdc-list-divider" role="separator"></li>
+                            </ul>
+                            <h3 class="mdc-list-group__subheader">Account</h3>
+                            <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
                                 <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
-                                    <span class="mdc-list-item__text">Information</span>
+                                    <span class="mdc-list-item__text">Profile info</span>
                                     <span class="mdc-list-item__meta">
-                                        <button class="mdc-icon-button" onclick="document.querySelector('.mdc-dialog').MDCDialog.open();">
+                                        <button class="mdc-icon-button"
+                                                onclick="document.querySelector('.shls-settings-profile-dialog').MDCDialog.open();">
                                             <div class="mdc-button__ripple"></div>
-                                            <i class="material-icons mdc-button__icon" aria-hidden="true">more_vert</i>
+                                            <span class="material-icons mdc-button__icon" aria-hidden="true">more_vert</span>
                                         </button>
                                     </span>
-                                    <div class="mdc-dialog" data-mdc-auto-init="MDCDialog">
+                                    <div class="shls-settings-profile-dialog mdc-dialog" data-mdc-auto-init="MDCDialog">
                                         <div class="mdc-dialog__container">
-                                            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title" aria-describedby="my-dialog-content">
-                                                <div class="mdc-dialog__content" id="my-dialog-content">
-                                                    Smart Home Lightning System is a product that lets users able to customize their addressable LED strip with brilliant animation and preset options. It can controllable via this application and its super easy to use! If you have any obstacles, you can contact us! Enjoy your amazing ambient in your house.
-                                                </div>
+                                            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
+                                                <h2 class="mdc-dialog__title">Your profile</h2>
+                                                <div class="mdc-dialog__content"></div>
                                                 <div class="mdc-dialog__actions">
-                                                    <button class="mdc-button mdc-dialog__button mdc-ripple-upgraded"
+                                                    <button class="mdc-button mdc-dialog__button"
                                                             data-mdc-dialog-action="Close" tabindex="-1">
                                                         <div class="mdc-button__ripple"></div>
                                                         <span class="mdc-button__label">Close</span>
@@ -442,15 +479,38 @@
                                 <li class="mdc-list-divider" role="separator"></li>
                                 <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
-                                    <span class="mdc-list-item__text">Logout</span>
+                                    <span class="mdc-list-item__text">Sign out</span>
                                     <span class="mdc-list-item__meta">
-                                        <button class="mdc-button mdc-button--raised" tabindex="-1">
+                                        <button class="mdc-icon-button"
+                                                onclick="document.querySelector('.shls-settings-signout-dialog').MDCDialog.open();">
                                             <div class="mdc-button__ripple"></div>
-                                            <i class="material-icons mdc-button__icon" aria-hidden="true">login</i>
-                                            <span class="mdc-button__label">Logout</span>
+                                            <span class="material-icons mdc-button__icon" aria-hidden="true">login</span>
                                         </button>
                                     </span>
+                                    <div class="shls-settings-signout-dialog mdc-dialog" data-mdc-auto-init="MDCDialog">
+                                        <div class="mdc-dialog__container">
+                                            <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
+                                                <h2 class="mdc-dialog__title">Smart Home Lighting System</h2>
+                                                <div class="mdc-dialog__content">Are you sure you want to sign out?</div>
+                                                <div class="mdc-dialog__actions">
+                                                    <button class="mdc-button mdc-dialog__button"
+                                                            data-mdc-dialog-action="Confirm" tabindex="-1"
+                                                            onclick="{ AUTH.disconnect(); location.reload(); }">
+                                                        <div class="mdc-button__ripple"></div>
+                                                        <span class="mdc-button__label">Confirm</span>
+                                                    </button>
+                                                    <button class="mdc-button mdc-dialog__button"
+                                                            data-mdc-dialog-action="Close" tabindex="-1">
+                                                        <div class="mdc-button__ripple"></div>
+                                                        <span class="mdc-button__label">Close</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mdc-dialog__scrim"></div>
+                                    </div>
                                 </li>
+                                <li class="mdc-list-divider" role="separator"></li>
                             </ul>
                         </div>
                     </div>

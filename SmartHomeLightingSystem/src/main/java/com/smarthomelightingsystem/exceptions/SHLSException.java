@@ -1,5 +1,6 @@
 package com.smarthomelightingsystem.exceptions;
 
+@SuppressWarnings("serial")
 public class SHLSException extends Exception {
 
     public SHLSException() {

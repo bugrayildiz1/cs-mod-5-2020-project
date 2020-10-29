@@ -1,14 +1,30 @@
 package com.smarthomelightingsystem.model.pallate;
 
 public class Animation {
-
+	/**
+	 * id of animation
+	 */
     protected int id;
+    /**
+     * name of the animation
+     */
     protected String name;
+    /**
+     * icon of the animation
+     */
     protected String icon;
-
+    /**
+     * Create Animation object
+     */
     public Animation() {
     }
-
+	/**
+	 * Creates animation object with id, name, icon
+	 * 
+	 * @param id animation id
+	 * @param name animation name
+	 * @param icon animation icon
+	 */
     public Animation(int id, String name, String icon) {
         this.id = id;
         this.name = name;

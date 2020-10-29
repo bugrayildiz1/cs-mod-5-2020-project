@@ -10,10 +10,32 @@ import java.sql.Timestamp;
 
 import com.smarthomelightingsystem.data.Database;
 import com.smarthomelightingsystem.model.LDRData;
+/**
+ * The class works with LDR data retrieved from LDR sensor
+ * 
+ * @author Jasper van Amerongen
+ * @author Albina Shynkar
+ * @author Lola Solovyeva
+ * @author Ilya Averchenko
+ * @author Bugra Yildiz
+ * @author Alexandru Matcov
+
+ * 
+ * @version 1
+ *
+ */
 
 public class LDRDataDAO {
 	private static final String TABLENAME = "ldr_data";
-	
+	/**
+	 * Fills LDRData with information from ResultSet.
+	 * 
+	 * @param r ResultSet object
+	 * 
+	 * @return LDRData object with information from ResultSet
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
 	public void fill(ResultSet r, LDRData out) throws SQLException {
 		
 		String str = r.getString("timestamp");
@@ -23,7 +45,12 @@ public class LDRDataDAO {
 		out.getLabels().add(label);
 
     }
-
+	/**
+	 * Retrieves the information from database regarding LDRData
+	 * for the last 8 hours.
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     public LDRData getDefault() { 
         LDRData out = new LDRData();
     	Database DB = new Database();
@@ -42,7 +69,12 @@ public class LDRDataDAO {
     	return out;
 			
     }
-
+    /**
+	 * Retrieves the information from database regarding LDRData
+	 * for the last day.
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     public LDRData getDay() {
     	LDRData out = new LDRData();
     	Database DB = new Database();
@@ -59,7 +91,12 @@ public class LDRDataDAO {
     	
     	return out;
     }
-
+    /**
+	 * Retrieves the information from database regarding LDRData
+	 * for the week with average value for each day.
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     public LDRData getWeek() {
     	LDRData out = new LDRData();
     	Database DB = new Database();
@@ -76,7 +113,12 @@ public class LDRDataDAO {
     	
     	return out;
     }
-
+    /**
+   	 * Retrieves the information from database regarding LDRData
+   	 * for the month with average value for each day.
+   	 * 
+   	 * @throws SQLException upon SQL query failure
+   	 */
     public LDRData getMonth() { 
     	LDRData out = new LDRData();
     	Database DB = new Database();
@@ -93,7 +135,13 @@ public class LDRDataDAO {
     	
     	return out;
     }
-
+    /**
+     * Inserts exact value to the database with current time
+     * 
+     * @param value value of LDR data to put in database
+     * 
+     * @throws SQLException upon SQL query failure
+     */
     public void setValue(float value) {
     	Database DB = new Database();
     	try {
@@ -104,7 +152,7 @@ public class LDRDataDAO {
 			prepStatement.setTimestamp(2, timestamp);
 			
 			DB.executePreparedStatement(prepStatement);
-    	}catch (Exception e) {
+    	}catch (SQLException e) {
     		e.printStackTrace();
     	}finally{
 			DB.close();

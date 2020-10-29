@@ -25,7 +25,15 @@ import java.util.List;
 public class PresetDAO {
 
     private static final String TABLENAME = "preset";
-
+	/**
+	 * Fills Preset with information from ResultSet.
+	 * 
+	 * @param r ResultSet object
+	 * 
+	 * @return Preset object with information from ResultSet
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     private Preset fill(ResultSet r) throws SQLException {
 
         Preset preset = new Preset();
@@ -35,7 +43,12 @@ public class PresetDAO {
         return preset;
 
     }
-
+    /**
+	 * Retrieves the information from database regarding Preset 
+	 * with specific id.
+	 * 
+     * @param id the is of the Preset
+     */
     public Preset getPreset(int id) {
 
         Database DB = new Database();
@@ -56,12 +69,14 @@ public class PresetDAO {
         finally {
 
             DB.close();
-            return p;
-
         }
+        return p;
 
     }
-
+	/**
+	 * Retrieves the information about all Presets
+	 * and returns it as a list of presetss.
+	 */
     public List<Preset> getAll() {
 
         Database DB = new Database();
@@ -81,9 +96,9 @@ public class PresetDAO {
         finally {
 
             DB.close();
-            return out;
-
+           
         }
+        return out;
 
     }
     

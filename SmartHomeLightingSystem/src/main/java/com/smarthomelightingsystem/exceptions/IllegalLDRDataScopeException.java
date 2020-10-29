@@ -1,5 +1,6 @@
 package com.smarthomelightingsystem.exceptions;
 
+@SuppressWarnings("serial")
 public class IllegalLDRDataScopeException extends SHLSException {
 
     public IllegalLDRDataScopeException() {

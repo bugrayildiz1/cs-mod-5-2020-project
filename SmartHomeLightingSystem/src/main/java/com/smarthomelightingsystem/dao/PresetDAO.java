@@ -69,7 +69,8 @@ public class PresetDAO {
 
         try {
 
-            String q = "SELECT * FROM " + TABLENAME;
+            String q = "SELECT * FROM " + TABLENAME+ " "
+                    +"WHERE id>0;";
 
             PreparedStatement ps = DB.connection.prepareStatement(q);
             ResultSet r = DB.executePreparedStatement(ps);

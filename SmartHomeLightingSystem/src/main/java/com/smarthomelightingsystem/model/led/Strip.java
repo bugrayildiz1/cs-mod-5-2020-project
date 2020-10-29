@@ -21,7 +21,9 @@ import java.util.Collection;
  *
  */
 public class Strip extends ArrayList<LED> {
-
+    /**
+     * Create Strip object
+     */
     public Strip(){
         super();
     }

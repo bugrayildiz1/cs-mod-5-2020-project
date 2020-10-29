@@ -4,10 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LDRData {
-
+	/**
+	 * List of data values retrieved from LDR
+	 */
     List<Integer> data = new ArrayList<>();
+    /**
+     * List of timestamps
+     */
     List<String> labels = new ArrayList<>();
-
+    /**
+     * Create LDRData object
+     */
     public LDRData() {
     }
 

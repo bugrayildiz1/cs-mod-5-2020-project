@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * The class works with animations of LED strip
+ * The class works with setup of LED strip
  *
  * @author Jasper van Amerongen
  * @author Albina Shynkar
@@ -21,7 +21,15 @@ import java.sql.SQLException;
 public class SetupDAO {
 
     private static final String TABLENAME = "setup";
-
+    /**
+	 * Fills SetUp with information from ResultSet.
+	 * 
+	 * @param r ResultSet object
+	 * 
+	 * @return SetUp object with information from ResultSet
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     private SetUp fill(ResultSet r) throws SQLException {
 
         SetUp setUp = new SetUp();
@@ -37,7 +45,11 @@ public class SetupDAO {
         return setUp;
 
     }
-
+	/**
+	 * Retrieves the information from database regarding SetUp.
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
     public SetUp getSetUp() {
 
         Database DB = new Database();
@@ -55,12 +67,15 @@ public class SetupDAO {
         finally {
 
             DB.close();
-            return s;
-
         }
+        return s;
 
     }
-
+	/**
+	 * Inserts SetUp information in the database
+	 * 
+	 * @param s setup object
+	 */
     public void setSetUp(SetUp s) {
 
         setPQ(s.getP(), s.getQ());
@@ -70,7 +85,12 @@ public class SetupDAO {
         setPower(s.getPower());
 
     }
-
+	/**
+	 * Inserts parameters p and q in the database
+	 * 
+	 * @param p length of strip
+	 * @param q width of strip
+	 */
     public void setPQ(int p, int q) {
 
         System.out.println("p = " + p + " and q = " + q);
@@ -89,7 +109,14 @@ public class SetupDAO {
         finally { DB.close(); }
 
     }
-
+    /**
+     * Inserts r,g,b,a to database
+     * 
+     * @param r red value
+     * @param g green value
+     * @param b blue value
+     * @param a brightness value
+     */
     public void setRGBA(int r, int g, int b, float a) {
 
         Database DB = new Database();
@@ -126,7 +153,11 @@ public class SetupDAO {
 		}
 
 	}
-
+    /**
+     * Inserts preset in the database
+     * 
+     * @param id id of preset
+     */
     public void setPreset(int id) {
 
 		Database DB = new Database();
@@ -142,7 +173,11 @@ public class SetupDAO {
 		finally { DB.close(); }
 
 	}
-
+    /**
+     * Inserts information about power in the database
+     * 
+     * @param p whether strip on or off
+     */
     public void setPower(boolean p) {
 
 		Database DB = new Database();

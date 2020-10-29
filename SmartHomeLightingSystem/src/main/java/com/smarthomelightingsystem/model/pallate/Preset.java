@@ -5,7 +5,9 @@ public class Preset {
     private int id;
     private String primary;
     private String secondary;
-
+    /**
+     * Create Preset object
+     */
     public Preset() {
     }
 

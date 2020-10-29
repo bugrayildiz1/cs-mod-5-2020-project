@@ -21,10 +21,17 @@ import java.util.List;
  * @version 1
  */
 public class PalettePage {
-
+	/**
+	 * List of animations
+	 */
     List<Animation> animations = new ArrayList<>();
+	/**
+	 * List of presets
+	 */
     List<Preset> presets = new ArrayList<>();
-
+    /**
+     * Create PalettePage object
+     */
     public PalettePage() {
     }
 

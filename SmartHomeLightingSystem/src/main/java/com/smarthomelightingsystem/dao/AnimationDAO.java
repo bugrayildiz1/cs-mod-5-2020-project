@@ -27,7 +27,15 @@ import java.util.List;
 public class AnimationDAO {
 
 	private static final String TABLENAME = "animation";
-
+	/**
+	 * Fills Animation with information from ResultSet.
+	 * 
+	 * @param r ResultSet object
+	 * 
+	 * @return Animation object with information from ResultSet
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
 	private Animation fill(ResultSet r) throws SQLException {
 
 		Animation animation = new Animation();
@@ -37,7 +45,11 @@ public class AnimationDAO {
 		return animation;
 
 	}
-
+	/**
+	 * Retrieves the information from database regarding Animation.
+	 * 
+	 * @throws SQLException upon SQL query failure
+	 */
 	public Animation getAnimation(int id) {
 
 		Database DB = new Database();
@@ -58,12 +70,14 @@ public class AnimationDAO {
 		finally {
 
 			DB.close();
-			return a;
-
 		}
+		return a;
 
 	}
-
+	/**
+	 * Retrieves the information about all Animations
+	 * and returns it as a list of animations.
+	 */
 	public List<Animation> getAll() {
 
 		Database DB = new Database();
@@ -83,9 +97,8 @@ public class AnimationDAO {
 		finally {
 
 			DB.close();
-			return out;
-
 		}
+		return out;
 
 	}
 

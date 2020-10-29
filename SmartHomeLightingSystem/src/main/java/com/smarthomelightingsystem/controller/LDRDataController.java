@@ -19,15 +19,15 @@ public class LDRDataController {
     @Path("data")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public LDRData getLDRData(@QueryParam("scope") String scope, @QueryParam("mobile") boolean mobile) {
+    public LDRData getLDRData(@QueryParam("scope") String scope) {
 
         try {
 
             switch (scope) {
-                case "def": return new LDRDataDAO().getDefault(mobile);
-                case "day": return new LDRDataDAO().getDay(mobile);
+                case "def": return new LDRDataDAO().getDefault();
+                case "day": return new LDRDataDAO().getDay();
                 case "week": return new LDRDataDAO().getWeek();
-                case "month": return new LDRDataDAO().getMonth(mobile);
+                case "month": return new LDRDataDAO().getMonth();
                 default: throw new IllegalLDRDataScopeException();
             }
 

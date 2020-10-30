@@ -24,7 +24,7 @@
 | *Alexandru Matcov*                    |*What did you finish yesterday?*|*retrospective report,pushed code for ldr to gitlab, spoke with ta about library*              |
 |                                       |*What will you do today?*       |*buy new sd card, will see whether library works like that, if so, collect data from LDR, send it to backend*              |
 |                                       |*Any obstacles?*                |*no*                                             |
-| *Albina Shynkar*                      |*What did you finish yesterday?*|retrospective report,*set up database, retrospective report* |
+| *Albina Shynkar*                      |*What did you finish yesterday?*|*retrospective report,set up database* |
 |                                       |*What will you do today?*       |*LDR data class and controller*   |
 |                                       |*Any obstacles?*                |*No*                                 |
 | *Lola Solovyeva*                      |*What did you finish yesterday?*|*retrospective report,changed with Jasper some classes, restructure them a bit*      |

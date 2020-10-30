@@ -99,33 +99,44 @@ html, body,
     transform: rotate(180deg);
 }
 
-.shls-gridcell-caption, .mdc-tab__text-label *, .mdc-layout-grid__inner *, .mdc-list .mdc-list--two-line *  {
+.shls-gridcell-caption,
+.mdc-list-item__secondary-text,
+.mdc-tab:not(.mdc-tab--active) .mdc-tab__text-label,
+.mdc-tab:not(.mdc-tab--active) .mdc-tab__icon {
     color: var(--shls-theme-text-secondary);
 }
 
-.shls-pallete-animation-desc, .shls-pallete-animation-icon, .material-icons, .mdc-radio__native-control {
-    color: var(--mdc-theme-primary);
+.shls-pallete-animation-desc,
+.shls-pallete-animation-icon,
+.mdc-list-item__primary-text,
+.material-icons,
+.mdc-radio__native-control,
+#shls-page-pallate .mdc-card *,
+.mdc-list-group__subheader,
+.mdc-list-item__text,
+.mdc-list-item__meta {
+    color: var(--shls-theme-text-primary);
 }
 
-.shls-pallate-animations-wrapper, .shls-pallate-presets-wrapper, .shls-pallate-functions-tabbar{
+.shls-pallate-functions-wrapper {
+    background-color: var(--shls-theme-background-functions);
+}
+
+#shls-app,
+#shls-page-pallate .mdc-card,
+.shls-pallate-functions-tabbar{
+    background-color: var(--shls-theme-background-app);
+}
+
+.shls-container {
     background-color: var(--shls-theme-background);
 }
 
-.mdc-card{
-    background-color: var(--shls-theme-background-card);
+.mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
+    border-color: var(--shls-theme-text-secondary);
 }
 
-.mdc-list-item__secondary-text{
-    color: var(--shls-theme-text-secondary);
-}
 
-.shls-container{
-    background-color: var(--shls-theme-background-app);
-}
-
-#shls-app {
-    background-color: var(--shls-theme-background-app);
-}
 
 /*noinspection CssUnresolvedCustomProperty*/
 html.light {
@@ -133,7 +144,7 @@ html.light {
     --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-light);
     --shls-theme-background: #FFFFFF;
     --shls-theme-background-app: #FFFFFF;
-    --shls-theme-background-card: #FFFFFF;
+    --shls-theme-background-functions: #FAFAFA;
 }
 
 /*noinspection CssUnresolvedCustomProperty*/
@@ -142,7 +153,7 @@ html.dark {
     --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-dark);
     --shls-theme-background: #121212;
     --shls-theme-background-app: #202020;
-    --shls-theme-background-card: #202020;
+    --shls-theme-background-functions: var(--shls-theme-background);
 }
 
 

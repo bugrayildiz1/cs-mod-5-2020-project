@@ -23,6 +23,8 @@ html, body,
     font-weight: 500;
 }
 
+
+
 #shls-backdrop {
     height: 300px;
     position: absolute;
@@ -97,7 +99,60 @@ html, body,
     transform: rotate(180deg);
 }
 
+.shls-gridcell-caption, .mdc-tab__text-label *, .mdc-layout-grid__inner *, .mdc-list .mdc-list--two-line *  {
+    color: var(--shls-theme-text-secondary);
+}
 
+.shls-pallete-animation-desc, .shls-pallete-animation-icon, .material-icons, .mdc-radio__native-control {
+    color: var(--mdc-theme-primary);
+}
+
+.shls-pallate-animations-wrapper, .shls-pallate-presets-wrapper, .shls-pallate-functions-tabbar{
+    background-color: var(--shls-theme-background);
+}
+
+.mdc-card{
+    background-color: var(--shls-theme-background-card);
+}
+
+.mdc-list-item__secondary-text{
+    color: var(--shls-theme-text-secondary);
+}
+
+.shls-container{
+    background-color: var(--shls-theme-background-app);
+}
+
+#shls-app {
+    background-color: var(--shls-theme-background-app);
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+html.light {
+    --shls-theme-text-primary: var(--mdc-theme-text-primary-on-light);
+    --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-light);
+    --shls-theme-background: #FFFFFF;
+    --shls-theme-background-app: #FFFFFF;
+    --shls-theme-background-card: #FFFFFF;
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+html.dark {
+    --shls-theme-text-primary: var(--mdc-theme-text-primary-on-dark);
+    --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-dark);
+    --shls-theme-background: #121212;
+    --shls-theme-background-app: #202020;
+    --shls-theme-background-card: #202020;
+}
+
+
+
+
+/*background*/
+
+/*app*/
+
+/*functions*/
 
 @media (min-width: 1000px) and (min-height: 920px) {
 

@@ -106,12 +106,9 @@ function onColorChange(r, g, b) {
         if (luma < 200) $ROOT.css("--mdc-theme-secondary", `rgb(${r}, ${g}, ${b})`);
         else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
 
-        r = Number(r).toString(16);
-        if (r.length < 2) r = "0" + r;
-        g = Number(g).toString(16);
-        if (g.length < 2) g = "0" + g;
-        b = Number(b).toString(16);
-        if (b.length < 2) b = "0" + b;
+        r = Number(r).toString(16); if (r.length < 2) r = "0" + r;
+        g = Number(g).toString(16); if (g.length < 2) g = "0" + g;
+        b = Number(b).toString(16); if (b.length < 2) b = "0" + b;
         $(".shls-pallate-selection-text").text(("#" + r + g + b).toUpperCase());
 
     } else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
@@ -202,6 +199,8 @@ function openExtend() {
     $target.show();
 
 }
+
+
 
 function openLdr() {
 

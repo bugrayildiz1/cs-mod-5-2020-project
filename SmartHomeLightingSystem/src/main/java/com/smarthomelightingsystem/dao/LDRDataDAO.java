@@ -36,15 +36,24 @@ public class LDRDataDAO {
 	 * 
 	 * @throws SQLException upon SQL query failure
 	 */
-	public void fill(ResultSet r, LDRData out) throws SQLException {
+	public void fillHours(ResultSet r, LDRData out) throws SQLException {
 		
 		String str = r.getString("timestamp");
-		String label = str.substring(13, 15);
+		String label = str.substring(11, 13);
 		
-		out.getData().add(r.getInt("data"));
+		out.getData().add(r.getFloat("data"));
 		out.getLabels().add(label);
 
     }
+	public void fill(ResultSet r, LDRData out) throws SQLException {
+
+		String str = r.getString("timestamp");
+		String label = str.substring(8, 10);
+
+		out.getData().add(r.getFloat("avg"));
+		out.getLabels().add(label);
+
+	}
 	/**
 	 * Retrieves the information from database regarding LDRData
 	 * for the last 8 hours.
@@ -55,13 +64,12 @@ public class LDRDataDAO {
         LDRData out = new LDRData();
     	Database DB = new Database();
     	try {
-    		String q = "SELECT * FROM ldr_data_day "
-    				+ "LIMIT 8;";
+    		String q = "SELECT * FROM ldr_data_day_8";
     		
         	PreparedStatement prepStatement = DB.connection.prepareStatement(q);
         	ResultSet r = DB.executePreparedStatement(prepStatement);
         	
-        	while (r.next()) { fill(r, out); }
+        	while (r.next()) { fillHours(r, out); }
         	
     	} catch (SQLException e) { e.printStackTrace(); } 
     	finally { DB.close(); }
@@ -84,7 +92,7 @@ public class LDRDataDAO {
     		PreparedStatement prepStatement = DB.connection.prepareStatement(q);
         	ResultSet r = DB.executePreparedStatement(prepStatement);
         	
-        	while(r.next()) {fill(r, out);}
+        	while(r.next()) {fillHours(r, out);}
         	
     	} catch (SQLException e) {e.printStackTrace(); } 
     	finally{ DB.close(); }

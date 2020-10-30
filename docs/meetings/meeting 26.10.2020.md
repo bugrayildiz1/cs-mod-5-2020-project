@@ -1,7 +1,7 @@
 |                          | **Names/Ids**       |
 |-------------------------:|:--------------------|
 | *Project Name:*          |*LED embient smart lighting system for displays*          |
-| *Meeting Date:*          |*05.10.2020*           |
+| *Meeting Date:*          |*26.10.2020*           |
 | *Present Team members:*  |*•Jasper van Amerongen*|
 |                          |*•Ilya Averchenko*     |
 |                          |*•Alexandru Matcov*    |
@@ -25,10 +25,10 @@
 |                                       |*What will you do today?*       |*Explore library for LDR*              |
 |                                       |*Any obstacles?*                |*no*                                             |
 | *Albina Shynkar*                      |*What did you finish yesterday?*|*mostly concentrated on exams and resits* |
-|                                       |*What will you do today?*       |*tuesday meeting with Lola, start coding*   |
+|                                       |*What will you do today?*       |*set up database*   |
 |                                       |*Any obstacles?*                |*No*                                 |
 | *Lola Solovyeva*                      |*What did you finish yesterday?*|*mostly concentrated on exams and resits*      |
-|                                       |*What will you do today?*       |*tuesday meeting with Albina, start coding*                      |
+|                                       |*What will you do today?*       |*restructure some classes*                      |
 |                                       |*Any obstacles?*                |*No*                                 |
 | *Bugra Veysel Yıldız*                 |*What did you finish yesterday?*|*work on settings page, LDR data page*  |
 |                                       |*What will you do today?*       |*Start settings page*                      |

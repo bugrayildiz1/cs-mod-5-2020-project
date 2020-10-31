@@ -17,8 +17,6 @@ function loadCurrentSetup() {
 
     if (SETUP.a === 0) SETUP.a = 1;
 
-    onColorChange(SETUP.r, SETUP.g, SETUP.b);
-
 }
 
 function loadPallate() {

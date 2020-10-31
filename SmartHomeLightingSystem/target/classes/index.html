@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="light">
+<html data-shls-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="css/ldr.css">
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/prettyfy.css">
+    <link rel="stylesheet" href="css/theme.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/7.0.0/material-components-web.min.js"
             integrity="sha512-GYvkycU+qodQqIjA1hgH0730R1CDRpUkZguOGokHBdQIKtGgoRhcT+kpAm4SGLo4pptvvVuhrq1aZOIgXRANaA=="
@@ -49,6 +50,7 @@
     <script src="js/classes/AnimationSelector.js"></script>
     <script src="js/classes/LDRGraph.js"></script>
     <script src="js/classes/Setup.js"></script>
+    <script src="js/classes/SHLSSwitch.js"></script>
     <script src="js/shls.js"></script>
 
     <title>Smart Home Lighting System</title>
@@ -371,7 +373,7 @@
                                         <span class="mdc-list-item__secondary-text">Change the theme mode of the system</span>
                                     </label>
                                     <span class="mdc-list-item__meta">
-                                        <div class="mdc-switch" id="darkmode-switch" data-mdc-auto-init="MDCSwitch">
+                                        <div class="mdc-switch">
                                             <div class="mdc-switch__track"></div>
                                             <div class="mdc-switch__thumb-underlay mdc-ripple-upgraded mdc-ripple-upgraded--unbounded">
                                                 <div class="mdc-switch__thumb"></div>
@@ -381,36 +383,25 @@
                                             </div>
                                         </div>
                                     </span>
-                                    <script>
-                                        document.getElementById("darkmode-switch").onclick = function () {
-                                            darkthemeFunction()
-                                        };
-                                        function darkthemeFunction(){
-                                            if ()
-                                        }
-                                    </script>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                                 <li class="mdc-list-item shls-settings-updateoncolor mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <label class="mdc-list-item__text">
-                                        <span class="mdc-list-item__primary-text">Change theme on color</span>
+                                        <span class="mdc-list-item__primary-text">Change theme on color update</span>
                                         <span class="mdc-list-item__secondary-text">Update the color theme of the system on a color change</span>
                                     </label>
                                     <span class="mdc-list-item__meta">
-                                        <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+                                        <div class="mdc-switch">
                                             <div class="mdc-switch__track"></div>
                                             <div class="mdc-switch__thumb-underlay mdc-ripple-upgraded mdc-ripple-upgraded--unbounded">
                                                 <div class="mdc-switch__thumb"></div>
                                                 <input type="checkbox" id="shls-settings-updateoncolor-switch"
                                                        class="mdc-switch__native-control" role="switch"
-                                                       aria-checked="false" tabindex="-1"
-                                                       onclick="toggleChangeThemeOnColorUpdate()">
+                                                       aria-checked="false" tabindex="-1">
                                             </div>
                                         </div>
                                     </span>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                             </ul>
                             <h3 class="mdc-list-group__subheader">Product</h3>
                             <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
@@ -446,15 +437,13 @@
                                         </div>
                                         <div class="mdc-dialog__scrim"></div>
                                     </div>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                                 <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple"
                                     tabindex="0" data-mdc-auto-init-state="initialized">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Model</span>
-                                    <span class="mdc-list-item__meta" style="font-size: medium">WS2812B RGB LED</span>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                    <span class="mdc-list-item__meta">WS2812B RGB LED</span>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                             </ul>
                             <h3 class="mdc-list-group__subheader">Account</h3>
                             <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
@@ -484,8 +473,7 @@
                                         </div>
                                         <div class="mdc-dialog__scrim"></div>
                                     </div>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                                 <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Sign out</span>
@@ -499,27 +487,26 @@
                                     <div class="shls-settings-signout-dialog mdc-dialog" data-mdc-auto-init="MDCDialog">
                                         <div class="mdc-dialog__container">
                                             <div class="mdc-dialog__surface" role="alertdialog" aria-modal="true">
-                                                <h2 class="mdc-dialog__title">Smart Home Lighting System</h2>
+                                                <h2 class="mdc-dialog__title">Are you sure?</h2>
                                                 <div class="mdc-dialog__content">Are you sure you want to sign out?</div>
                                                 <div class="mdc-dialog__actions">
                                                     <button class="mdc-button mdc-dialog__button"
-                                                            data-mdc-dialog-action="Confirm" tabindex="-1"
+                                                            data-mdc-dialog-action="Yes" tabindex="-1"
                                                             onclick="{ AUTH.disconnect(); location.reload(); }">
                                                         <div class="mdc-button__ripple"></div>
-                                                        <span class="mdc-button__label">Confirm</span>
+                                                        <span class="mdc-button__label">Yes</span>
                                                     </button>
                                                     <button class="mdc-button mdc-dialog__button"
-                                                            data-mdc-dialog-action="Close" tabindex="-1">
+                                                            data-mdc-dialog-action="No" tabindex="-1">
                                                         <div class="mdc-button__ripple"></div>
-                                                        <span class="mdc-button__label">Close</span>
+                                                        <span class="mdc-button__label">No</span>
                                                     </button>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="mdc-dialog__scrim"></div>
                                     </div>
-                                </li>
-                                <li class="mdc-list-divider" role="separator"></li>
+                                </li><li class="mdc-list-divider" role="separator"></li>
                             </ul>
                         </div>
                     </div>

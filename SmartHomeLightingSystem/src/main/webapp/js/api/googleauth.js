@@ -40,11 +40,6 @@ function onSignIn() {
 
     loadCurrentSetup();
 
-    $(".shls-settings-profile-dialog .mdc-dialog__content").html(`
-        <p>Name: ${GPROFILE.getName()}</p>
-        <p>Email: ${GPROFILE.getEmail()}</p>
-    `);
-
     if (SETUP.p === 0 || SETUP.q === 0) {
         openWelcome();
         openSetUp();

@@ -19,33 +19,31 @@ function loadCurrentSetup() {
 
 }
 
-function loadPallate() {
+function loadPalette() {
 
     const __animation = (obj) => `
-        <div id="shls-pallate-animation-${obj.id}" class="swiper-slide">
+        <div id="shls-palette-animation-${obj.id}" class="swiper-slide" onclick="sendAnim(${obj.id})">
             <div class="mdc-card shadow-2">
-                <span class="shls-pallate-animation-icon material-icons">${obj.icon}</span>
-                <span class="shls-pallate-animation-desc">${obj.name}</span>
+                <span class="shls-palette-animation-icon material-icons">${obj.icon}</span>
+                <span class="shls-palette-animation-desc">${obj.name}</span>
             </div>
         </div>
     `;
     const __preset = (obj) => `
-        <li id="shls-pallate-preset-${obj.id}" class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+        <li id="shls-palette-preset-${obj.id}" class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
             <span class="mdc-list-item__ripple"></span>
             <span class="mdc-list-item__graphic">
-                <div class="mdc-radio">
-                    <input class="mdc-radio__native-control"
-                           type="radio"
-                           id="shls-pallate-preset-${obj.id}-input"
-                           name="shls-pallate-preset-radios"
-                           value="1"/>
+                <div class="mdc-radio" onclick="sendPreset(${obj.id})" data-mdc-auto-init="MDCRadio">
+                    <input class="mdc-radio__native-control" type="radio"
+                           id="shls-palette-preset-${obj.id}-input"
+                           name="shls-palette-preset-radios" value="1"/>
                     <div class="mdc-radio__background">
                         <div class="mdc-radio__outer-circle"></div>
                         <div class="mdc-radio__inner-circle"></div>
                     </div>
                 </div>
             </span>
-            <label class="mdc-list-item__text" for="shls-pallate-preset-${obj.id}-input">
+            <label class="mdc-list-item__text" for="shls-palette-preset-${obj.id}-input">
                 <span class="mdc-list-item__primary-text">${obj.primary}</span>
                 <span class="mdc-list-item__secondary-text">${obj.secondary}</span>
             </label>
@@ -62,8 +60,8 @@ function loadPallate() {
 
         ANIMSEL.appendSlide(data.animations.map(__animation));
 
-        const $rainbow = $(".shls-pallate-presets-wrapper > .mdc-list-group:nth-of-type(1) > .mdc-list");
-        const $other = $(".shls-pallate-presets-wrapper > .mdc-list-group:nth-of-type(2) > .mdc-list");
+        const $rainbow = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(1) > .mdc-list");
+        const $other = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(2) > .mdc-list");
 
         $.each(data.presets, (i, p) => {
 
@@ -140,5 +138,21 @@ function sendPQ() {
 function sendRGBA() {
 
     $.post(`rest/setup/rgba?r=${SETUP.r}&g=${SETUP.g}&b=${SETUP.b}&a=${SETUP.a}`);
+
+}
+
+function sendAnim(id) {
+
+    SETUP.anim = id;
+    SETUP.preset = 0;
+    $.post(`rest/setup/anim?id=${SETUP.anim}`);
+
+}
+
+function sendPreset(id) {
+
+    SETUP.preset = id;
+    SETUP.anim = 0;
+    $.post(`rest/setup/preset?id=${SETUP.preset}`);
 
 }

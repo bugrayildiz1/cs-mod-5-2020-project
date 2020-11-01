@@ -20,7 +20,7 @@ html[data-shls-theme="dark"] {
 
 .shls-pallete-animation-desc,
 .shls-pallete-animation-icon,
-#shls-page-pallate .mdc-card *,
+#shls-page-palette .mdc-card *,
 .shls-top-buttons .material-icons,
 .mdc-radio__native-control,
 .mdc-list-group__subheader,
@@ -42,8 +42,8 @@ html[data-shls-theme="dark"] {
 }
 
 #shls-app,
-#shls-page-pallate .mdc-card,
-.shls-pallate-functions-tabbar {
+#shls-page-palette .mdc-card,
+.shls-palette-functions-tabbar {
     background-color: var(--shls-theme-background-primary);
 }
 
@@ -51,7 +51,7 @@ html[data-shls-theme="dark"] {
     border-color: var(--shls-theme-text-secondary);
 }
 
-.shls-pallate-functions-wrapper {
+.shls-palette-functions-wrapper {
     background-color: var(--shls-theme-background-secondary);
 }
 

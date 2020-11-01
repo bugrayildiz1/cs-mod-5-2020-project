@@ -12,13 +12,13 @@ $(document).ready(function() {
 
     // Set Palette Tab and Animations Tab
     document.querySelector(".shls-tabbar").MDCTabBar.activateTab(0);
-    document.querySelector(".shls-pallate-functions-tabbar").MDCTabBar.activateTab(0);
+    document.querySelector(".shls-palette-functions-tabbar").MDCTabBar.activateTab(0);
 
 });
 
 function startApp() {
 
-    if (WHEEL === undefined) WHEEL = new ColorWheel(".shls-pallate-iro-colorwheel", 250);
+    if (WHEEL === undefined) WHEEL = new ColorWheel(".shls-palette-iro-colorwheel", 250);
 
     if (LDRGRAPH === undefined) LDRGRAPH = new LDRGraph("#shls-ldr-chart");
 
@@ -61,9 +61,8 @@ function startApp() {
 
         $("#shls-app").fadeIn();
 
-        openPallate();
-        openPallateAnimations();
-
+        openPalette();
+        openPaletteAnimations();
 
         if (BRSLIDER === undefined) {
             BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
@@ -76,7 +75,7 @@ function startApp() {
 
         if (ANIMSEL === undefined) {
             ANIMSEL = new AnimationSelector(".swiper-container");
-            loadPallate();
+            loadPalette();
         }
 
     });
@@ -95,7 +94,7 @@ function onResize() {
 
     // Color Wheel
     let colorWheelWidth;
-    const $wheelWrapper = $(".shls-pallate-iro-colorwheel");
+    const $wheelWrapper = $(".shls-palette-iro-colorwheel");
 
     if (w < 600) colorWheelWidth = 250;
     else if (w >= 600 && w < 840) colorWheelWidth = 280;
@@ -133,7 +132,7 @@ function onColorChange(r, g, b) {
         r = Number(r).toString(16); if (r.length < 2) r = "0" + r;
         g = Number(g).toString(16); if (g.length < 2) g = "0" + g;
         b = Number(b).toString(16); if (b.length < 2) b = "0" + b;
-        $(".shls-pallate-selection-text").text(("#" + r + g + b).toUpperCase());
+        $(".shls-palette-selection-text").text(("#" + r + g + b).toUpperCase());
 
     } else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
 
@@ -186,10 +185,10 @@ function openSetUp() {
 
 }
 
-function openPallate() {
+function openPalette() {
 
-    renderTitle("Pallate");
-    const $target = $("#shls-page-pallate");
+    renderTitle("Palette");
+    const $target = $("#shls-page-palette");
     $target.siblings().not(".shls-tabbar-wrapper").hide();
     $target.show();
 
@@ -224,18 +223,18 @@ function openSettings() {
 
 }
 
-function openPallateAnimations() {
+function openPaletteAnimations() {
 
-    const $target = $(".shls-pallate-animations-wrapper") ;
-    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    const $target = $(".shls-palette-animations-wrapper") ;
+    $target.siblings().not(".shls-palette-functions-tabbar-wrapper").hide();
     $target.show();
 
 }
 
-function openPallatePresets() {
+function openPalettePresets() {
 
-    const $target = $(".shls-pallate-presets-wrapper");
-    $target.siblings().not(".shls-pallate-functions-tabbar-wrapper").hide();
+    const $target = $(".shls-palette-presets-wrapper");
+    $target.siblings().not(".shls-palette-functions-tabbar-wrapper").hide();
     $target.show();
 
 }

@@ -1,4 +1,4 @@
-package com.smarthomelightingsystem.model.pallate;
+package com.smarthomelightingsystem.model.palette;
 
 public class Preset {
 

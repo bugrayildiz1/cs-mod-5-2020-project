@@ -2,7 +2,7 @@ package com.smarthomelightingsystem.controller;
 
 import com.smarthomelightingsystem.dao.AnimationDAO;
 import com.smarthomelightingsystem.dao.PresetDAO;
-import com.smarthomelightingsystem.model.pallate.PalettePage;
+import com.smarthomelightingsystem.model.palette.PalettePage;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

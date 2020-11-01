@@ -1,7 +1,7 @@
-package com.smarthomelightingsystem.model.pallate;
+package com.smarthomelightingsystem.model.palette;
 
-import com.smarthomelightingsystem.model.pallate.Animation;
-import com.smarthomelightingsystem.model.pallate.Preset;
+import com.smarthomelightingsystem.model.palette.Animation;
+import com.smarthomelightingsystem.model.palette.Preset;
 
 import java.util.ArrayList;
 import java.util.List;

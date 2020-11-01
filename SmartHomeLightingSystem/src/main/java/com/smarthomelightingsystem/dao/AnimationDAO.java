@@ -1,7 +1,7 @@
 package com.smarthomelightingsystem.dao;
 
 import com.smarthomelightingsystem.data.Database;
-import com.smarthomelightingsystem.model.pallate.Animation;
+import com.smarthomelightingsystem.model.palette.Animation;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

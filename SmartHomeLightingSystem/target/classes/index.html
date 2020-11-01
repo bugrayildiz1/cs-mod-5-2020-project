@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="css/welcome.css">
     <link rel="stylesheet" href="css/signin.css">
     <link rel="stylesheet" href="css/setup.css">
-    <link rel="stylesheet" href="css/pallate.css">
+    <link rel="stylesheet" href="css/palette.css">
     <link rel="stylesheet" href="css/ldr.css">
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/prettyfy.css">
@@ -178,17 +178,17 @@
         </div>
         <div class="shls-app-page-wrapper mdc-layout-grid__inner">
 
-            <!-- PALLATE PAGE -->
-            <div id="shls-page-pallate" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+            <!-- PALETTE PAGE -->
+            <div id="shls-page-palette" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                 <div class="mdc-layout-grid__inner">
 
-                    <!-- PALLATE COLOUR WHEEL-->
-                    <div class="shls-pallate-iro-colorwheel-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                    <!-- PALETTE COLOUR WHEEL-->
+                    <div class="shls-palette-iro-colorwheel-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
                         <span class="shls-gridcell-caption mdc-typography--overline">colour</span>
-                        <div class="shls-pallate-iro-colorwheel"></div>
+                        <div class="shls-palette-iro-colorwheel"></div>
                         <svg style="display: none">
                             <defs>
-                                <g id="shls-pallate-iro-colorwheel-handle">
+                                <g id="shls-palette-iro-colorwheel-handle">
                                     <circle r="16" fill="none" stroke-width="7" stroke="grey"></circle>
                                     <circle r="14" fill="none" stroke-width="10" stroke="#fff"></circle>
                                 </g>
@@ -196,18 +196,18 @@
                         </svg>
                     </div>
 
-                    <!-- PALLATE SELECTION -->
-                    <div class="shls-pallate-selection-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                    <!-- PALETTE SELECTION -->
+                    <div class="shls-palette-selection-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
                         <span class="shls-gridcell-caption mdc-typography--overline">selection</span>
-                        <div class="shls-pallate-selection">
-                            <h4 class="shls-pallate-selection-text mdc-typography--headline4"></h4>
+                        <div class="shls-palette-selection">
+                            <h4 class="shls-palette-selection-text mdc-typography--headline4"></h4>
                         </div>
                     </div>
 
-                    <!-- PALLATE BRIGHTNESS SLIDER -->
-                    <div class="shls-pallate-brslider-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+                    <!-- PALETTE BRIGHTNESS SLIDER -->
+                    <div class="shls-palette-brslider-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
                         <span class="shls-gridcell-caption mdc-typography--overline">brightness</span>
-                        <div class="shls-pallate-brslider">
+                        <div class="shls-palette-brslider">
                             <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
                                  aria-valuemin="0" aria-valuemax="100" aria-valuenow="70"
                                  aria-label="Select Value">
@@ -227,19 +227,19 @@
                         </div>
                     </div>
 
-                    <!-- PALLATE FUNCTIONS MENU -->
-                    <div class="shls-pallate-functions-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                    <!-- PALETTE FUNCTIONS MENU -->
+                    <div class="shls-palette-functions-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
 
-                            <!-- PALLATE FUNCTIONS TABBAR -->
-                            <div class="shls-pallate-functions-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12 shadow-1">
-                                <div class="shls-pallate-functions-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
+                            <!-- PALETTE FUNCTIONS TABBAR -->
+                            <div class="shls-palette-functions-tabbar-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12 shadow-1">
+                                <div class="shls-palette-functions-tabbar mdc-tab-bar" role="tablist" data-mdc-auto-init="MDCTabBar">
                                     <div class="mdc-tab-scroller">
                                         <div class="mdc-tab-scroller__scroll-area">
                                             <div class="mdc-tab-scroller__scroll-content">
                                                 <button class="mdc-tab" role="tab"
                                                         aria-selected="false" tabindex="-1"
-                                                        onclick="openPallateAnimations()">
+                                                        onclick="openPaletteAnimations()">
                                                     <span class="mdc-tab__content">
                                                         <span class="mdc-tab__text-label">animations</span>
                                                     </span>
@@ -250,7 +250,7 @@
                                                 </button>
                                                 <button class="mdc-tab" role="tab"
                                                         aria-selected="false" tabindex="-1"
-                                                        onclick="openPallatePresets()">
+                                                        onclick="openPalettePresets()">
                                                     <span class="mdc-tab__content">
                                                         <span class="mdc-tab__text-label">presets</span>
                                                     </span>
@@ -265,8 +265,8 @@
                                 </div>
                             </div>
 
-                            <!-- PALLATE ANIMATIONS SECTION -->
-                            <div class="shls-pallate-animations-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                            <!-- PALETTE ANIMATIONS SECTION -->
+                            <div class="shls-palette-animations-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                                 <div class="swiper-container">
                                     <div class="swiper-wrapper">
                                         <!-- GENERATED CONTENT-->
@@ -275,8 +275,8 @@
                                 </div>
                             </div>
 
-                            <!-- PALLATE PRESETS SECTION -->
-                            <div class="shls-pallate-presets-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                            <!-- PALETTE PRESETS SECTION -->
+                            <div class="shls-palette-presets-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                                 <div class="mdc-list-group">
                                     <h3 class="mdc-list-group__subheader">Rainbow</h3>
                                     <ul class="mdc-list mdc-list--two-line" role="radiogroup" data-mdc-auto-init="MDCList">
@@ -521,7 +521,7 @@
                             <div class="mdc-tab-scroller__scroll-content">
                                 <button class="mdc-tab" role="tab"
                                         aria-selected="false" tabindex="-1"
-                                        onclick="openPallate()">
+                                        onclick="openPalette()">
                                     <span class="mdc-tab__content">
                                         <span class="mdc-tab__icon material-icons" aria-hidden="true">color_lens</span>
                                     </span>

@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 
 import com.smarthomelightingsystem.data.Database;
@@ -41,14 +42,16 @@ public class LDRDataDAO {
 	public void fillHours(ResultSet r, LDRData out) throws SQLException {
 		
 		out.getData().add(r.getFloat("data"));
-		out.getLabels().add(r.getString("timestamp").substring(11, 13));
+		String timeStamp = new SimpleDateFormat("dd/MM").format(r.getTimestamp("timestamp"));
+		out.getLabels().add(timeStamp);
 
     }
 
 	public void fill(ResultSet r, LDRData out) throws SQLException {
 
 		out.getData().add(r.getFloat("avg"));
-		out.getLabels().add(r.getString("timestamp").substring(8, 10));
+		String timeStamp = new SimpleDateFormat("dd/MM").format(r.getTimestamp("timestamp"));
+		out.getLabels().add(timeStamp);
 
 	}
 	/**
@@ -64,11 +67,11 @@ public class LDRDataDAO {
 
     	try {
 
-    		String q = "SELECT * FROM ldr_data_day_8";
+    		String q = "SELECT * FROM ldr_data_day_8 ORDER BY timestamp ASC";
     		
         	PreparedStatement ps = DB.connection.prepareStatement(q);
         	ResultSet r = DB.executePreparedStatement(ps);
-        	
+
         	while (r.next()) { fillHours(r, out); }
         	
     	} catch (SQLException e) { e.printStackTrace(); } 
@@ -90,7 +93,7 @@ public class LDRDataDAO {
 
     	try {
 
-    		String q = "SELECT * FROM ldr_data_day";
+    		String q = "SELECT * FROM ldr_data_day ORDER BY timestamp ASC";
     		
     		PreparedStatement ps = DB.connection.prepareStatement(q);
         	ResultSet r = DB.executePreparedStatement(ps);
@@ -117,7 +120,7 @@ public class LDRDataDAO {
 
     	try {
 
-    		String q = "SELECT * FROM ldr_data_week";
+    		String q = "SELECT * FROM ldr_data_week ORDER BY timestamp ASC";
     		
     		PreparedStatement ps = DB.connection.prepareStatement(q);
     		ResultSet r = DB.executePreparedStatement(ps);
@@ -143,7 +146,7 @@ public class LDRDataDAO {
 
     	try {
 
-    		String q = "SELECT * FROM ldr_data_month";
+    		String q = "SELECT * FROM ldr_data_month ORDER BY timestamp ASC";
     		
     		PreparedStatement ps = DB.connection.prepareStatement(q);
     		ResultSet r = DB.executePreparedStatement(ps);

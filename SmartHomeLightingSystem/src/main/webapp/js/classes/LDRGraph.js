@@ -45,15 +45,35 @@ class LDRGraph {
             options
         });
 
-        this.update();
+        this.load(this.scope);
+        this.resize(this.mobile);
 
     }
 
-    update() {
+    load(scope) {
 
-        const raw = loadLDRData(this.mobile, this.scope);
+        this.scope = scope;
+        const raw = loadLDRData(this.scope);
+
+        raw.labels[0] = "";
+        raw.labels[raw.labels.length - 1] = "";
         this.obj.data.labels = raw.labels;
-        this.obj.data.datasets[0].data = raw.data;
+        this.obj.data.datasets[0].data = raw.data.map(v => 100 * v);
+
+        this.obj.update();
+
+    }
+
+    resize(mobile) {
+
+        this.mobile = mobile;
+
+        let tickLim;
+        if (this.mobile) tickLim = this.obj.data.datasets[0].data.length / 2;
+        else tickLim = this.obj.data.datasets[0].data.length;
+        this.obj.options.scales.xAxes[0].ticks.maxTicksLimit = tickLim;
+
+        this.obj.update();
 
     }
 

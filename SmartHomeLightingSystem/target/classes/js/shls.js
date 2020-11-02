@@ -1,7 +1,7 @@
 const $ROOT = $(":root");
-let WHEEL, ANIMSEL, LDRGRAPH, BRSLIDER, DARKSWITCH,  COLORSWITCH;
+let WHEEL, BRSLIDER, ANIMSEL, LDRGRAPH, LDRSWITCH, DARKSWITCH, COLORSWITCH;
 
-$(document).ready(function() {
+    $(document).ready(function() {
 
     mdc.autoInit(); // Start MDC and set up components
 
@@ -21,6 +21,13 @@ function startApp() {
     if (WHEEL === undefined) WHEEL = new ColorWheel(".shls-palette-iro-colorwheel", 250);
 
     if (LDRGRAPH === undefined) LDRGRAPH = new LDRGraph("#shls-ldr-chart");
+
+    if (LDRSWITCH === undefined) LDRSWITCH = new SHLSSwitch({
+        id: "onAmbientLight",
+        target: ".shls-ldrdata-doldr .mdc-switch",
+        action: () => {},
+        default: false
+    });
 
     if (DARKSWITCH === undefined) DARKSWITCH = new SHLSSwitch({
         id: "darkTheme",
@@ -45,6 +52,7 @@ function startApp() {
         action: () => onColorChange(SETUP.r, SETUP.g, SETUP.b),
         default: true
     });
+
 
     $(".shls-settings-profile-dialog .mdc-dialog__content").html(`
         <p>Name: ${GPROFILE.getName()}</p>
@@ -106,13 +114,11 @@ function onResize() {
     }
 
     // Chart
-    if (w < 840 && !LDRGRAPH.mobile) {
-        LDRGRAPH.mobile = true;
-        LDRGRAPH.update();
-    } else if (w >= 840 && LDRGRAPH.mobile) {
-        LDRGRAPH.mobile = false;
-        LDRGRAPH.update();
-    }
+    const len = LDRGRAPH.obj.data.datasets[0].data.length;
+    const tickLim = LDRGRAPH.obj.options.scales.xAxes[0].ticks.maxTicksLimit;
+
+    if (w < 840 && tickLim === len) LDRGRAPH.resize(true);
+    else if (w >= 840 && tickLim < len) LDRGRAPH.resize(false);
 
 }
 

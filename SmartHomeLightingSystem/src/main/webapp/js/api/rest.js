@@ -56,14 +56,14 @@ function loadPalette() {
         <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
     `;
 
-    $.get("rest/page/palette", (data) => {
+    $.get("rest/page/palette", (response) => {
 
-        ANIMSEL.appendSlide(data.animations.map(__animation));
+        ANIMSEL.appendSlide(response.animations.map(__animation));
 
         const $rainbow = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(1) > .mdc-list");
         const $other = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(2) > .mdc-list");
 
-        $.each(data.presets, (i, p) => {
+        $.each(response.presets, (i, p) => {
 
             switch (p.id) {
                 case 1:
@@ -90,32 +90,15 @@ function loadPalette() {
 
 }
 
-function loadLDRData(mobile, scope) {
+function loadLDRData(scope) {
 
-    // Simulate from BE
-    if (mobile) switch (scope) {
-
-        case "def":
-            return {
-                labels: ['', '10:00', '12:00', '14:00', '16:00', '18:00', ''],
-                data: [47, 56, 74, 73, 84, 63, 48]
-            }
-        case "day": break;
-        case "week": break;
-        case "month": break;
-
-    } else switch (scope) {
-
-        case "def":
-            return {
-                labels: ['', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00', ''],
-                data: [47, 56, 64, 74, 79, 73, 75, 84, 76, 63, 48, 28]
-            }
-        case "day": break;
-        case "week": break;
-        case "month": break;
-
-    }
+    let data;
+    $.get({
+        url: `rest/page/ldr/data?scope=${scope}`,
+        async: false,
+        success: response => { data = response; }
+    });
+    return data;
 
 }
 

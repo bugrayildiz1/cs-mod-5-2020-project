@@ -314,10 +314,11 @@
                     <div class="shls-ldr-chart-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <canvas id="shls-ldr-chart"></canvas>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
-                        <div class="shls-ldr-scope-wselector mdc-chip-set mdc-chip-set--choice"
+                    <div class="shls-ldr-scope-selector-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <div class="shls-ldr-scope-selector mdc-chip-set mdc-chip-set--choice"
                              role="grid" data-mdc-auto-init="MDCChipSet">
-                            <div class="mdc-chip mdc-chip--selected" role="row">
+                            <div class="mdc-chip mdc-chip--selected" role="row"
+                            onclick="LDRGRAPH.load('def')">
                                 <div class="mdc-chip__ripple"></div>
                                 <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
                                 <span role="gridcell">
@@ -326,7 +327,8 @@
                                     </span>
                                 </span>
                             </div>
-                            <div class="mdc-chip" role="row">
+                            <div class="mdc-chip" role="row"
+                                 onclick="LDRGRAPH.load('day')">
                                 <div class="mdc-chip__ripple"></div>
                                 <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
                                 <span role="gridcell">
@@ -335,7 +337,8 @@
                                     </span>
                                 </span>
                             </div>
-                            <div class="mdc-chip" role="row">
+                            <div class="mdc-chip" role="row"
+                                 onclick="LDRGRAPH.load('week')">
                                 <div class="mdc-chip__ripple"></div>
                                 <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
                                 <span role="gridcell">
@@ -344,7 +347,8 @@
                                     </span>
                                 </span>
                             </div>
-                            <div class="mdc-chip" role="row">
+                            <div class="mdc-chip" role="row"
+                                 onclick="LDRGRAPH.load('month')">
                                 <div class="mdc-chip__ripple"></div>
                                 <span class="mdc-chip__icon mdc-chip__icon--leading material-icons">event</span>
                                 <span role="gridcell">
@@ -355,7 +359,30 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-12"></div>
+                    <div class="shls-ldr-settings-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                        <ul class="mdc-list mdc-list--two-line" data-mdc-auto-init="MDCList">
+                            <li class="mdc-list-divider" role="separator"></li>
+                            <li class="shls-ldrdata-doldr mdc-list-item" data-mdc-auto-init="MDCRipple">
+                                <span class="mdc-list-item__ripple"></span>
+                                <label class="mdc-list-item__text">
+                                    <span class="mdc-list-item__primary-text">Correspond to ambient light</span>
+                                    <span class="mdc-list-item__secondary-text">Make the brightness correspond with the ambient light level</span>
+                                </label>
+                                <span class="mdc-list-item__meta">
+                                        <div class="mdc-switch">
+                                            <div class="mdc-switch__track"></div>
+                                            <div class="mdc-switch__thumb-underlay">
+                                                <div class="mdc-switch__thumb"></div>
+                                                <input type="checkbox" id="shls-ldrdata-doldr-switch"
+                                                       class="mdc-switch__native-control" role="switch"
+                                                       aria-checked="false" tabindex="-1">
+                                            </div>
+                                        </div>
+                                </span>
+                            </li>
+                            <li class="mdc-list-divider" role="separator"></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 

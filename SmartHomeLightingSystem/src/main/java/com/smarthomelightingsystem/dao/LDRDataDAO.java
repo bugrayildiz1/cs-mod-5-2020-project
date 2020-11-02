@@ -2,6 +2,7 @@ package com.smarthomelightingsystem.dao;
 
 
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,14 +43,14 @@ public class LDRDataDAO {
 	public void fillHours(ResultSet r, LDRData out) throws SQLException {
 		
 		out.getData().add(r.getFloat("data"));
-		String timeStamp = new SimpleDateFormat("dd/MM").format(r.getTimestamp("timestamp"));
+		String timeStamp = new SimpleDateFormat("HH:mm dd/MM").format(r.getTimestamp("timestamp"));
 		out.getLabels().add(timeStamp);
 
     }
 
 	public void fill(ResultSet r, LDRData out) throws SQLException {
 
-		out.getData().add(r.getFloat("avg"));
+		out.getData().add(round(r.getFloat("avg"),2));
 		String timeStamp = new SimpleDateFormat("dd/MM").format(r.getTimestamp("timestamp"));
 		out.getLabels().add(timeStamp);
 
@@ -185,5 +186,9 @@ public class LDRDataDAO {
     	finally { DB.close(); }
 
     }
-
+	public static float round(float d, int decimalPlace) {
+		BigDecimal bd = new BigDecimal(Float.toString(d));
+		bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
+		return bd.floatValue();
+	}
 }

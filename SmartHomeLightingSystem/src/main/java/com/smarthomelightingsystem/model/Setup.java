@@ -26,7 +26,6 @@ public class Setup {
      * Misc. settings
      */
     boolean doLDR;
-    boolean power;
 
     /**
      * Sets configuration

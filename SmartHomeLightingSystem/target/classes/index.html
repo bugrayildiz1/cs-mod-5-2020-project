@@ -169,10 +169,10 @@
     <div id="shls-backdrop" class="shadow-2" style="display: none;"></div>
     <div id="shls-app" class="mdc-layout-grid shadow-4" style="display: none;">
         <div class="shls-top-buttons">
-            <div onclick="{openWelcome(); openSetUp();}">
+            <div class="shls-top-buttons-setup" onclick="{openWelcome(); openSetUp();}">
                 <span class="material-icons">arrow_back</span>
             </div>
-            <div>
+            <div class="shls-top-buttons-power shls-top-buttons-power-on" onclick="sendSysOff()">
                 <span class="material-icons">power_settings_new</span>
             </div>
         </div>
@@ -391,7 +391,6 @@
 
             <!-- SETTINGS PAGE -->
             <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
-                <div class="shls-page-disabler" style="display: none"></div>
                 <div class="mdc-layout-grid__inner">
                     <div class="shls-settings-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <div class="mdc-list-group">

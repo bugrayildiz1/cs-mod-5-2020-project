@@ -2,6 +2,20 @@ class LDRGraph {
 
     scope = "def";
     mobile = true;
+    sizes = {
+        mobile: {
+            def: () => { return Math.round(this.obj.data.datasets[0].data.length / 2); },
+            day: () => { return 7; },
+            week: () => { return this.obj.data.datasets[0].data.length; },
+            month: () => { return Math.round(this.obj.data.datasets[0].data.length / 5); }
+        },
+        desktop: {
+            def: () => { return this.obj.data.datasets[0].data.length; },
+            day: () => { return 14; },
+            week: () => { return this.obj.data.datasets[0].data.length; },
+            month: () => { return Math.round(this.obj.data.datasets[0].data.length / 2); }
+        }
+    };
 
     constructor(targetQuery) {
 
@@ -24,9 +38,10 @@ class LDRGraph {
                         zeroLineWidth: 0
                     },
                     ticks: {
+                        padding: 20,
+                        maxRotation: 0,
                         fontFamily: 'Roboto',
-                        fontSize: 16,
-                        padding: 20
+                        fontSize: 16
                     }
                 }],
                 yAxes: [{
@@ -46,7 +61,6 @@ class LDRGraph {
         });
 
         this.load(this.scope);
-        this.resize(this.mobile);
 
     }
 
@@ -60,19 +74,17 @@ class LDRGraph {
         this.obj.data.labels = raw.labels;
         this.obj.data.datasets[0].data = raw.data.map(v => 100 * v);
 
-        this.obj.update();
+        this.resize(this.mobile);
 
     }
 
     resize(mobile) {
 
         this.mobile = mobile;
+        let device = "";
+        this.mobile ? device = "mobile" : device = "desktop";
 
-        let tickLim;
-        if (this.mobile) tickLim = this.obj.data.datasets[0].data.length / 2;
-        else tickLim = this.obj.data.datasets[0].data.length;
-        this.obj.options.scales.xAxes[0].ticks.maxTicksLimit = tickLim;
-
+        this.obj.options.scales.xAxes[0].ticks.maxTicksLimit = this.sizes[device][this.scope]();
         this.obj.update();
 
     }

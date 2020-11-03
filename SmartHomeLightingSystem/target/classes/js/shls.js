@@ -75,7 +75,6 @@ function startApp() {
         action: () => onColorChange(SETUP.r, SETUP.g, SETUP.b)
     });
 
-
     $(".shls-settings-profile-dialog .mdc-dialog__content").html(`
         <p>Name: ${GPROFILE.getName()}</p>
         <p>Email: ${GPROFILE.getEmail()}</p>
@@ -94,7 +93,6 @@ function startApp() {
 
         openPalette();
         openPaletteAnimations();
-
 
         if (ANIMSEL === undefined) {
             ANIMSEL = new AnimationSelector(".swiper-container");
@@ -129,11 +127,10 @@ function onResize() {
     }
 
     // Chart
-    const len = LDRGRAPH.obj.data.datasets[0].data.length;
     const tickLim = LDRGRAPH.obj.options.scales.xAxes[0].ticks.maxTicksLimit;
 
-    if (w < 840 && tickLim === len) LDRGRAPH.resize(true);
-    else if (w >= 840 && tickLim < len) LDRGRAPH.resize(false);
+    if (w < 840 && tickLim === LDRGRAPH.sizes.desktop[LDRGRAPH.scope]()) LDRGRAPH.resize(true);
+    else if (w >= 840 && tickLim === LDRGRAPH.sizes.mobile[LDRGRAPH.scope]()) LDRGRAPH.resize(false);
 
 }
 

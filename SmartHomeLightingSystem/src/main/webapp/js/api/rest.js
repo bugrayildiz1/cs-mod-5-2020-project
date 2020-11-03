@@ -9,12 +9,20 @@ function loadCurrentSetup() {
         success: (data) => SETUP = new Setup(data)
     });
 
-    // In case of an uninitialized system
+    // In case of off system
     if (SETUP.r === 0 &&
         SETUP.g === 0 &&
         SETUP.b === 0 &&
         SETUP.a === 0 &&
-        SETUP.anim === 0) {
+        SETUP.anim === 0 &&
+        SETUP.preset === 0 &&
+        SETUP.doLDR === false) sendSysOff();
+
+    // In case of an uninitialized system
+    if (SETUP.r === 0 &&
+        SETUP.g === 0 &&
+        SETUP.b === 0 &&
+        SETUP.a === 0) {
 
         SETUP.r = 255;
         SETUP.g = 255;
@@ -61,6 +69,7 @@ function loadPalette() {
     $.get("rest/page/palette", (response) => {
 
         ANIMSEL.appendSlide(response.animations.map(__animation));
+        ANIMSEL.slideTo(SETUP.anim);
 
         $.each(response.presets, (i, p) => {
 
@@ -73,19 +82,17 @@ function loadPalette() {
 
         document.querySelectorAll("#shls-page-palette .mdc-list-item.mdc-form-field").forEach(el => {
 
-            const radio = el.querySelector(".mdc-radio")
-            new mdc.ripple.MDCRipple(el);
-            new mdc.ripple.MDCRipple(radio);
-            el.MDCFormField.input = radio.MDCRadio;
+            new mdc.ripple.MDCRipple(el); // For the list item
+            el.MDCFormField.input = el.querySelector(".mdc-radio").MDCRadio;
 
         });
 
+        if (SETUP.preset !== 0) {
+            document.querySelector(`#shls-palette-preset-${SETUP.preset} .mdc-radio`).MDCRadio.checked = true
+        }
+
     });
 
-    // let radios = []; let fields = [];
-    // document.querySelectorAll(".mdc-form-field").forEach(el => fields.push(new mdc.formField.MDCFormField(el)));
-    // document.querySelectorAll(".mdc-radio").forEach(el => radios.push(new mdc.radio.MDCRadio(el)));
-    // fields.forEach((el, i) => el.input = radios[i]);
 }
 
 function loadLDRData(scope) {
@@ -126,6 +133,8 @@ function sendAnim() {
 
     $.post(`rest/setup/anim?id=${SETUP.anim}`);
     SETUP.preset = 0;
+    document.querySelectorAll("#shls-page-palette .mdc-radio")
+        .forEach(el => el.MDCRadio.checked = false);
 
 }
 
@@ -133,11 +142,47 @@ function sendPreset() {
 
     $.post(`rest/setup/preset?id=${SETUP.preset}`);
     SETUP.anim = 0;
+    ANIMSEL.slideTo(SETUP.anim);
 
 }
 
 function sendDoLDR() {
 
     $.post(`rest/setup/ldr?b=${SETUP.doLDR}`);
+
+}
+
+function sendSysOff() {
+
+    const setupObj = {
+        p: SETUP.p, q: SETUP.q,
+        r: 0, g: 0, b: 0, a: 0,
+        animId: 0, presetId: 0,
+        doLDR: false
+    }
+
+    $.ajax({
+        url: "rest/setup",
+        type: "POST",
+        data: JSON.stringify(setupObj),
+        contentType: "application/json",
+        success: () => {
+
+            $(".shls-top-buttons-power").attr("onclick", "sendSysOn()");
+            $(".shls-top-buttons-power").toggleClass("shls-top-buttons-power-off shls-top-buttons-power-on");
+            $(".shls-page-disabler").show();
+
+        }
+    });
+
+}
+
+function sendSysOn() {
+
+    sendRGBA();
+    sendAnim();
+    $(".shls-top-buttons-power").attr("onclick", "sendSysOff()");
+    $(".shls-top-buttons-power").toggleClass("shls-top-buttons-power-on shls-top-buttons-power-off");
+    $(".shls-page-disabler").hide();
 
 }

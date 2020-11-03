@@ -1,6 +1,7 @@
 package com.smarthomelightingsystem.controller;
 
 import com.smarthomelightingsystem.dao.SetupDAO;
+import com.smarthomelightingsystem.dao.StripDAO;
 import com.smarthomelightingsystem.model.SetUp;
 
 
@@ -31,13 +32,20 @@ public class SetUpController {
     public void setRGBA(@QueryParam("r") int r,
                         @QueryParam("g") int g,
                         @QueryParam("b") int b,
-                        @QueryParam("a") float a) { new SetupDAO().setRGBA(r, g, b, a); }
+                        @QueryParam("a") float a) { 
+    	
+    	new SetupDAO().setRGBA(r, g, b, a); 
+    	new StripDAO().setRGBA(r, g, b, a); 
+    	
+    }
 
     @Path("anim")
     @POST
     public void setAnim(@QueryParam("id") int id) {
         new SetupDAO().setAnimation(id);
         new SetupDAO().setPreset(0);
+        new StripDAO().setAnimation(id);
+        new StripDAO().setPreset(0);
     }
 
     @Path("preset")
@@ -45,6 +53,8 @@ public class SetUpController {
     public void setPreset(@QueryParam("id") int id) {
         new SetupDAO().setPreset(id);
         new SetupDAO().setAnimation(0);
+        new StripDAO().setPreset(id);
+        new StripDAO().setAnimation(0);
     }
 
     @Path("power")

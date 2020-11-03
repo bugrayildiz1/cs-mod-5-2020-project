@@ -47,13 +47,15 @@ public class StripDAO {
      * @param id id of preset
      * @throws IllegalSetupException 
      */
-    public void setAnimation(int id, float a) throws IllegalSetupException {
+    public void setAnimation(int id, int r, int g, int b, float a) throws IllegalSetupException {
     	if (id < 0) throw new IllegalSetupException();
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY +
 	    		      "strandtest.py" +
-	    		      Integer.toString(id) +
+	    		      Integer.toString(r) +
+	    		      Integer.toString(g) +
+	    		      Integer.toString(b) +
 	    		      Float.toString(a);
 			
 	    	Runtime.getRuntime().exec(cmd);
@@ -68,14 +70,13 @@ public class StripDAO {
      * @param id id of preset
      * @throws IllegalSetupException 
      */
-    public void setPreset(int id, float a) throws IllegalSetupException {
+    public void setPreset(int id) throws IllegalSetupException {
     	if (id < 0) throw new IllegalSetupException();
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY + 
 	    		      "strandtest.py" +
-	    		      Integer.toString(id) +
-	    		      Float.toString(a);
+	    		      Integer.toString(id);
 			
 	    	Runtime.getRuntime().exec(cmd);
 

@@ -18,7 +18,7 @@ import com.smarthomelightingsystem.exceptions.IllegalSetupException;
  **/
 public class StripDAO {
 	
-	private static final String DIRECTORY = "/home/illya/rpi_ws281x/python/examples/strandtest.py";
+	private static final String DIRECTORY = "/home/pi//python_led/home/illya/rpi_ws281x/python/examples";
 	/**
      * Sends r,g,b,a to physical layer
      * 

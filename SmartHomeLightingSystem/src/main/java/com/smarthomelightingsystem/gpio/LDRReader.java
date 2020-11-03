@@ -9,6 +9,9 @@ import com.pi4j.io.gpio.RaspiPin;
 
 public class LDRReader {
 
+    private final static int MIN = 0;
+    private final static int MAX = 0;
+
     public static int readLDR() {
 
         GpioController controller = GpioFactory.getInstance();
@@ -21,7 +24,9 @@ public class LDRReader {
 
         while (pin.getState() == PinState.LOW) { value++;}
 
-        return value;
+        float perc = (value - MIN) / (MAX - MIN);
+        return Math.round(perc * 100) / 100;
+
     }
 
 }

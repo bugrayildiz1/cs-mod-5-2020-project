@@ -49,7 +49,7 @@ public class SetUpController {
         dao.setPreset(0);
         dao.setDoLDR(false);
 
-    	new StripDAO().setRGBA(r, g, b, a); 
+    	new StripDAO().setRGBA(1,r, g, b, a);
 
     }
 
@@ -79,7 +79,8 @@ public class SetUpController {
         dao.setRGBA(0, 0, 0, 0);
         dao.setDoLDR(false);
 
-        new StripDAO().setPreset(id);
+        Setup s = dao.getSetUp();
+        new StripDAO().setPreset(id,0,0,0,s.getA());
 
     }
 

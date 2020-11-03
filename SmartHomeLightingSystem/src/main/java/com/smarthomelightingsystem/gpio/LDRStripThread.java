@@ -15,7 +15,7 @@ public class LDRStripThread extends Thread {
 
         while (exit){
 
-            dao.setRGBA(255,255,255,1-LDRReader.readLDR());
+            dao.setRGBA(1,255,255,255,1-LDRReader.readLDR());
 
             try { sleep(10 * 1000); }
             catch (InterruptedException e) { e.printStackTrace(); }

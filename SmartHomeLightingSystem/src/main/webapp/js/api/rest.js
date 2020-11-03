@@ -9,20 +9,28 @@ function loadCurrentSetup() {
         success: (data) => SETUP = new Setup(data)
     });
 
-    if (SETUP.r === 0 && SETUP.g === 0 && SETUP.b === 0) {
+    // In case of an uninitialized system
+    if (SETUP.r === 0 &&
+        SETUP.g === 0 &&
+        SETUP.b === 0 &&
+        SETUP.a === 0 &&
+        SETUP.anim === 0) {
+
         SETUP.r = 255;
         SETUP.g = 255;
         SETUP.b = 255;
+        SETUP.a = 1
+
     }
 
-    if (SETUP.a === 0) SETUP.a = 1;
+    localStorage.setItem("onAmbientLight", SETUP.doLDR);
 
 }
 
 function loadPalette() {
 
     const __animation = (obj) => `
-        <div id="shls-palette-animation-${obj.id}" class="swiper-slide" onclick="sendAnim(${obj.id})">
+        <div id="shls-palette-animation-${obj.id}" class="swiper-slide" onclick="{ SETUP.anim = ${obj.id}; sendAnim(); }">
             <div class="mdc-card shadow-2">
                 <span class="shls-palette-animation-icon material-icons">${obj.icon}</span>
                 <span class="shls-palette-animation-desc">${obj.name}</span>
@@ -30,10 +38,14 @@ function loadPalette() {
         </div>
     `;
     const __preset = (obj) => `
-        <li id="shls-palette-preset-${obj.id}" class="mdc-list-item" role="radio" aria-checked="false" data-mdc-auto-init="MDCRipple">
+        <li id="shls-palette-preset-${obj.id}" class="mdc-list-item mdc-form-field" role="radio" data-mdc-auto-init="MDCFormField">
             <span class="mdc-list-item__ripple"></span>
-            <span class="mdc-list-item__graphic">
-                <div class="mdc-radio" onclick="sendPreset(${obj.id})" data-mdc-auto-init="MDCRadio">
+            <label class="mdc-list-item__text" for="shls-palette-preset-${obj.id}-input">
+                <span class="mdc-list-item__primary-text">${obj.primary}</span>
+                <span class="mdc-list-item__secondary-text">${obj.secondary}</span>
+            </label>
+            <span class="mdc-list-item__meta">
+                <div class="mdc-radio" onclick="{ SETUP.preset = ${obj.id}; sendPreset(); }" data-mdc-auto-init="MDCRadio">
                     <input class="mdc-radio__native-control" type="radio"
                            id="shls-palette-preset-${obj.id}-input"
                            name="shls-palette-preset-radios" value="1"/>
@@ -43,51 +55,37 @@ function loadPalette() {
                     </div>
                 </div>
             </span>
-            <label class="mdc-list-item__text" for="shls-palette-preset-${obj.id}-input">
-                <span class="mdc-list-item__primary-text">${obj.primary}</span>
-                <span class="mdc-list-item__secondary-text">${obj.secondary}</span>
-            </label>
-        </li>
-    `;
-    const __presetSeparator = `
-        <li class="mdc-list-divider" role="separator"></li>
-    `;
-    const __presetSeparatorInset = `
-        <li class="mdc-list-divider mdc-list-divider--inset" role="separator"></li>
+        </li><li class="mdc-list-divider" role="separator"></li>
     `;
 
     $.get("rest/page/palette", (response) => {
 
         ANIMSEL.appendSlide(response.animations.map(__animation));
 
-        const $rainbow = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(1) > .mdc-list");
-        const $other = $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(2) > .mdc-list");
-
         $.each(response.presets, (i, p) => {
 
-            switch (p.id) {
-                case 1:
-                    $rainbow.append(__preset(p));
-                    $rainbow.append(__presetSeparatorInset);
-                    break;
-                case 2:
-                    $rainbow.append(__preset(p));
-                    $rainbow.append(__presetSeparator);
-                    break;
-                case 3:
-                    $other.append(__preset(p));
-                    $other.append(__presetSeparatorInset);
-                    break;
-                case 4:
-                    $other.append(__preset(p));
-                    $other.append(__presetSeparator);
-                    break;
-            }
+            if (i === 0 || i === 1) $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(1) > .mdc-list").append(__preset(p));
+            if (i === 2 || i === 3) $(".shls-palette-presets-wrapper > .mdc-list-group:nth-of-type(2) > .mdc-list").append(__preset(p));
+
+        });
+
+        mdc.autoInit();
+
+        document.querySelectorAll("#shls-page-palette .mdc-list-item.mdc-form-field").forEach(el => {
+
+            const radio = el.querySelector(".mdc-radio")
+            new mdc.ripple.MDCRipple(el);
+            new mdc.ripple.MDCRipple(radio);
+            el.MDCFormField.input = radio.MDCRadio;
 
         });
 
     });
 
+    // let radios = []; let fields = [];
+    // document.querySelectorAll(".mdc-form-field").forEach(el => fields.push(new mdc.formField.MDCFormField(el)));
+    // document.querySelectorAll(".mdc-radio").forEach(el => radios.push(new mdc.radio.MDCRadio(el)));
+    // fields.forEach((el, i) => el.input = radios[i]);
 }
 
 function loadLDRData(scope) {
@@ -124,18 +122,22 @@ function sendRGBA() {
 
 }
 
-function sendAnim(id) {
+function sendAnim() {
 
-    SETUP.anim = id;
-    SETUP.preset = 0;
     $.post(`rest/setup/anim?id=${SETUP.anim}`);
+    SETUP.preset = 0;
 
 }
 
-function sendPreset(id) {
+function sendPreset() {
 
-    SETUP.preset = id;
-    SETUP.anim = 0;
     $.post(`rest/setup/preset?id=${SETUP.preset}`);
+    SETUP.anim = 0;
+
+}
+
+function sendDoLDR() {
+
+    $.post(`rest/setup/ldr?b=${SETUP.doLDR}`);
 
 }

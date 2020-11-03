@@ -1,6 +1,6 @@
 package com.smarthomelightingsystem.model;
 
-public class SetUp {
+public class Setup {
 
     /**
      * Length and width
@@ -14,16 +14,18 @@ public class SetUp {
     int r;
     int g;
     int b;
-    /**
-     * Brightness
-     */
     float a;
 
     /**
-     * animation id
+     * Animation and Preset id's
      */
     int animId;
     int presetId;
+
+    /**
+     * Misc. settings
+     */
+    boolean doLDR;
     boolean power;
 
     /**
@@ -118,13 +120,9 @@ public class SetUp {
         this.presetId = presetId;
     }
 
-    public boolean getPower() {
-        return power;
-    }
+    public boolean getDoLDR() { return doLDR; }
 
-    public void setPower(boolean power) {
-        this.power = power;
-    }
+    public void setDoLDR(boolean doLDR) { this.doLDR = doLDR; }
 
 }
 

@@ -27,6 +27,7 @@ import java.util.List;
 public class AnimationDAO {
 
 	private static final String TABLENAME = "animation";
+
 	/**
 	 * Fills Animation with information from ResultSet.
 	 * 
@@ -45,6 +46,7 @@ public class AnimationDAO {
 		return animation;
 
 	}
+
 	/**
 	 * Retrieves the information from database regarding Animation.
 	 * 
@@ -57,8 +59,7 @@ public class AnimationDAO {
 
 		try {
 
-			String q = "SELECT * FROM " + TABLENAME + " "
-					+ "WHERE id = ?;";
+			String q = "SELECT * FROM " + TABLENAME + " WHERE id = ?;";
 
 			PreparedStatement ps = DB.connection.prepareStatement(q);
 			ps.setInt(1, id);
@@ -67,13 +68,12 @@ public class AnimationDAO {
 			while (r.next()) { a = fill(r); }
 
 		} catch (SQLException ex) { ex.printStackTrace(); }
-		finally {
+		finally { DB.close(); }
 
-			DB.close();
-		}
 		return a;
 
 	}
+
 	/**
 	 * Retrieves the information about all Animations
 	 * and returns it as a list of animations.
@@ -85,8 +85,7 @@ public class AnimationDAO {
 
 		try {
 
-			String q = "SELECT * FROM " + TABLENAME+" "
-						+"WHERE id>0;";
+			String q = "SELECT * FROM " + TABLENAME + " ORDER BY id;";
 
 			PreparedStatement ps = DB.connection.prepareStatement(q);
 			ResultSet r = DB.executePreparedStatement(ps);
@@ -94,10 +93,8 @@ public class AnimationDAO {
 			while (r.next()) { out.add(fill(r)); }
 
 		} catch (SQLException ex) { ex.printStackTrace(); }
-		finally {
+		finally { DB.close(); }
 
-			DB.close();
-		}
 		return out;
 
 	}

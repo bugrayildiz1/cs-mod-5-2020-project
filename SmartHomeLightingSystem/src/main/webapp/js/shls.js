@@ -1,7 +1,9 @@
 const $ROOT = $(":root");
-let WHEEL, BRSLIDER, ANIMSEL, LDRGRAPH, LDRSWITCH, DARKSWITCH, COLORSWITCH;
+let WHEEL, BRSLIDER, ANIMSEL,
+    LDRGRAPH, LDRSWITCH,
+    DARKSWITCH, COLORSWITCH;
 
-    $(document).ready(function() {
+$(document).ready(function() {
 
     mdc.autoInit(); // Start MDC and set up components
 
@@ -20,18 +22,39 @@ function startApp() {
 
     if (WHEEL === undefined) WHEEL = new ColorWheel(".shls-palette-iro-colorwheel", 250);
 
+    if (BRSLIDER === undefined) {
+        BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
+        BRSLIDER.value = SETUP.a * 100;
+        BRSLIDER.root.addEventListener("MDCSlider:change", (event) => {
+            SETUP.a = event.detail.value / 100;
+            sendRGBA();
+        });
+    }
+
     if (LDRGRAPH === undefined) LDRGRAPH = new LDRGraph("#shls-ldr-chart");
 
     if (LDRSWITCH === undefined) LDRSWITCH = new SHLSSwitch({
         id: "onAmbientLight",
         target: ".shls-ldrdata-doldr .mdc-switch",
-        action: () => {},
-        default: false
+        default: false,
+        action: () => {
+            if (LDRSWITCH.state) {
+                SETUP.doLDR = true;
+                sendDoLDR();
+                $("#shls-page-palette .shls-page-disabler").show();
+            } else {
+                SETUP.doLDR = false;
+                sendRGBA(); // will set doLDR to false in BE
+                sendAnim();
+                $("#shls-page-palette .shls-page-disabler").hide();
+            }
+        }
     });
 
     if (DARKSWITCH === undefined) DARKSWITCH = new SHLSSwitch({
         id: "darkTheme",
         target: ".shls-settings-darktheme .mdc-switch",
+        default: false,
         action: () => {
             if (DARKSWITCH.state) {
                 $ROOT.attr("data-shls-theme", "dark");
@@ -42,15 +65,14 @@ function startApp() {
                 LDRGRAPH.obj.options.scales.xAxes[0].ticks.fontColor = $ROOT.css("--shls-theme-text-primary");
                 LDRGRAPH.obj.update();
             }
-        },
-        default: false
+        }
     });
 
     if (COLORSWITCH === undefined) COLORSWITCH = new SHLSSwitch({
         id: "changeThemeOnColorUpdate",
         target: ".shls-settings-updateoncolor .mdc-switch",
-        action: () => onColorChange(SETUP.r, SETUP.g, SETUP.b),
-        default: true
+        default: true,
+        action: () => onColorChange(SETUP.r, SETUP.g, SETUP.b)
     });
 
 
@@ -61,6 +83,7 @@ function startApp() {
 
     DARKSWITCH.action();
     COLORSWITCH.action();
+    if (LDRSWITCH.state) LDRSWITCH.action();
     onResize();
     $(window).resize(onResize);
 
@@ -72,14 +95,6 @@ function startApp() {
         openPalette();
         openPaletteAnimations();
 
-        if (BRSLIDER === undefined) {
-            BRSLIDER = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
-            BRSLIDER.value = SETUP.a * 100;
-            BRSLIDER.root.addEventListener("MDCSlider:change", (event) => {
-                SETUP.a = event.detail.value / 100;
-                sendRGBA();
-            });
-        }
 
         if (ANIMSEL === undefined) {
             ANIMSEL = new AnimationSelector(".swiper-container");
@@ -135,6 +150,7 @@ function onColorChange(r, g, b) {
         if (luma < 200) $ROOT.css("--mdc-theme-secondary", `rgb(${r}, ${g}, ${b})`);
         else $ROOT.css("--mdc-theme-secondary", "var(--mdc-theme-primary)");
 
+        // Make HEX for displaying
         r = Number(r).toString(16); if (r.length < 2) r = "0" + r;
         g = Number(g).toString(16); if (g.length < 2) g = "0" + g;
         b = Number(b).toString(16); if (b.length < 2) b = "0" + b;
@@ -198,6 +214,8 @@ function openPalette() {
     $target.siblings().not(".shls-tabbar-wrapper").hide();
     $target.show();
 
+    BRSLIDER.layout();
+
 }
 
 function openExtend() {
@@ -208,8 +226,6 @@ function openExtend() {
     $target.show();
 
 }
-
-
 
 function openLdr() {
 

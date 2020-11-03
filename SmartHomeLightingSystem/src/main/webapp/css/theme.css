@@ -65,3 +65,7 @@ html[data-shls-theme="dark"] .mdc-list-divider {
 html[data-shls-theme="dark"] #shls-page-ldr .mdc-chip:not(.mdc-chip--selected) {
     background-color: var(--shls-theme-text-secondary);
 }
+
+html[data-shls-theme="dark"] .shls-page-disabler {
+    background-color: white;
+}

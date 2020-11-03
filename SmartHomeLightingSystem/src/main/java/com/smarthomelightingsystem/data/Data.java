@@ -1,36 +1,27 @@
 package com.smarthomelightingsystem.data;
 
-import com.google.api.client.util.DateTime;
-import com.smarthomelightingsystem.model.LDRData;
-
-import javax.management.timer.TimerMBean;
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Data {
     private static final String TABLENAME = "ldr_data";
+
     static void Generate() {
         ArrayList<Timestamp> timestamps = new ArrayList<>();
         Database DB = new Database();
 
         try {
 
-            String q = "DELETE FROM " + TABLENAME +";"
-                    + " INSERT INTO "+TABLENAME +" (data, timestamp)  VALUES ";
+            String q = "DELETE FROM " + TABLENAME + ";"
+                    + " INSERT INTO " + TABLENAME + " (data, timestamp)  VALUES ";
 
-            for (int d=1; d<31*24;d++){
-                if(d==31*24-1){
-                    q+="(?,?);";
-                }else {
+            for (int d = 1; d < 31 * 24; d++) {
+                if (d == 31 * 24 - 1) {
+                    q += "(?,?);";
+                } else {
                     q += "(?,?),";
                 }
             }
@@ -38,29 +29,29 @@ public class Data {
             PreparedStatement ps = DB.connection.prepareStatement(q);
 
             Date date = new Date();
-            for(int d=31; d>=1;d--){
-                for(int h=24; h>=0; h--){
+            for (int d = 31; d >= 1; d--) {
+                for (int h = 24; h >= 0; h--) {
                     Calendar cal = GregorianCalendar.getInstance();
-                    cal.set(Calendar.MINUTE,0);
-                    cal.set(Calendar.SECOND,0);
-                    cal.set(Calendar.HOUR_OF_DAY,date.getHours()+h-24);
-                    cal.set(Calendar.DAY_OF_MONTH, date.getDay()+d-30);
+                    cal.set(Calendar.MINUTE, 0);
+                    cal.set(Calendar.SECOND, 0);
+                    cal.set(Calendar.HOUR_OF_DAY, date.getHours() + h - 24);
+                    cal.set(Calendar.DAY_OF_MONTH, date.getDay() + d - 30);
                     cal.set(Calendar.MONTH, date.getMonth());
                     cal.set(Calendar.YEAR, 2020);
                     timestamps.add(new Timestamp(cal.getTimeInMillis()));
                 }
             }
 
-            for(int c=1; c<1486;c++){
-                if(c%2!=0){
-                    float random= new Random().nextFloat();
-                    ps.setFloat(c,round(random,2));
+            for (int c = 1; c < 1486; c++) {
+                if (c % 2 != 0) {
+                    float random = new Random().nextFloat();
+                    ps.setFloat(c, round(random, 2));
                 }
             }
-            int count =0;
-            for(int c=1; c<1487;c++){
-                if(c%2==0){
-                    ps.setTimestamp(c,timestamps.get(count));
+            int count = 0;
+            for (int c = 1; c < 1487; c++) {
+                if (c % 2 == 0) {
+                    ps.setTimestamp(c, timestamps.get(count));
                     count++;
                 }
             }
@@ -68,8 +59,11 @@ public class Data {
             DB.executePreparedStatement(ps);
 
 
-        } catch (SQLException e) {e.printStackTrace(); }
-        finally{ DB.close(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            DB.close();
+        }
 
     }
 
@@ -78,6 +72,7 @@ public class Data {
         bd = bd.setScale(decimalPlace, BigDecimal.ROUND_HALF_UP);
         return bd.floatValue();
     }
+
     public static void main(String[] args) {
         Generate();
     }

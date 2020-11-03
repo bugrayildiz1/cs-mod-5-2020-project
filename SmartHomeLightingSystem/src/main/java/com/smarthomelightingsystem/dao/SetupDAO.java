@@ -1,7 +1,8 @@
 package com.smarthomelightingsystem.dao;
 
 import com.smarthomelightingsystem.data.Database;
-import com.smarthomelightingsystem.model.SetUp;
+import com.smarthomelightingsystem.exceptions.IllegalSetupException;
+import com.smarthomelightingsystem.model.Setup;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,9 +31,9 @@ public class SetupDAO {
 	 * 
 	 * @throws SQLException upon SQL query failure
 	 */
-    private SetUp fill(ResultSet r) throws SQLException {
+    private Setup fill(ResultSet r) throws SQLException {
 
-        SetUp setUp = new SetUp();
+        Setup setUp = new Setup();
         setUp.setPQ(r.getInt("p"),
                     r.getInt("q"));
         setUp.setRGBA(r.getInt("r"),
@@ -41,19 +42,20 @@ public class SetupDAO {
                       r.getFloat("a"));
         setUp.setAnimId(r.getInt("anim_id"));
         setUp.setPresetId(r.getInt("preset_id"));
-        setUp.setPower(r.getBoolean("power"));
+        setUp.setDoLDR(r.getBoolean("do_ldr"));
         return setUp;
 
     }
+
 	/**
 	 * Retrieves the information from database regarding SetUp.
 	 * 
 	 * @throws SQLException upon SQL query failure
 	 */
-    public SetUp getSetUp() {
+    public Setup getSetUp() {
 
         Database DB = new Database();
-        SetUp s = null;
+        Setup s = null;
 
         try {
 
@@ -64,36 +66,80 @@ public class SetupDAO {
             while (r.next()) { s = fill(r); }
 
         } catch (SQLException e) { e.printStackTrace(); }
-        finally {
+        finally { DB.close(); }
 
-            DB.close();
-        }
         return s;
 
     }
+
 	/**
 	 * Inserts SetUp information in the database
 	 * 
 	 * @param s setup object
 	 */
-    public void setSetUp(SetUp s) {
+    public void setSetup(Setup s) throws IllegalSetupException {
 
-        setPQ(s.getP(), s.getQ());
-        setRGBA(s.getR(), s.getG(), s.getB(), s.getA());
-        if (s.getAnimId() != 0 && s.getPresetId() == 0) setAnimation(s.getAnimId());
-        else if (s.getPresetId() != 0 && s.getAnimId() == 0) setPreset(s.getPresetId());
-        setPower(s.getPower());
+        if (s.getP() != 0 && s.getQ() != 0) setPQ(s.getP(), s.getQ());
+        else throw new IllegalSetupException();
+
+        if (
+
+            // A color (with or without animation) is selected
+            (s.getR() != 0 &&
+             s.getG() != 0 &&
+             s.getB() != 0 &&
+             s.getA() != 0 &&
+             s.getAnimId() != 0 &&
+             s.getPresetId() == 0 &&
+             s.getDoLDR() == false) ||
+
+            // A preset is selected
+            (s.getR() == 0 &&
+             s.getG() == 0 &&
+             s.getB() == 0 &&
+             s.getA() == 0 &&
+             s.getAnimId() == 0 &&
+             s.getPresetId() != 0 &&
+             s.getDoLDR() == false) ||
+
+            // The system is running of thr LDR
+            (s.getR() == 0 &&
+             s.getG() == 0 &&
+             s.getB() == 0 &&
+             s.getA() == 0 &&
+             s.getAnimId() == 0 &&
+             s.getPresetId() == 0 &&
+             s.getDoLDR() == true) ||
+
+            // The system is off
+            (s.getR() == 0 &&
+             s.getG() == 0 &&
+             s.getB() == 0 &&
+             s.getA() == 0 &&
+             s.getAnimId() == 0 &&
+             s.getPresetId() == 0 &&
+             s.getDoLDR() == false)
+
+        ) {
+
+            setRGBA(s.getR(), s.getG(), s.getB(), s.getA());
+            setAnimation(s.getAnimId());
+            setPreset(s.getPresetId());
+            setDoLDR(s.getDoLDR());
+
+        } else throw new IllegalSetupException(); // In any other case, throw exception
 
     }
+
 	/**
 	 * Inserts parameters p and q in the database
 	 * 
 	 * @param p length of strip
 	 * @param q width of strip
 	 */
-    public void setPQ(int p, int q) {
+    public void setPQ(int p, int q) throws IllegalSetupException {
 
-        System.out.println("p = " + p + " and q = " + q);
+        if (p < 0 || q < 0) throw new IllegalSetupException();
 
         Database DB = new Database();
 
@@ -109,6 +155,7 @@ public class SetupDAO {
         finally { DB.close(); }
 
     }
+
     /**
      * Inserts r,g,b,a to database
      * 
@@ -117,7 +164,12 @@ public class SetupDAO {
      * @param b blue value
      * @param a brightness value
      */
-    public void setRGBA(int r, int g, int b, float a) {
+    public void setRGBA(int r, int g, int b, float a) throws IllegalSetupException {
+
+        if (r < 0 || r > 255 ||
+            g < 0 || g > 255 ||
+            b < 0 || b > 255 ||
+            a < 0 || a > 1) throw new IllegalSetupException();
 
         Database DB = new Database();
 
@@ -136,29 +188,32 @@ public class SetupDAO {
 
     }
 
-    public void setAnimation(int id) {
+    public void setAnimation(int id) throws IllegalSetupException {
+
+        if (id < 0) throw new IllegalSetupException();
 
 		Database DB = new Database();
 
 		try {
-		    
+
 			String q = "UPDATE " + TABLENAME + " SET anim_id = ?; ";
 			PreparedStatement ps = DB.connection.prepareStatement(q);
 			ps.setInt(1, id);
 			DB.executePreparedStatement(ps);
 
 		} catch (SQLException e) { e.printStackTrace(); }
-		finally {
-		    DB.close();
-		}
+		finally { DB.close(); }
 
 	}
+
     /**
      * Inserts preset in the database
-     * 
+     *
      * @param id id of preset
      */
-    public void setPreset(int id) {
+    public void setPreset(int id) throws IllegalSetupException {
+
+        if (id < 0) throw new IllegalSetupException();
 
 		Database DB = new Database();
 
@@ -173,20 +228,21 @@ public class SetupDAO {
 		finally { DB.close(); }
 
 	}
+
     /**
-     * Inserts information about power in the database
+     * Inserts information about whether to use the LDR in the database
      * 
-     * @param p whether strip on or off
+     * @param b whether the LDR is used.
      */
-    public void setPower(boolean p) {
+    public void setDoLDR(boolean b) {
 
 		Database DB = new Database();
 
 		try {
 
-			String q = "UPDATE " + TABLENAME + " SET power = ?; ";
+			String q = "UPDATE " + TABLENAME + " SET do_ldr = ?; ";
 			PreparedStatement ps = DB.connection.prepareStatement(q);
-			ps.setBoolean(1, p);
+			ps.setBoolean(1, b);
 			DB.executePreparedStatement(ps);
 
 		} catch (SQLException e) { e.printStackTrace(); }

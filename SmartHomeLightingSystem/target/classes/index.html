@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons&family=Roboto+Slab:wght@300;400;500&family=Roboto:wght@300;400;500&family=Sansita+Swashed&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/material-components-web@7.0.0/dist/material-components-web.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/css/swiper.min.css"
           integrity="sha512-uCQmAoax6aJTxC03VlH0uCEtE0iLi83TW1Qh6VezEZ5Y17rTrIE+8irz4H4ehM7Fbfbm8rb30OkxVkuwhXxrRg=="
           crossorigin="anonymous"/>
@@ -180,6 +180,7 @@
 
             <!-- PALETTE PAGE -->
             <div id="shls-page-palette" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
+                <div class="shls-page-disabler" style="display: none"></div>
                 <div class="mdc-layout-grid__inner">
 
                     <!-- PALETTE COLOUR WHEEL-->
@@ -298,6 +299,7 @@
 
             <!-- EXTEND PAGE -->
             <div id="shls-page-extend" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
+                <div class="shls-page-disabler" style="display: none"></div>
                 <div class="mdc-layout-grid__inner">
                     <div class="mdc-layout-grid__cell">
                         <h1>This is the Extend page</h1>
@@ -310,6 +312,7 @@
 
             <!-- LDR DATA PAGE -->
             <div id="shls-page-ldr" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
+                <div class="shls-page-disabler" style="display: none"></div>
                 <div class="mdc-layout-grid__inner">
                     <div class="shls-ldr-chart-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <canvas id="shls-ldr-chart"></canvas>
@@ -388,12 +391,13 @@
 
             <!-- SETTINGS PAGE -->
             <div id="shls-page-settings" class="shls-page mdc-layout-grid__cell mdc-layout-grid__cell--span-12" style="display: none;">
+                <div class="shls-page-disabler" style="display: none"></div>
                 <div class="mdc-layout-grid__inner">
                     <div class="shls-settings-wrapper mdc-layout-grid__cell mdc-layout-grid__cell--span-12">
                         <div class="mdc-list-group">
                             <h3 class="mdc-list-group__subheader">Appearence Settings</h3>
                             <ul class="mdc-list mdc-list--two-line" data-mdc-auto-init="MDCList">
-                                <li class="shls-settings-darktheme mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                <li class="shls-settings-darktheme mdc-list-item" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <label class="mdc-list-item__text">
                                         <span class="mdc-list-item__primary-text">Dark mode</span>
@@ -402,7 +406,7 @@
                                     <span class="mdc-list-item__meta">
                                         <div class="mdc-switch">
                                             <div class="mdc-switch__track"></div>
-                                            <div class="mdc-switch__thumb-underlay mdc-ripple-upgraded mdc-ripple-upgraded--unbounded">
+                                            <div class="mdc-switch__thumb-underlay">
                                                 <div class="mdc-switch__thumb"></div>
                                                 <input type="checkbox" id="shls-settings-darktheme-switch"
                                                        class="mdc-switch__native-control" role="switch"
@@ -411,7 +415,7 @@
                                         </div>
                                     </span>
                                 </li><li class="mdc-list-divider" role="separator"></li>
-                                <li class="mdc-list-item shls-settings-updateoncolor mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                <li class="mdc-list-item shls-settings-updateoncolor" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <label class="mdc-list-item__text">
                                         <span class="mdc-list-item__primary-text">Change theme on color update</span>
@@ -420,7 +424,7 @@
                                     <span class="mdc-list-item__meta">
                                         <div class="mdc-switch">
                                             <div class="mdc-switch__track"></div>
-                                            <div class="mdc-switch__thumb-underlay mdc-ripple-upgraded mdc-ripple-upgraded--unbounded">
+                                            <div class="mdc-switch__thumb-underlay">
                                                 <div class="mdc-switch__thumb"></div>
                                                 <input type="checkbox" id="shls-settings-updateoncolor-switch"
                                                        class="mdc-switch__native-control" role="switch"
@@ -432,7 +436,7 @@
                             </ul>
                             <h3 class="mdc-list-group__subheader">Product</h3>
                             <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
-                                <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Information</span>
                                     <span class="mdc-list-item__meta">
@@ -465,8 +469,7 @@
                                         <div class="mdc-dialog__scrim"></div>
                                     </div>
                                 </li><li class="mdc-list-divider" role="separator"></li>
-                                <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple"
-                                    tabindex="0" data-mdc-auto-init-state="initialized">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple" tabindex="0">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Model</span>
                                     <span class="mdc-list-item__meta">WS2812B RGB LED</span>
@@ -474,7 +477,7 @@
                             </ul>
                             <h3 class="mdc-list-group__subheader">Account</h3>
                             <ul class="mdc-list mdc-list--single-line" data-mdc-auto-init="MDCList">
-                                <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Profile info</span>
                                     <span class="mdc-list-item__meta">
@@ -501,7 +504,7 @@
                                         <div class="mdc-dialog__scrim"></div>
                                     </div>
                                 </li><li class="mdc-list-divider" role="separator"></li>
-                                <li class="mdc-list-item mdc-ripple-upgraded" data-mdc-auto-init="MDCRipple">
+                                <li class="mdc-list-item" data-mdc-auto-init="MDCRipple">
                                     <span class="mdc-list-item__ripple"></span>
                                     <span class="mdc-list-item__text">Sign out</span>
                                     <span class="mdc-list-item__meta">

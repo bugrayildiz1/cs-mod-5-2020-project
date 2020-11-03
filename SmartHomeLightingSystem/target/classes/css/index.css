@@ -49,6 +49,20 @@ body,
     background: white;
 }
 
+.shls-page {
+    position: relative;
+}
+
+.shls-page-disabler {
+    width: calc(100% + 2 * var(--shls-mdc-gutter));
+    height: calc(100% + 2 * var(--shls-mdc-gutter));
+    margin: var(--shls-mdc-gutter-inv);
+    position: absolute;
+    z-index: 5;
+    background-color: black;
+    opacity: 0.3;
+}
+
 .shls-app-page-wrapper {
     grid-template-rows: minmax(0, 1fr) min-content;
 }

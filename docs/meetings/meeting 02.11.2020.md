@@ -10,7 +10,7 @@
 |                          |*•Bugra Veysel Yıldız* |
 | *Team ID:*               |*22*                   |
 | *Scrum  Master:*         |*Lola Solovyeva*  |
-| *Scrum  Mentor:*         |*Chandni Raghuraman*         |
+| *Scrum  Mentor:*         |*Andrew Heath*         |
  
 ## Meeting questions
 

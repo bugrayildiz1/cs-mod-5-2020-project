@@ -1,5 +1,7 @@
 package com.smarthomelightingsystem.dao;
 
+import com.smarthomelightingsystem.exceptions.IllegalSetupException;
+
 /**
  * The class works with LED strip, calls animations or
  * presets depending on their IDs from python code on physical layer
@@ -27,15 +29,15 @@ public class StripDAO {
      */
     public void setRGBA(int r, int g, int b, float a) {
         try {
-    	String[] cmd = {
-    		      "python",
-    		      "/home/illya/rpi_ws281x/python/examples/strandtest.py",
-    		      Integer.toString(r),
-    		      Integer.toString(g),
-    		      Integer.toString(b),
-    		      Float.toString(a)
-    		    };
-    		    Runtime.getRuntime().exec(cmd);
+    	String cmd =  "python " +
+    		      DIRECTORY + 
+    		      "strandtest.py" +
+    		      Integer.toString(r) +
+    		      Integer.toString(g) +
+    		      Integer.toString(b) +
+    		      Float.toString(a);
+    	
+    	Runtime.getRuntime().exec(cmd);
 
         } catch (Exception e) { e.printStackTrace(); }
     }
@@ -43,15 +45,18 @@ public class StripDAO {
      * Sends to physical layer id of animation to be executed 
      * 
      * @param id id of preset
+     * @throws IllegalSetupException 
      */
-    public void setAnimation(int id) {
+    public void setAnimation(int id, float a) throws IllegalSetupException {
+    	if (id < 0) throw new IllegalSetupException();
 		try {
-			String[] cmd = {
-	    		      "python",
-	    		      DIRECTORY,
-	    		      Integer.toString(id)
-	    		    };
-	    		    Runtime.getRuntime().exec(cmd);
+			String cmd = "python " +
+	    		      DIRECTORY +
+	    		      "strandtest.py" +
+	    		      Integer.toString(id) +
+	    		      Float.toString(a);
+			
+	    	Runtime.getRuntime().exec(cmd);
 
 		} catch (Exception e) { e.printStackTrace(); }
 
@@ -61,15 +66,18 @@ public class StripDAO {
      * Sends to physical layer id of preset to be executed 
      * 
      * @param id id of preset
+     * @throws IllegalSetupException 
      */
-    public void setPreset(int id) {
+    public void setPreset(int id, float a) throws IllegalSetupException {
+    	if (id < 0) throw new IllegalSetupException();
 		try {
-			String[] cmd = {
-	    		      "python",
-	    		      DIRECTORY,
-	    		      Integer.toString(id)
-	    		    };
-	    		    Runtime.getRuntime().exec(cmd);
+			String cmd = "python " +
+	    		      DIRECTORY + 
+	    		      "strandtest.py" +
+	    		      Integer.toString(id) +
+	    		      Float.toString(a);
+			
+	    	Runtime.getRuntime().exec(cmd);
 
 		} catch (Exception e) { e.printStackTrace(); }
 

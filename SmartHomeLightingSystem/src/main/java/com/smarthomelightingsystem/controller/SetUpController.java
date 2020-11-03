@@ -1,6 +1,7 @@
 package com.smarthomelightingsystem.controller;
 
 import com.smarthomelightingsystem.dao.SetupDAO;
+import com.smarthomelightingsystem.dao.StripDAO;
 import com.smarthomelightingsystem.exceptions.IllegalSetupException;
 import com.smarthomelightingsystem.model.Setup;
 
@@ -46,6 +47,9 @@ public class SetUpController {
         dao.setRGBA(r, g, b, a);
         dao.setPreset(0);
         dao.setDoLDR(false);
+    	new StripDAO().setRGBA(r, g, b, a); 
+
+
 
     }
 
@@ -57,6 +61,8 @@ public class SetUpController {
         dao.setAnimation(id);
         dao.setPreset(0);
         dao.setDoLDR(false);
+        StripDAO dao2 = new StripDAO();
+        dao2.setAnimation(id, getSetUp().getA());
 
     }
 
@@ -69,6 +75,8 @@ public class SetUpController {
         dao.setAnimation(0);
         dao.setRGBA(0, 0, 0, 0);
         dao.setDoLDR(false);
+        StripDAO dao2 = new StripDAO();
+        dao2.setPreset(id, getSetUp().getA());
 
     }
 

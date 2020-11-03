@@ -18,7 +18,7 @@ import com.smarthomelightingsystem.exceptions.IllegalSetupException;
  **/
 public class StripDAO {
 	
-	private static final String DIRECTORY = "/home/illya/rpi_ws281x/python/examples/";
+	private static final String DIRECTORY = "/home/illya/rpi_ws281x/python/examples/strandtest.py";
 	/**
      * Sends r,g,b,a to physical layer
      * 
@@ -30,8 +30,7 @@ public class StripDAO {
     public void setRGBA(int r, int g, int b, float a) {
         try {
     	String cmd =  "python " +
-    		      DIRECTORY + 
-    		      "strandtest.py" +
+    		      DIRECTORY +
     		      Integer.toString(r) +
     		      Integer.toString(g) +
     		      Integer.toString(b) +
@@ -52,7 +51,6 @@ public class StripDAO {
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY +
-	    		      "strandtest.py" +
 	    		      Integer.toString(r) +
 	    		      Integer.toString(g) +
 	    		      Integer.toString(b) +
@@ -75,7 +73,6 @@ public class StripDAO {
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY + 
-	    		      "strandtest.py" +
 	    		      Integer.toString(id);
 			
 	    	Runtime.getRuntime().exec(cmd);

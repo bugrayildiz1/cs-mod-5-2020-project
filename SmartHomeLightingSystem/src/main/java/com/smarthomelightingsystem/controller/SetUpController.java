@@ -44,12 +44,12 @@ public class SetUpController {
                         @QueryParam("a") float a) throws IllegalSetupException {
 
         SetupDAO dao = new SetupDAO();
+
         dao.setRGBA(r, g, b, a);
         dao.setPreset(0);
         dao.setDoLDR(false);
+
     	new StripDAO().setRGBA(r, g, b, a); 
-
-
 
     }
 
@@ -58,11 +58,13 @@ public class SetUpController {
     public void setAnim(@QueryParam("id") int id) throws IllegalSetupException {
 
         SetupDAO dao = new SetupDAO();
+
         dao.setAnimation(id);
         dao.setPreset(0);
         dao.setDoLDR(false);
-        StripDAO dao2 = new StripDAO();
-        dao2.setAnimation(id, getSetUp().getA());
+
+        Setup s = dao.getSetUp();
+        new StripDAO().setAnimation(id, s.getR(),  s.getG(), s.getB(), s.getA());
 
     }
 
@@ -71,12 +73,13 @@ public class SetUpController {
     public void setPreset(@QueryParam("id") int id) throws IllegalSetupException {
 
         SetupDAO dao = new SetupDAO();
+
         dao.setPreset(id);
         dao.setAnimation(0);
         dao.setRGBA(0, 0, 0, 0);
         dao.setDoLDR(false);
-        StripDAO dao2 = new StripDAO();
-        dao2.setPreset(id, getSetUp().getA());
+
+        new StripDAO().setPreset(id);
 
     }
 

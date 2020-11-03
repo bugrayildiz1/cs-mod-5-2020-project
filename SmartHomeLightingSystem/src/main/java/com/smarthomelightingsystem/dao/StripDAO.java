@@ -27,10 +27,11 @@ public class StripDAO {
      * @param b blue value
      * @param a brightness value
      */
-    public void setRGBA(int r, int g, int b, float a) {
+    public void setRGBA(int id, int r, int g, int b, float a) {
         try {
     	String cmd =  "python " +
     		      DIRECTORY +
+    		      Integer.toString(id) +
     		      Integer.toString(r) +
     		      Integer.toString(g) +
     		      Integer.toString(b) +
@@ -51,6 +52,7 @@ public class StripDAO {
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY +
+	    		      Integer.toString(id) +
 	    		      Integer.toString(r) +
 	    		      Integer.toString(g) +
 	    		      Integer.toString(b) +
@@ -68,12 +70,16 @@ public class StripDAO {
      * @param id id of preset
      * @throws IllegalSetupException 
      */
-    public void setPreset(int id) throws IllegalSetupException {
+    public void setPreset(int id, int r, int g, int b, float a) throws IllegalSetupException {
     	if (id < 0) throw new IllegalSetupException();
 		try {
 			String cmd = "python " +
 	    		      DIRECTORY + 
-	    		      Integer.toString(id);
+	    		      Integer.toString(id) +
+	    		      Integer.toString(r) +
+	    		      Integer.toString(g) +
+	    		      Integer.toString(b) +
+	    		      Float.toString(a);
 			
 	    	Runtime.getRuntime().exec(cmd);
 

@@ -1,0 +1,5 @@
+#shls-page-settings {
+    overflow-y: auto;
+    margin: 0 var(--shls-mdc-gutter-inv);
+    padding-top: 60px;
+}

@@ -1,0 +1,62 @@
+#shls-welcome {
+    padding: 0;
+}
+
+.shls-welcome-page-wrapper {
+    grid-template-rows: min-content minmax(0, 1fr);
+    background-image: linear-gradient(
+                        rgba(0,0,0,0.0),
+                        rgba(0,0,0,0.4)),
+                      url("../img/welcome_pages_bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.shls-welcome-page-wrapper .mdc-layout-grid__inner {
+    grid-auto-flow: column;
+    height: 100%;
+}
+
+.shls-welcome-page-wrapper h2,
+.shls-welcome-page-wrapper h5,
+.shls-welcome-page-wrapper p  {
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--mdc-theme-text-secondary-on-dark, #F0F0F0);
+    text-align: center;
+}
+
+.shls-welcome-page-wrapper .shls-welcome-header-device > p {
+    font-family: 'Roboto Slab', 'Roboto', arial, sans-serif;
+    font-weight: 300;
+}
+
+.shls-welcome-page-wrapper h2 {
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--mdc-theme-text-primary-on-dark, white);
+    font-family: 'Sansita Swashed', 'Roboto', arial, sans-serif;
+    font-weight: 400;
+}
+
+#shls-page-signin,
+#shls-page-setup {
+    padding: calc(2 * var(--shls-mdc-gutter));
+}
+
+
+
+@media (min-width: 600px) {
+
+    .shls-welcome-page-wrapper > .mdc-layout-grid__cell:not(.shls-welcome-header-loading) {
+        grid-column-start: 2;
+    }
+
+}
+
+@media (min-width: 840px) {
+
+    .shls-welcome-page-wrapper > .mdc-layout-grid__cell:not(.shls-welcome-header-loading) {
+        grid-column-start: 4;
+    }
+
+}

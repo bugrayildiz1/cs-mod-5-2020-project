@@ -1,0 +1,23 @@
+#shls-page-ldr > .mdc-layout-grid__inner {
+    grid-template-rows: minmax(0, 50%) min-content 1fr;
+}
+
+#shls-page-ldr .shls-ldr-chart-wrapper {
+    width: calc(100% + 2 * var(--shls-mdc-gutter) + 6px);
+    margin: calc(var(--shls-mdc-gutter-inv))
+            calc(var(--shls-mdc-gutter-inv) - 3px)
+            0;
+}
+
+#shls-page-ldr .shls-ldr-scope-selector {
+    display: flex;
+    justify-content: center;
+}
+
+#shls-page-ldr .shls-ldr-settings-wrapper {
+    margin: 0 var(--shls-mdc-gutter-inv);
+}
+
+#shls-page-ldr .mdc-chip-set--choice .mdc-chip.mdc-chip--selected .mdc-chip__icon--leading {
+    color: var(--mdc-theme-secondary);
+}

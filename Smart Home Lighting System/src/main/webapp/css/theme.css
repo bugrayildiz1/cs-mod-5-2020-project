@@ -1,0 +1,71 @@
+/*noinspection CssUnresolvedCustomProperty*/
+html[data-shls-theme="light"] {
+    --shls-theme-text-primary: var(--mdc-theme-text-primary-on-light);
+    --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-light);
+    --shls-theme-background-container: #FFFFFF;
+    --shls-theme-background-primary: #FFFFFF;
+    --shls-theme-background-secondary: #FAFAFA;
+}
+
+/*noinspection CssUnresolvedCustomProperty*/
+html[data-shls-theme="dark"] {
+    --shls-theme-text-primary: var(--mdc-theme-text-primary-on-dark);
+    --shls-theme-text-secondary: var(--mdc-theme-text-secondary-on-dark);
+    --shls-theme-background-container: #202020;
+    --shls-theme-background-primary: #303030;
+    --shls-theme-background-secondary: #242424;
+}
+
+
+
+.shls-pallete-animation-desc,
+.shls-pallete-animation-icon,
+#shls-page-palette .mdc-card *,
+.shls-top-buttons .material-icons,
+.mdc-radio__native-control,
+.mdc-list-group__subheader,
+.mdc-list-item__primary-text,
+.mdc-list-item__text {
+    color: var(--shls-theme-text-primary);
+}
+
+.shls-gridcell-caption,
+.mdc-tab:not(.mdc-tab--active) .mdc-tab__text-label,
+.mdc-tab:not(.mdc-tab--active) .mdc-tab__icon,
+.mdc-list-item__secondary-text,
+.mdc-list-item__meta {
+    color: var(--shls-theme-text-secondary);
+}
+
+.shls-container {
+    background-color: var(--shls-theme-background-container);
+}
+
+#shls-app,
+#shls-page-palette .mdc-card,
+.shls-palette-functions-tabbar {
+    background-color: var(--shls-theme-background-primary);
+}
+
+.mdc-radio .mdc-radio__native-control:enabled:not(:checked)+.mdc-radio__background .mdc-radio__outer-circle {
+    border-color: var(--shls-theme-text-secondary);
+}
+
+.shls-palette-functions-wrapper {
+    background-color: var(--shls-theme-background-secondary);
+}
+
+
+
+html[data-shls-theme="dark"] .mdc-list-divider {
+    border-bottom-color: var(--shls-theme-text-secondary);
+    opacity: 0.4;
+}
+
+html[data-shls-theme="dark"] #shls-page-ldr .mdc-chip:not(.mdc-chip--selected) {
+    background-color: var(--shls-theme-text-secondary);
+}
+
+html[data-shls-theme="dark"] .shls-page-disabler {
+    background-color: white;
+}

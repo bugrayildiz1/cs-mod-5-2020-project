@@ -1,0 +1,135 @@
+:root {
+    --mdc-theme-primary: #018786;
+    --mdc-theme-secondary: var(--mdc-theme-primary);
+    --shls-mdc-gutter: 16px;
+    --shls-mdc-gutter-inv: calc(-1 * var(--shls-mdc-gutter));
+    --swiper-theme-color: var(--mdc-theme-secondary);
+}
+
+html, body {
+    margin: 0;
+    overflow-y: hidden;
+}
+
+html,
+body,
+.shls-container,
+#shls-app,
+.shls-app-page-wrapper,
+#shls-welcome,
+.shls-welcome-page-wrapper,
+.shls-page > .mdc-layout-grid__inner {
+    height: 100%;
+}
+
+.mdc-list-group__subheader {
+    font-weight: 500;
+}
+
+
+
+#shls-backdrop {
+    height: 300px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-color: var(--mdc-theme-secondary);
+}
+
+#shls-welcome {
+    position: relative;
+    z-index: 1;
+}
+
+#shls-app {
+    max-width: 1000px;
+    position: relative;
+    overflow-x: hidden;
+    background: white;
+}
+
+.shls-page {
+    position: relative;
+}
+
+.shls-page-disabler {
+    width: calc(100% + 2 * var(--shls-mdc-gutter));
+    height: calc(100% + 2 * var(--shls-mdc-gutter));
+    margin: var(--shls-mdc-gutter-inv);
+    position: absolute;
+    z-index: 3;
+    background-color: black;
+    opacity: 0.3;
+}
+
+.shls-app-page-wrapper {
+    grid-template-rows: minmax(0, 1fr) min-content;
+}
+
+.shls-top-buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 20px;
+    left: var(--shls-mdc-gutter);
+    right: var(--shls-mdc-gutter);
+    z-index: 4;
+}
+
+.shls-top-buttons span {
+    position: relative;
+    font-size: 36px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.shls-top-buttons-power > span::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+.shls-top-buttons-power.shls-top-buttons-power-on > span::after {
+    background-color: var(--mdc-theme-secondary);
+}
+
+.shls-top-buttons-power.shls-top-buttons-power-off > span::after {
+    background-color: var(--shls-theme-text-secondary);
+}
+
+.shls-tabbar-wrapper {
+    margin: 0
+            var(--shls-mdc-gutter-inv)
+            var(--shls-mdc-gutter-inv);
+    position: relative;
+    z-index: 1;
+}
+
+.shls-tabbar-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    box-shadow: var(--prfy-shadow-1);
+    transform: rotate(180deg);
+}
+
+
+
+@media (min-width: 1000px) and (min-height: 920px) {
+
+    #shls-app {
+        height: calc(100% - 150px);
+        margin-top: 150px;
+    }
+
+}
